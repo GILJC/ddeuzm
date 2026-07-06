@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게임버즈 | 이번 주 화제 게임 TOP 10 — 왜 떴는지 알려주는 순위</title>
-<meta name="description" content="검색량·PC방 순위가 아니라 '왜 떴는지'를 알려주는 게임 화제 랭킹 TOP 10. 커뮤니티·유튜브·스트리머 언급을 매일 자동 집계.">
+<meta name="description" content="검색량·PC방 순위가 아니라 '왜 떴는지'를 알려주는 게임 화제 랭킹 TOP 10. 커뮤니티·유튜브·스트리머 언급을 매일 자동 집계, 각 게임 공식 영상 포함.">
 <style>
   :root{
     --bg:#0b0d12; --card:#151922; --card2:#1b202b; --line:#262c38;
@@ -28,36 +28,46 @@
   .live{color:var(--up);} .dot{display:inline-block; width:7px; height:7px; background:var(--up); border-radius:50%; margin-right:5px; animation:pulse 1.6s infinite;}
   @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
+  /* PLAY BUTTON + THUMBNAIL (shared) */
+  .pbtn{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); border-radius:50%;
+    background:rgba(0,0,0,.55); color:#fff; display:flex; align-items:center; justify-content:center;
+    border:2px solid rgba(255,255,255,.85); transition:background .2s; pointer-events:none;}
+
   /* FEATURED #1 */
   .feature{border-radius:20px; overflow:hidden; border:1px solid var(--line); margin-bottom:16px;
     background:var(--card); transition:transform .25s, box-shadow .25s;}
   .feature:hover{transform:translateY(-3px); box-shadow:0 18px 50px -20px rgba(255,90,70,.5);}
-  .video-wrap{position:relative; width:100%; padding-top:56.25%; background:#000;}
-  .video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
-  .cover-fallback{width:100%; height:190px; display:flex; align-items:center; justify-content:center;
-    font-size:30px; font-weight:800; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.35);}
+  .fmedia{position:relative; width:100%; padding-top:56.25%; cursor:pointer; background:#000; overflow:hidden;}
+  .fmedia img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .fmedia .pbtn{width:60px; height:60px; font-size:22px; padding-left:4px;}
+  .fmedia:hover .pbtn{background:rgba(255,70,90,.9);}
   .vidcap{font-size:11px; color:var(--dim); padding:7px 18px 0;}
-  .feature .info{padding:16px 22px 24px;}
+  .feature .info{padding:14px 22px 24px;}
   .crown{font-size:12px; color:#ffcf5c; letter-spacing:.1em; margin-bottom:8px;}
   .feature h2{font-size:26px; font-weight:800; letter-spacing:-.01em;}
   .feature .why{margin-top:12px; font-size:15px; color:var(--muted);}
   .feature .why b{color:var(--text); font-weight:600;}
 
   /* LIST */
-  .card{display:flex; gap:15px; align-items:center; background:var(--card); border:1px solid var(--line);
-    border-radius:16px; padding:14px 16px; margin-bottom:11px; transition:transform .2s, border-color .2s;}
+  .card{display:flex; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line);
+    border-radius:16px; padding:13px 15px; margin-bottom:11px; transition:transform .2s, border-color .2s;}
   .card:hover{transform:translateX(4px); border-color:#38414f;}
-  .rank{font-size:24px; font-weight:800; color:var(--dim); min-width:30px; text-align:center; font-variant-numeric:tabular-nums;}
-  .chip{width:8px; align-self:stretch; border-radius:6px; flex-shrink:0;}
+  .rank{font-size:23px; font-weight:800; color:var(--dim); min-width:26px; text-align:center; font-variant-numeric:tabular-nums;}
+  .lmedia{position:relative; width:120px; flex-shrink:0; aspect-ratio:16/9; border-radius:10px; overflow:hidden; cursor:pointer; background:#000;}
+  .lmedia img{width:100%; height:100%; object-fit:cover;}
+  .lmedia .pbtn{width:32px; height:32px; font-size:12px; padding-left:2px; border-width:1.5px;}
+  .lmedia:hover .pbtn{background:rgba(255,70,90,.9);}
+  .nomedia{display:flex; align-items:center; justify-content:center; cursor:default;}
+  .nomedia .nolabel{color:#fff; font-weight:800; font-size:13px; text-align:center; padding:4px 6px; text-shadow:0 1px 6px rgba(0,0,0,.4);}
   .body{flex:1; min-width:0;}
   .titrow{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px;}
-  .name{font-size:17px; font-weight:700;}
+  .name{font-size:16px; font-weight:700;}
   .heat{font-size:12px; background:rgba(255,86,70,.15); color:var(--hot); padding:2px 9px; border-radius:20px; font-weight:600;}
   .flag-up{font-size:12px; color:var(--up); font-weight:600;}
   .flag-down{font-size:12px; color:var(--down); font-weight:600;}
-  .why{font-size:14px; color:var(--muted);}
+  .why{font-size:13.5px; color:var(--muted);}
   .why b{color:var(--text); font-weight:600;}
-  .tags{margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;}
+  .tags{margin-top:7px; display:flex; gap:6px; flex-wrap:wrap;}
   .tag{font-size:12px; background:rgba(107,147,255,.13); color:#9ab6ff; padding:2px 9px; border-radius:20px;}
   .tag.g{background:rgba(37,208,122,.13); color:#7ee0ac;}
   .tag.p{background:rgba(180,120,255,.13); color:#c9a8ff;}
@@ -66,6 +76,21 @@
     border-radius:14px; font-size:13px; color:var(--muted); display:flex; gap:12px; align-items:center;}
   .autobox b{color:var(--text);}
   footer{margin-top:30px; font-size:12px; color:var(--dim); text-align:center; line-height:1.8;}
+
+  /* LIGHTBOX */
+  .lb{position:fixed; inset:0; background:rgba(0,0,0,.86); display:none; align-items:center; justify-content:center; z-index:50; padding:20px;}
+  .lb.open{display:flex;}
+  .lb-inner{width:100%; max-width:900px;}
+  .lb-video{position:relative; padding-top:56.25%;}
+  .lb-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:12px;}
+  .lb-close{position:absolute; top:14px; right:20px; color:#fff; font-size:30px; line-height:1; cursor:pointer; opacity:.85;}
+  .lb-close:hover{opacity:1;}
+
+  @media (max-width:520px){
+    .hero h1{font-size:27px;}
+    .lmedia{width:96px;}
+    .rank{min-width:20px; font-size:20px;}
+  }
 </style>
 </head>
 <body>
@@ -83,58 +108,78 @@
 
   <div class="autobox">
     <span style="font-size:22px;">🤖</span>
-    <div>매일 새벽 AI가 커뮤니티·유튜브·검색 데이터를 모아 <b>순위 + 화제 이유 + 태그 + 화제의 공식 영상</b>까지 자동 정리합니다. 사람 손 0.</div>
+    <div>매일 새벽 AI가 커뮤니티·유튜브·검색 데이터를 모아 <b>순위 + 화제 이유 + 태그 + 각 게임 공식 영상</b>까지 자동 정리합니다. 썸네일을 누르면 영상이 재생돼요. 사람 손 0.</div>
   </div>
 
-  <footer>© 2026 게임버즈 · 데이터 출처: 커뮤니티·유튜브·스트리머·검색 화제도 집계<br>영상은 각 공식 채널의 유튜브 임베드이며 저작권은 해당 채널에 있습니다.</footer>
+  <footer>© 2026 게임버즈 · 데이터 출처: 커뮤니티·유튜브·스트리머·검색 화제도 집계<br>영상·썸네일은 각 게임 공식 유튜브 채널의 임베드이며 저작권은 해당 채널에 있습니다.</footer>
+</div>
+
+<div class="lb" id="lb" onclick="if(event.target===this)closeVid()">
+  <span class="lb-close" onclick="closeVid()">✕</span>
+  <div class="lb-inner"><div class="lb-video"><iframe id="lbframe" src="" title="게임 영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>
 </div>
 
 <script>
-// ▼ 이 배열이 매일 AI 파이프라인이 자동으로 갈아끼우는 부분입니다.
-//   color=카드 색, video=1위 화제이유에 맞는 유튜브 영상 ID(11자), videoCredit=영상 출처 채널.
+// ▼ 매일 AI 파이프라인이 자동으로 갈아끼우는 부분.
+//   video=그 게임 공식 유튜브 영상 ID(썸네일+클릭재생), color=예비색, videoCredit=1위 영상 출처.
 const DATA = [
   {rank:1, name:"발로란트", heat:98, flag:"up", flagText:"EWC 급등", color:"linear-gradient(135deg,#ff4655,#7f1d1d)",
-   video:"Ez2V7lsw0T0", videoCredit:"EWC 공식 유튜브",
+   video:"4bv_qjqvWtU", videoCredit:"발로란트 공식 채널",
    why:"<b>e스포츠 월드컵(EWC) 2026 개막</b>(7/2~12·파리) · 그룹스테이지가 한창이고 국내는 치지직이 전 종목 단독 생중계, 사상 최대 상금 규모로 시청 트래픽 폭발.",
    tags:[["EWC2026","g"],["치지직단독",""],["그룹스테이지",""]]},
   {rank:2, name:"붉은사막", heat:93, flag:"up", flagText:"하우징 대확장", color:"linear-gradient(135deg,#dc2626,#7c2d12)",
+   video:"FLdy3yc0Nfw",
    why:"국산 AAA가 <b>누적 600만 장</b>을 넘어, 1.04.00 패치로 <b>실외 하우징·신규 아이템 58종</b>과 난이도 선택까지 확장하며 스트리머 방송 상위 재점화.",
    tags:[["600만장","g"],["하우징확장",""],["스트리머",""]]},
   {rank:3, name:"PUBG 배틀그라운드", heat:90, flag:"up", flagText:"EWC 종목", color:"linear-gradient(135deg,#f2a900,#b45309)",
+   video:"k9gvx0Ih864",
    why:"EWC 2026 <b>24개 종목</b>에 배그·크로스파이어가 포함, 크래프톤 대표 종목으로 개막과 함께 치지직 한국어 독점중계 트래픽 급등.",
    tags:[["EWC2026","g"],["치지직독점",""]]},
   {rank:4, name:"오버워치", heat:88, flag:"up", flagText:"역대최고 경신", color:"linear-gradient(135deg,#f99e1a,#9a4b00)",
+   video:"dk1TvcNapzA",
    why:"2026 시즌1 2주차 <b>동시 플레이어 수가 OW2 출시 주간 기록마저 경신</b> · 타 게임 갔던 대형 스트리머들이 복귀 방송하면 수만 명씩 몰림.",
    tags:[["신기록","g"],["스트리머복귀",""]]},
   {rank:5, name:"메이플스토리", heat:85, flag:"up", flagText:"여름 업데이트", color:"linear-gradient(135deg,#f97316,#b45309)",
-   why:"여름 대규모 업데이트 '<b>SUMMER SHOWCASE: OVERDRIVE</b>' 시작으로 PC방 사용시간 전주 대비 <b>+13.6%</b>, 순위 한 계단 상승.",
-   tags:[["여름업데이트",""],["PC방상승",""]]},
-  {rank:6, name:"로스트아크", heat:82, flag:"up", flagText:"TOP10 복귀", color:"linear-gradient(135deg,#8b5cf6,#4c1d95)",
-   why:"PC방 혜택 강화에 힘입어 <b>2개월 만에 인기 TOP10 복귀</b> · 유저 유입 반등으로 커뮤니티 재활성.",
-   tags:[["복귀장세",""],["PC방혜택",""]]},
+   video:"FM0Fsuf-4cY",
+   why:"여름 대규모 업데이트 '<b>OVERDRIVE</b>'로 신규 직업 '레테' 공개 · PC방 사용시간 전주 대비 <b>+13.6%</b>, 순위 한 계단 상승.",
+   tags:[["여름업데이트",""],["신규직업레테",""],["PC방상승",""]]},
+  {rank:6, name:"로스트아크", heat:82, flag:"up", flagText:"시즌3 예고", color:"linear-gradient(135deg,#8b5cf6,#4c1d95)",
+   video:"ee_1DV9BSTk",
+   why:"<b>시즌3 '심연의 끝을 마주한 자'</b> 공식 트레일러 공개 + PC방 혜택 강화로 2개월 만에 인기 TOP10 복귀, 유저 유입 반등.",
+   tags:[["시즌3",""],["복귀장세",""]]},
   {rank:7, name:"아이온2", heat:80, flag:"down", flagText:"밈·논란", color:"linear-gradient(135deg,#6d28d9,#312e81)",
+   video:"Y0OrNb7SJx0",
    why:"하반기 <b>북미·일본 글로벌 출시</b> 발표로 관심 급등, 동시에 마스코트 '팔로룽' 불쾌한 골짜기 밈과 PVP 논란으로 언급량만 폭증.",
    tags:[["글로벌출시",""],["팔로룽밈","p"],["PVP논란","p"]]},
   {rank:8, name:"던전앤파이터", heat:78, flag:"", flagText:"", color:"linear-gradient(135deg,#7c3aed,#3730a3)",
+   video:"-aMZZoeDuvw",
    why:"괴물쥐 등 스트리머 시청 상위를 지키는 가운데 7월 신규 이벤트와 신규 캐릭터 '<b>제국기사</b>' 로드맵으로 커뮤니티 화력 유지.",
    tags:[["신규캐릭",""],["7월이벤트",""]]},
   {rank:9, name:"명조: 워더링 웨이브", heat:76, flag:"up", flagText:"3.5 예고", color:"linear-gradient(135deg,#0ea5e9,#0c4a6e)",
+   video:"WVU61DzTR7Q",
    why:"<b>3.5 버전이 7월 10일 업데이트</b> 예고 · 신규 캐릭터·지역 공개로 커뮤니티 기대감 상승.",
    tags:[["3.5버전",""],["신규캐릭",""]]},
   {rank:10, name:"마인크래프트", heat:74, flag:"up", flagText:"서버 열풍", color:"linear-gradient(135deg,#5fbf5f,#1f6b2e)",
+   video:"r6Ja2ZxWbRE",
    why:"치지직 64인 포켓몬 서버 '<b>봉켓몬</b>' 하이라이트가 재확산되고 SOOP 하드코어 '<b>놀이터</b>' 서버가 열풍을 이으며 스트리머 서버 콘텐츠 전성기.",
    tags:[["봉켓몬",""],["놀이터서버","p"]]},
 ];
 
-const f = DATA[0];
-const media = f.video
-  ? `<div class="video-wrap"><iframe src="https://www.youtube.com/embed/${f.video}" title="${f.name} 화제 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
-     <div class="vidcap">▶ 이 게임이 뜬 바로 그 장면 · 영상 출처: ${f.videoCredit||"공식 채널"}</div>`
-  : `<div class="cover-fallback" style="background:${f.color}">${f.name}</div>`;
+function thumb(d, cls){
+  if(!d.video){
+    return `<div class="${cls} nomedia" style="background:${d.color}"><span class="nolabel">${d.name}</span></div>`;
+  }
+  return `<div class="${cls}" onclick="openVid('${d.video}')">
+    <img src="https://i.ytimg.com/vi/${d.video}/maxresdefault.jpg" loading="lazy" alt=""
+      onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${d.video}/hqdefault.jpg'">
+    <span class="pbtn">▶</span></div>`;
+}
 
+const f = DATA[0];
 document.getElementById("feature").innerHTML = `
   <div class="feature">
-    ${media}
+    ${thumb(f,"fmedia")}
+    <div class="vidcap">▶ 썸네일을 누르면 재생 · 영상 출처: ${f.videoCredit||"공식 채널"}</div>
     <div class="info">
       <div class="crown">👑 이번 주 1위 · 화제도 ${f.heat}</div>
       <h2>${f.name}</h2>
@@ -146,7 +191,7 @@ document.getElementById("feature").innerHTML = `
 document.getElementById("list").innerHTML = DATA.slice(1).map(d => `
   <div class="card">
     <div class="rank">${d.rank}</div>
-    <div class="chip" style="background:${d.color}"></div>
+    ${thumb(d,"lmedia")}
     <div class="body">
       <div class="titrow">
         <span class="name">${d.name}</span>
@@ -159,6 +204,18 @@ document.getElementById("list").innerHTML = DATA.slice(1).map(d => `
     </div>
   </div>
 `).join("");
+
+function openVid(id){
+  document.getElementById("lbframe").src = "https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+  document.getElementById("lb").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeVid(){
+  document.getElementById("lb").classList.remove("open");
+  document.getElementById("lbframe").src = "about:blank";
+  document.body.style.overflow = "";
+}
+window.addEventListener("keydown", e => { if(e.key === "Escape") closeVid(); });
 </script>
 </body>
 </html>
