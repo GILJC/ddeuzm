@@ -90,21 +90,21 @@
 <script>
 // ▼ 이 배열이 매일 AI 파이프라인이 자동으로 갈아끼우는 부분입니다. (color=커버 대체색, art=실제 이미지 URL 자리)
 const DATA = [
-  {rank:1, name:"PUBG 배틀그라운드", heat:97, flag:"up", flagText:"EWC 급등", color:"linear-gradient(135deg,#f2a900,#b45309)", emoji:"🔫",
-   why:"<b>e스포츠 월드컵(EWC) 2026 오늘 개막</b> · 크래프톤 대표 종목으로 치지직 한국어 독점중계, 개막 트래픽 폭발. PC방 점유율도 상승세.",
-   tags:[["EWC2026","g"],["치지직독점",""],["PC방상승",""]]},
-  {rank:2, name:"퍼스트 디센던트", heat:89, flag:"up", flagText:"2주년 화제", color:"linear-gradient(135deg,#00b4d8,#0353a4)", emoji:"🛸",
-   why:"2주년 '디센던트 페스트 2026'에서 <b>시즌4 '대격전' 로드맵 공개</b> + 트위치 드롭스(리얼 매트 블랙 페인트)로 방송 시청 급증.",
-   tags:[["2주년",""],["트위치드롭스",""]]},
-  {rank:3, name:"아이온2", heat:83, flag:"down", flagText:"밈·찬반 논란", color:"linear-gradient(135deg,#8b5cf6,#4c1d95)", emoji:"🐉",
-   why:"하반기 <b>북미·일본 글로벌 출시</b> 발표로 관심 급등. 동시에 마스코트 '팔로룽' 불쾌한 골짜기 밈 + PVP 논란으로 언급량만 폭증.",
-   tags:[["글로벌출시",""],["팔로룽밈","p"],["PVP논란","p"]]},
-  {rank:4, name:"발로란트", heat:78, flag:"", flagText:"", color:"linear-gradient(135deg,#ff4655,#7f1d1d)", emoji:"🎯",
-   why:"EWC 2026 발로란트 그룹 대진 공개로 국내 팬 시청 트래픽 상승. 치지직 한국어 중계 종목.",
-   tags:[["EWC2026","g"],["e스포츠",""]]},
-  {rank:5, name:"마인크래프트 · 봉켓몬", heat:72, flag:"up", flagText:"마크 화제", color:"linear-gradient(135deg,#5fbf5f,#1f6b2e)", emoji:"⛏️",
-   why:"남봉의 포켓몬 서버 '<b>봉켓몬</b>'이 치지직 제작지원을 받아 진행 중 · 클립 유튜브 재확산으로 마크 콘텐츠 재점화.",
-   tags:[["봉켓몬",""],["치지직제작지원",""]]},
+  {rank:1, name:"발로란트", heat:98, flag:"up", flagText:"EWC 급등", color:"linear-gradient(135deg,#ff4655,#7f1d1d)", emoji:"🎯",
+   why:"<b>e스포츠 월드컵(EWC) 2026 오늘(7/6) 파리 개막</b> · 발로란트 그룹스테이지(7/2~7)가 한창인데 치지직이 전 종목을 단독 생중계, 총상금 <b>7,500만 달러</b> 사상 최대 규모로 시청 트래픽 폭발.",
+   tags:[["EWC2026","g"],["치지직단독",""],["그룹스테이지",""]]},
+  {rank:2, name:"붉은사막", heat:93, flag:"up", flagText:"600만장·하우징", color:"linear-gradient(135deg,#dc2626,#7c2d12)", emoji:"🏜️",
+   why:"펄어비스 국산 AAA가 <b>누적 600만 장 돌파</b>에 이어 <b>실외 하우징·용 탑승</b> 신규 콘텐츠까지 얹으며 서새봄 등 스트리머 방송 상위 재점화. 7월 CEDEC 개발기 강연도 예고.",
+   tags:[["600만장","g"],["하우징업데이트",""],["스트리머",""]]},
+  {rank:3, name:"PUBG 배틀그라운드", heat:88, flag:"up", flagText:"EWC 종목", color:"linear-gradient(135deg,#f2a900,#b45309)", emoji:"🔫",
+   why:"EWC 2026 <b>24개 종목</b>에 배그·크파가 나란히 포함, 크래프톤 대표 종목으로 오늘 개막과 함께 치지직 한국어 독점중계 트래픽 급등.",
+   tags:[["EWC2026","g"],["치지직독점",""]]},
+  {rank:4, name:"던전앤파이터", heat:84, flag:"", flagText:"", color:"linear-gradient(135deg,#7c3aed,#3730a3)", emoji:"👊",
+   why:"괴물쥐 등 스트리머 시청자 상위를 지키는 가운데, 7월 <b>'보급 작전'·'레미디아 여프료시카'</b> 이벤트와 18번째 신규 캐릭터 '제국기사' 로드맵으로 커뮤니티 화력 유지.",
+   tags:[["7월이벤트",""],["신규캐릭",""]]},
+  {rank:5, name:"마인크래프트", heat:80, flag:"up", flagText:"서버 열풍", color:"linear-gradient(135deg,#5fbf5f,#1f6b2e)", emoji:"⛏️",
+   why:"치지직 64인 포켓몬 서버 '<b>봉켓몬</b>' 종료 후 하이라이트 클립이 재확산되고, SOOP 하드코어 '<b>놀이터</b>' 서버가 새 열풍을 이으며 스트리머 서버 콘텐츠 전성기.",
+   tags:[["봉켓몬",""],["놀이터서버","p"]]},
 ];
 
 const f = DATA[0];
