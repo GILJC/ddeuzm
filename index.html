@@ -73,7 +73,7 @@
     <span class="kicker">GAME BUZZ · 화제성 랭킹</span>
     <h1>이번 주 <span>화제</span> 게임<br>왜 떴는지까지 알려줌</h1>
     <p>검색량·PC방 순위 말고, <b>커뮤니티·유튜브·스트리머 언급</b>을 모아 화제도를 매김</p>
-    <div class="period"><span class="live"><span class="dot"></span>LIVE</span> · 2026.06.29 ~ 07.05 · 매일 새벽 자동 갱신 · <i>아래는 구조 예시 데이터</i></div>
+    <div class="period"><span class="live"><span class="dot"></span>LIVE</span> · 2026.06.30 ~ 07.06 · 매일 새벽 자동 갱신 · <i>마지막 갱신 07.06</i></div>
   </div>
 
   <div id="feature"></div>
@@ -84,34 +84,34 @@
     <div>매일 새벽 AI가 커뮤니티·유튜브·검색 데이터를 모아 <b>순위 + 화제 이유 + 태그 + 게임 이미지</b>까지 자동 생성합니다. 사람 손 0.</div>
   </div>
 
-  <footer>© 2026 게임버즈 · 데이터 출처: 커뮤니티/유튜브/검색 집계 · 이미지는 자동 수집 예정</footer>
+  <footer>© 2026 게임버즈 · 데이터 출처: 커뮤니티·유튜브·스트리머·검색 화제도 집계</footer>
 </div>
 
 <script>
 // ▼ 이 배열이 매일 AI 파이프라인이 자동으로 갈아끼우는 부분입니다. (color=커버 대체색, art=실제 이미지 URL 자리)
 const DATA = [
-  {rank:1, name:"스텔라 블레이드 2", heat:98, flag:"up", flagText:"신규 급등", color:"linear-gradient(135deg,#ff6a5c,#c62368)", emoji:"⚔️",
-   why:"출시 첫 주 · <b>한동숙·괴물쥐 동시 스트리밍</b>으로 커뮤니티 폭발. 보스 클리어 클립 유튜브 300만 뷰.",
-   tags:[["스트리머화력",""],["클립바이럴",""],["디시 실북맨 3회","g"]]},
-  {rank:2, name:"FC 온라인", heat:91, flag:"", flagText:"", color:"linear-gradient(135deg,#2b8cff,#1e3a8a)", emoji:"⚽",
-   why:"치지직 e스포츠 탭 신규 편성 + 신규 클래스 업데이트로 복귀 유저 급증. 랄로 방송 화제.",
-   tags:[["e스포츠편성",""],["업데이트",""]]},
-  {rank:3, name:"로스트아크", heat:84, flag:"down", flagText:"밈 논란", color:"linear-gradient(135deg,#8b5cf6,#4c1d95)", emoji:"🗡️",
-   why:"신규 레이드 밸런스 밈이 커뮤니티 도배. 찬반 갈리며 언급량만 폭증.",
-   tags:[["밈발생","p"],["찬반논란","p"]]},
-  {rank:4, name:"발로란트", heat:77, flag:"", flagText:"", color:"linear-gradient(135deg,#ff4655,#7f1d1d)", emoji:"🎯",
-   why:"EWC 2026 국내팀 8강 진출로 시청 트래픽 상승.",
-   tags:[["e스포츠",""]]},
-  {rank:5, name:"스타듀밸리", heat:71, flag:"", flagText:"", color:"linear-gradient(135deg,#5fbf5f,#1f6b2e)", emoji:"🌾",
-   why:"침착맨 힐링 방송 회차가 클립으로 재유행.",
-   tags:[["힐링게임",""]]},
+  {rank:1, name:"PUBG 배틀그라운드", heat:97, flag:"up", flagText:"EWC 급등", color:"linear-gradient(135deg,#f2a900,#b45309)", emoji:"🔫",
+   why:"<b>e스포츠 월드컵(EWC) 2026 오늘 개막</b> · 크래프톤 대표 종목으로 치지직 한국어 독점중계, 개막 트래픽 폭발. PC방 점유율도 상승세.",
+   tags:[["EWC2026","g"],["치지직독점",""],["PC방상승",""]]},
+  {rank:2, name:"퍼스트 디센던트", heat:89, flag:"up", flagText:"2주년 화제", color:"linear-gradient(135deg,#00b4d8,#0353a4)", emoji:"🛸",
+   why:"2주년 '디센던트 페스트 2026'에서 <b>시즌4 '대격전' 로드맵 공개</b> + 트위치 드롭스(리얼 매트 블랙 페인트)로 방송 시청 급증.",
+   tags:[["2주년",""],["트위치드롭스",""]]},
+  {rank:3, name:"아이온2", heat:83, flag:"down", flagText:"밈·찬반 논란", color:"linear-gradient(135deg,#8b5cf6,#4c1d95)", emoji:"🐉",
+   why:"하반기 <b>북미·일본 글로벌 출시</b> 발표로 관심 급등. 동시에 마스코트 '팔로룽' 불쾌한 골짜기 밈 + PVP 논란으로 언급량만 폭증.",
+   tags:[["글로벌출시",""],["팔로룽밈","p"],["PVP논란","p"]]},
+  {rank:4, name:"발로란트", heat:78, flag:"", flagText:"", color:"linear-gradient(135deg,#ff4655,#7f1d1d)", emoji:"🎯",
+   why:"EWC 2026 발로란트 그룹 대진 공개로 국내 팬 시청 트래픽 상승. 치지직 한국어 중계 종목.",
+   tags:[["EWC2026","g"],["e스포츠",""]]},
+  {rank:5, name:"마인크래프트 · 봉켓몬", heat:72, flag:"up", flagText:"마크 화제", color:"linear-gradient(135deg,#5fbf5f,#1f6b2e)", emoji:"⛏️",
+   why:"남봉의 포켓몬 서버 '<b>봉켓몬</b>'이 치지직 제작지원을 받아 진행 중 · 클립 유튜브 재확산으로 마크 콘텐츠 재점화.",
+   tags:[["봉켓몬",""],["치지직제작지원",""]]},
 ];
 
 const f = DATA[0];
 document.getElementById("feature").innerHTML = `
   <div class="feature">
     <div class="cover" style="background:${f.color}">
-      ${f.emoji}<div class="cvlabel">게임 커버 이미지 자리</div>
+      ${f.emoji}<div class="cvlabel">${f.name}</div>
     </div>
     <div class="info">
       <div class="crown">👑 이번 주 1위 · 화제도 ${f.heat}</div>
