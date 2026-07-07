@@ -46,7 +46,9 @@
   .brk-dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
   .brk-sub{font-weight:500;font-size:11px;color:var(--muted);margin-left:auto}
   .brk-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
-  .brk-card{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+  .brk-card{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,transform .2s}
+  .brk-card:hover{border-color:rgba(255,93,120,.5);transform:translateY(-1px)}
+  .brk-more{font-size:10.5px;color:var(--pink);margin-top:6px;font-weight:600}
   .brk-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px}
   .brk-cat{font-size:11px;color:#c9aaff;background:rgba(160,107,255,.14);padding:2px 8px;border-radius:6px}
   .brk-ago{font-size:11px;color:var(--dim)}
@@ -269,9 +271,9 @@ var CATS = {
   ]},
 };
 var BREAKING=[
-  {cat:"🎮 게임",ago:"7/8 출격",title:"로스트아크 신규 클래스 '차원술사' 등장",desc:"시간·공간을 다루는 신규 클래스 + 다음날 카멘 익스트림 레이드로 유저 대거 복귀."},
-  {cat:"🎴 서브컬쳐 게임",ago:"D-3 · 7/10",title:"명조 3.5 '몽주' 신규 지역·5성 예고",desc:"현방 트레일러 'Eisodus' 공개로 아카라이브·디시 화력 최상."},
-  {cat:"📺 방송",ago:"진행중",title:"치지직 '2026 발락대' 스트리머 대회 개막",desc:"행돌·선데이 공동 주최, 7/12 결승까지."},
+  {cat:"🎮 게임",key:"game",ago:"7/8 출격",title:"로스트아크 신규 클래스 '차원술사' 등장",desc:"시간·공간을 다루는 신규 클래스 + 다음날 카멘 익스트림 레이드로 유저 대거 복귀."},
+  {cat:"🎴 서브컬쳐 게임",key:"subgame",ago:"D-3 · 7/10",title:"명조 3.5 '몽주' 신규 지역·5성 예고",desc:"현방 트레일러 'Eisodus' 공개로 아카라이브·디시 화력 최상."},
+  {cat:"📺 방송",key:"live",ago:"진행중",title:"치지직 '2026 발락대' 스트리머 대회 개막",desc:"행돌·선데이 공동 주최, 7/12 결승까지."},
 ];
 var ORDER=['game','subgame','culture','live','movie','drama','music'];
 var state={cat:'game', query:''};
@@ -334,12 +336,13 @@ function shift(items){ // 일간/월간 느낌으로 살짝 섞기(데모)
   var a=items.slice(); if(state.period==='daily'){ if(a.length>2){a.splice(1,0,a.splice(2,1)[0]);} } else { if(a.length>3){a.push(a.splice(1,1)[0]);} }
   return a;
 }
+function gotoCat(k){var b=document.querySelector('#cats button[data-c="'+k+'"]');if(!b)return;b.click();var t=document.getElementById('bento')||document.getElementById('list');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
 function renderBreaking(){
   var el=document.getElementById('breaking');
   if(!BREAKING.length){el.style.display='none';el.innerHTML='';return;}
   el.style.display='block';
   el.innerHTML='<div class="brk-head"><span class="brk-dot"></span>🔥 지금 터진 이슈<span class="brk-sub">수시 갱신 · 예정 없이 튀는 화제</span></div>'+
-    '<div class="brk-row">'+BREAKING.slice(0,3).map(function(b){return '<div class="brk-card"><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div></div>';}).join('')+'</div>';
+    '<div class="brk-row">'+BREAKING.slice(0,3).map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>';
 }
 function renderCats(){
   document.getElementById('cats').innerHTML = ORDER.map(function(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}).join('');
