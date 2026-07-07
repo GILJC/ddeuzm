@@ -68,6 +68,7 @@
   .periods{display:flex;gap:8px}
   .periods button{padding:8px 15px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(238,240,246,.55);font-family:var(--sans);font-weight:600;font-size:13px;transition:all .2s}
   .periods button.on{border-color:rgba(47,230,214,.5);background:rgba(47,230,214,.12);color:#8ff5ec}
+  .sched{font-size:12.5px;color:#8ff5ec;background:rgba(47,230,214,.1);border:1px solid rgba(47,230,214,.28);padding:6px 13px;border-radius:999px;white-space:nowrap}
 
   /* 컴팩트 히어로(hot10 스타일) */
   .hero{position:relative;display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vw,28px);padding:clamp(14px,2vw,20px);border-radius:20px;
@@ -162,7 +163,7 @@
     <div class="controls">
       <div class="search"><span class="ic">⌕</span><input id="searchInput" placeholder="검색" autocomplete="off"><button class="clr" id="clearBtn">✕</button></div>
       <div style="display:flex;align-items:center;gap:14px"><span class="sample-note" id="sampleNote"></span>
-        <div class="periods" id="periods"><button data-p="daily">일간</button><button data-p="weekly" class="on">주간</button><button data-p="monthly">월간</button></div>
+        <span class="sched" id="sched">🔄 주 2회 갱신 · 마지막 07/07</span>
       </div>
     </div>
 
@@ -249,7 +250,7 @@ var BREAKING=[
   {cat:"📺 방송",ago:"진행중",title:"치지직 '2026 발락대' 스트리머 대회 개막",desc:"행돌·선데이 공동 주최, 7/12 결승까지."},
 ];
 var ORDER=['game','subgame','live','movie','drama','music'];
-var state={cat:'game', period:'weekly', query:''};
+var state={cat:'game', query:''};
 
 function ytThumb(id){return 'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -318,14 +319,14 @@ function renderCats(){
 }
 function renderLD(list){var el=document.getElementById("ld");if(!el)return;var items=list.map(function(g,i){return {"@type":"ListItem","position":i+1,"name":g.name,"description":g.desc};});el.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"ddeuzm HOT10 "+CATS[state.cat].label+" 화제성 랭킹","itemListElement":items});}
 function render(){
-  var raw = shift(CATS[state.cat].items).map(enrich);
+  var raw = CATS[state.cat].items.map(enrich);
   var q=state.query.trim().toLowerCase(), has=q.length>0;
   var list = has ? raw.filter(function(g){return g.name.toLowerCase().includes(q)||g.en.toLowerCase().includes(q)||g.tags.some(function(t){return t.toLowerCase().includes(q);});}) : raw;
   var hero = has?null:raw[0];
   var rows = has?list:raw.slice(1);
   document.getElementById('hero').innerHTML = hero?renderHero(hero):'';
   document.getElementById('sampleNote').textContent = CATS[state.cat].real?'':'※ 샘플 데이터';
-  document.getElementById('listTitle').textContent = has?'검색 결과':(CATS[state.cat].label+' 화제성 TOP '+raw.length);
+  document.getElementById('listTitle').textContent = has?'검색 결과':(CATS[state.cat].label+' · 이번 주 화제 TOP '+raw.length);
   document.getElementById('resultCount').textContent=(has?rows.length:raw.length)+'개';
   document.getElementById('clearBtn').style.display=has?'block':'none';
   var el=document.getElementById('list');
@@ -333,7 +334,7 @@ function render(){
   renderLD(raw);
 }
 document.getElementById('cats').addEventListener('click',function(e){var b=e.target.closest('button[data-c]');if(!b)return;state.cat=b.dataset.c;state.query='';document.getElementById('searchInput').value='';renderCats();render();});
-document.getElementById('periods').addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b)return;state.period=b.dataset.p;[].forEach.call(document.querySelectorAll('#periods button'),function(x){x.classList.toggle('on',x===b);});render();});
+/* 기간 토글 제거(가짜 일/월간) — 아카이브 기반 과거 날짜 선택은 다음 빌드 */
 var si=document.getElementById('searchInput');
 si.addEventListener('input',function(e){state.query=e.target.value;render();});
 document.getElementById('clearBtn').addEventListener('click',function(){si.value='';state.query='';render();si.focus();});
