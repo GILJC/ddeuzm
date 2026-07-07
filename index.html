@@ -80,6 +80,9 @@
   .scoreb.bad{background:rgba(255,93,120,.14);color:#ffb0be;border:1px solid rgba(255,93,120,.4)}
   .scoreb.na{background:rgba(255,255,255,.07);color:var(--muted)}
   .hbadges{display:flex;gap:6px;flex-wrap:wrap}
+  .revnote{font-size:12.5px;line-height:1.55;color:rgba(238,240,246,.72);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:8px 11px;margin-bottom:9px}
+  .revnote b{color:var(--orange)}
+  .revsrc{opacity:.55;font-size:11px}
 
   /* 컴팩트 히어로(hot10 스타일) */
   .hero{position:relative;display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vw,28px);padding:clamp(14px,2vw,20px);border-radius:20px;
@@ -235,14 +238,14 @@ var CATS = {
     ["우왁굳","Woowakgood",45,0,"버추얼 아이돌 그룹 '이세계아이돌'의 총괄 프로듀서 겸 스트리머로, 이번 주 마인크래프트 합방 서버 '봉켓몬' 관련 소속 콘텐츠와 함께 꾸준히 언급됐다. 공식 채널에 다양한 예능형 콘텐츠를 공개하고 있다.",["우왁굳","이세계아이돌","치지직"],"2jdCiYZ96Ko",{"plat": "치지직"}],
   ]},
   movie: {label:"🎬 영화", real:true, items:[
-    ["토이 스토리 5","Toy Story 5",205,0,"개봉 18일째인 7월 4일 200만 관객을 돌파하며 3주 연속 주말 박스오피스 정상을 지켰다. 픽사 시리즈의 저력으로 올해 개봉작 흥행 TOP5에 진입, 역주행 흥행세가 이어지고 있다.",["픽사","박스오피스1위","200만돌파"],"xZmN1QPwE9s",{"score": 98, "scoreMax": 100, "src": "CGV 골든에그지수(왓챠 3.6/5·네이버 9.6 병기)", "verdict": "추천"}],
-    ["눈동자","Nundongja",268,2,"신민아의 1인 2역 도전으로 화제를 모은 서스펜스 스릴러가 CGV 에그지수 88%, 네이버 실관람객 평점 8.8점으로 입소문을 타며 박스오피스 2위를 유지했다. 할리우드 대작 '슈퍼걸'을 제치고 국내 영화 자존심을 지켰다는 평가다.",["신민아","스릴러","입소문역주행"],"Psx6qJawATY",{"score": 89, "scoreMax": 100, "src": "CGV 에그지수(네이버 실관람 8.73 병기)", "verdict": "추천"}],
-    ["군체","Gunche",12,-1,"연상호 감독의 감염 재난 스릴러가 누적 500만 관객을 넘기며 올해 최단기간 400만 돌파 기록을 세웠다. 제79회 칸영화제 미드나잇 스크리닝 초청작으로 150여 개국에 선판매되며 K-장르물의 위상을 다시 입증했다.",["연상호","500만돌파","칸초청"],"FJ7uhPAAno8",{"score": 86.6, "scoreMax": 100, "src": "키노라이츠 지수(CGV 에그 87~89% 병기)", "verdict": "추천"}],
-    ["마티 슈프림","Marty Supreme",42,null,"티모시 샬라메 주연, 조쉬 사프디 감독의 A24 화제작이 7월 1일 개봉해 CGV 에그지수 91%의 호평을 받았다. '야망 폭발' 연기와 A24 특유의 스타일로 여름 극장가 마니아층의 관심을 집중시키고 있다.",["티모시샬라메","A24","개봉작"],"jE68v-bvetU",{"score": 91, "scoreMax": 100, "src": "CGV 에그지수(왓챠 3.6/5·네이버 8.33 병기)", "verdict": "추천"}],
-    ["극장판 도라에몽: 신 진구의 해저비밀성","Doraemon: Nobita's Undersea Palace",195,null,"여름방학 시즌을 겨냥한 도라에몽 극장판이 7월 1일 롯데시네마 단독 개봉했다. 시리즈 사상 최초로 MX4D 포맷 동시 상영을 확정하며 가족 관객 예매를 끌어모으고 있다.",["도라에몽","가족애니","MX4D최초"],"6tDZ1KZ4hmg",{"score": 2.8, "scoreMax": 5, "src": "왓챠피디아 평균별점(285명)", "verdict": "보통"}],
-    ["그린랜드 2: 마이그레이션","Greenland 2: Migration",150,null,"제라드 버틀러·모레나 바카린 주연의 재난 블록버스터 속편이 7월 1일 국내 개봉했다. 혜성 충돌 5년 후 지하 벙커 생존기를 그리며 '촬영 중 실제로 땅이 갈라졌다'는 역대급 현장 비하인드로 화제를 모았다.",["제라드버틀러","재난블록버스터","속편"],"6zOmVSD4ao4",{"score": 2.4, "scoreMax": 5, "src": "왓챠피디아 평균별점(762명·RT 57%·IMDb 5.2 병기)", "verdict": "비추"}],
-    ["다윗","David",38,null,"박보검이 데뷔 후 처음으로 애니메이션 목소리 연기에 도전한 성경 애니메이션이 7월 15일 개봉을 앞두고 예매를 시작했다. 북미 개봉 당시 8038만 달러로 '킹 오브 킹스'를 넘어선 역대 종교 애니메이션 최고 오프닝 기록으로 관심을 끈다.",["박보검","종교애니","개봉임박"],"oIpFAruIVno",{}],
-    ["슈퍼걸","Supergirl",350,-3,"밀리 앨콕 주연의 DCU 두 번째 작품이 개봉 첫날 2위로 출발했으나 이틀 만에 4위로 추락하며 '한국서 힘 못 쓴다'는 흥행 부진 기사가 쏟아졌다. DC 히어로물의 국내 부진이 오히려 화제가 되고 있다.",["DC","밀리앨콕","흥행부진"],"GP3zVF6Wce0",{"score": 83, "scoreMax": 100, "src": "CGV 골든에그지수(왓챠 2.7/5·4599명 병기)", "verdict": "보통"}],
+    ["토이 스토리 5","Toy Story 5",205,0,"개봉 18일째인 7월 4일 200만 관객을 돌파하며 3주 연속 주말 박스오피스 정상을 지켰다. 픽사 시리즈의 저력으로 올해 개봉작 흥행 TOP5에 진입, 역주행 흥행세가 이어지고 있다.",["픽사","박스오피스1위","200만돌파"],"xZmN1QPwE9s",{"score": 3.7, "scoreMax": 5, "src": "왓챠피디아(3.7/5, 3.3만명) · 참고 RT92%/메타73/관객95%", "verdict": "보통", "note": "애니 퀄과 향수 자극은 호평이라 관객 만족도는 시리즈 최고지만, 4편이 완벽한 완결이라 '사족'·시리즈 최약체 논란이 명확(평론·메타 모두 메인 시리즈 최저). 스크린타임 주제가 설교적이고 우디·버즈·제시 외 조연 존재감 제로라는 불호도 상당수."}],
+    ["눈동자","Nundongja",268,2,"신민아의 1인 2역 도전으로 화제를 모은 서스펜스 스릴러가 CGV 에그지수 88%, 네이버 실관람객 평점 8.8점으로 입소문을 타며 박스오피스 2위를 유지했다. 할리우드 대작 '슈퍼걸'을 제치고 국내 영화 자존심을 지켰다는 평가다.",["신민아","스릴러","입소문역주행"],"Psx6qJawATY",{"score": 5, "scoreMax": 10, "src": "씨네21 전문가 평점(네이버 실관람 8.8·CGV에그 88%는 선택편향으로 참고만)", "verdict": "보통", "note": "신민아 1인2역 '눈동자 연기'만 만장일치 호평, 정작 영화는 히치콕 '싸이코' 반전을 통째로 베껴 뻔하고 시각상실 설정도 범인 지연용 장치로만 소비돼 '허술한 스릴러'라는 평론 다수—흥행은 되나 완성도는 혹평."}],
+    ["군체","Gunche",12,-1,"연상호 감독의 감염 재난 스릴러가 누적 500만 관객을 넘기며 올해 최단기간 400만 돌파 기록을 세웠다. 제79회 칸영화제 미드나잇 스크리닝 초청작으로 150여 개국에 선판매되며 K-장르물의 위상을 다시 입증했다.",["연상호","500만돌파","칸초청"],"FJ7uhPAAno8",{"score": 3, "scoreMax": 5, "src": "왓챠피디아", "verdict": "보통", "note": "액션 스케일·전지현/구교환 연기·집단진화 좀비 설정은 호평이나 개연성 부족·신파·클리셰로 서사는 아쉽다는 호불호가 갈리는 평(왓챠 3.0/5.6만명, 씨네21 전문가 6.0·관객 5.2, RT 약 70%; CGV 골든에그 86~89%는 과대평가라 근거 제외)"}],
+    ["마티 슈프림","Marty Supreme",42,null,"티모시 샬라메 주연, 조쉬 사프디 감독의 A24 화제작이 7월 1일 개봉해 CGV 에그지수 91%의 호평을 받았다. '야망 폭발' 연기와 A24 특유의 스타일로 여름 극장가 마니아층의 관심을 집중시키고 있다.",["티모시샬라메","A24","개봉작"],"jE68v-bvetU",{"score": 3.6, "scoreMax": 5, "src": "왓챠피디아(3.6/5·1.4만명) / 참고: RT 93·Meta 89·IMDb 7.8·CinemaScore B+", "verdict": "보통", "note": "티모시 샬라메 연기는 만장일치 극찬이지만 주인공에 공감이 안 되고 호불호가 극명하게 갈린다는 평이 다수(평론=극찬, 관객=미지근)."}],
+    ["극장판 도라에몽: 신 진구의 해저비밀성","Doraemon: Nobita's Undersea Palace",195,null,"여름방학 시즌을 겨냥한 도라에몽 극장판이 7월 1일 롯데시네마 단독 개봉했다. 시리즈 사상 최초로 MX4D 포맷 동시 상영을 확정하며 가족 관객 예매를 끌어모으고 있다.",["도라에몽","가족애니","MX4D최초"],"6tDZ1KZ4hmg",{"score": 2.8, "scoreMax": 5, "src": "왓챠피디아(285명)", "verdict": "보통", "note": "일본 현지는 호평(Filmarks 3.7/5·6946명)이나 한국 관객은 미지근~부정적(왓챠 2.8/5)—후반부 급전개와 원작의 긴장감·공포 연출이 순화돼 개연성이 떨어진다는 불만이 한일 공통 다수"}],
+    ["그린랜드 2: 마이그레이션","Greenland 2: Migration",150,null,"제라드 버틀러·모레나 바카린 주연의 재난 블록버스터 속편이 7월 1일 국내 개봉했다. 혜성 충돌 5년 후 지하 벙커 생존기를 그리며 '촬영 중 실제로 땅이 갈라졌다'는 역대급 현장 비하인드로 화제를 모았다.",["제라드버틀러","재난블록버스터","속편"],"6zOmVSD4ao4",{"score": 2.4, "scoreMax": 5, "src": "왓챠피디아", "verdict": "비추", "note": "왓챠피디아 2.4/5(763명)·RT평론 48%·메타 49·IMDb 5.2로 전방위 저조, \"굳이 만든 사족 속편, 각본 허술·버틀러도 지쳐 보임, 볼거리는 영상미뿐\"이 다수 컨센서스"}],
+    ["다윗","David",38,null,"박보검이 데뷔 후 처음으로 애니메이션 목소리 연기에 도전한 성경 애니메이션이 7월 15일 개봉을 앞두고 예매를 시작했다. 북미 개봉 당시 8038만 달러로 '킹 오브 킹스'를 넘어선 역대 종교 애니메이션 최고 오프닝 기록으로 관심을 끈다.",["박보검","종교애니","개봉임박"],"oIpFAruIVno",{"score": 6.9, "scoreMax": 10, "src": "IMDb (참고: 씨네21 관객 6.0/전문가 5.0, Metacritic 55, RT평론 ~80%/관객 98%)", "verdict": "보통", "note": "\"영상미는 극찬받지만 이야기는 뻔하고 설교조\"라는 평이 다수 — 관객 98%·시네마스코어A는 신앙층 자기선택 과대평가(왓챠 평점은 7월10일 국내개봉 직후라 사실상 없음, 씨네21 관객 6.0으로 미지근)"}],
+    ["슈퍼걸","Supergirl",350,-3,"밀리 앨콕 주연의 DCU 두 번째 작품이 개봉 첫날 2위로 출발했으나 이틀 만에 4위로 추락하며 '한국서 힘 못 쓴다'는 흥행 부진 기사가 쏟아졌다. DC 히어로물의 국내 부진이 오히려 화제가 되고 있다.",["DC","밀리앨콕","흥행부진"],"GP3zVF6Wce0",{"score": 2.7, "scoreMax": 5, "src": "왓챠피디아 (4,599명)", "verdict": "비추", "note": "밀리 앨콕 연기만 호평, 엉성한 각본·매력 없는 빌런·단조로운 액션으로 전작 '슈퍼맨' 대비 퇴보한 범작이란 혹평이 다수(왓챠 2.7/RT비평 54%/메타 49/IMDb 6.1, 국내 흥행도 참패). RT 관객 76%는 볼 사람만 본 편향."}],
   ]},
   drama: {label:"🎭 드라마", real:true, items:[
     ["김부장","Kim Bu-jang (Mr. Kim)",210,1,"소지섭 주연 SBS 금토극이 방송 4회 만에 전국 시청률 21.6%를 돌파하며 2년 만의 20%대 대박을 터뜨렸다. 넷플릭스 동시 공개로 플릭스패트롤 기준 20개국 1위에 오르며 국내외 화제성 정상을 굳혔다.",["SBS금토","소지섭","웹툰원작"],"yCvIqRRSzhY",{}],
@@ -297,6 +300,7 @@ function rankMove(g,big){
 function onclickAttr(g){return g.video?(' onclick="openVid(\''+g.video+'\')"'):'';}
 function platBadge(p){if(!p)return '';var c={'치지직':'ch','SOOP':'soop','유튜브':'yt'}[p]||'etc';return '<span class="plat '+c+'">'+(p==='SOOP'?'숲':esc(p))+'</span>';}
 function scoreBadge(x){if(!x||!x.score)return '';var v=x.verdict||'',vc={'추천':'rec','보통':'mid','비추':'bad','미정':'na'}[v]||'na';var disp=x.scoreMax===5?('★'+x.score):(x.scoreMax===10?(x.score+'/10'):(''+x.score));return '<span class="scoreb '+vc+'" title="'+esc(x.src||'')+'">'+disp+(v?' · '+esc(v):'')+'</span>';}
+function revNote(g){var x=g.extra;if(!x||!x.note)return '';return '<p class="revnote">🎬 <b>평가('+esc(x.verdict||'')+')</b> '+esc(x.note)+' <span class="revsrc">— '+esc(x.src||'')+'</span></p>';}
 
 function renderHero(g){
   return '<section class="hero">'+
@@ -304,7 +308,7 @@ function renderHero(g){
     '<div class="hero-info">'+
       '<div class="hero-en">'+esc(g.en)+'</div><h2>'+esc(g.name)+'</h2>'+((platBadge(g.extra.plat)+scoreBadge(g.extra))?'<div class="hbadges">'+platBadge(g.extra.plat)+scoreBadge(g.extra)+'</div>':'')+
       '<div class="tagrow">'+g.tags.map(function(t){return '<span class="tag">#'+esc(t)+'</span>';}).join('')+'</div>'+
-      '<p>'+esc(g.desc)+'</p>'+
+      '<p>'+esc(g.desc)+'</p>'+revNote(g)+
       '<div class="hero-stats">'+
         '<div><span class="score-big">🔥'+(100-g.rank)+'</span> <span class="lbl">화제성</span></div>'+
         '<div class="vbar"></div>'+
@@ -322,7 +326,7 @@ function renderRow(g){
       '<div class="sc"><div class="num">🔥'+(100-g.rank)+'</div><div class="l">화제성</div></div>'+
       '<div class="movecol">'+rankMove(g)+'<div class="l">순위 변화</div></div>'+
     '</div></div>'+
-    '<div class="row-exp"><p>'+esc(g.desc)+'</p><div class="foot"><div class="tagrow">'+g.tags.map(function(t){return '<span class="tag t">#'+esc(t)+'</span>';}).join('')+'</div>'+(g.video?'<button class="btn-watch" onclick="openVid(\''+g.video+'\')">▶ 시청</button>':'')+'</div></div>'+
+    '<div class="row-exp"><p>'+esc(g.desc)+'</p>'+revNote(g)+'<div class="foot"><div class="tagrow">'+g.tags.map(function(t){return '<span class="tag t">#'+esc(t)+'</span>';}).join('')+'</div>'+(g.video?'<button class="btn-watch" onclick="openVid(\''+g.video+'\')">▶ 시청</button>':'')+'</div></div>'+
   '</div>';
 }
 function shift(items){ // 일간/월간 느낌으로 살짝 섞기(데모)
