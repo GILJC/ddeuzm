@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ddeuzm 데모 · 뉴스·패션·IT 신규 카테고리 미리보기</title>
+<meta name="description" content="게임·서브컬처·방송·영화·드라마·음악·유행 등 이번 주 화제 TOP 10. 순위 변화와 왜 떴는지, 평점까지 한눈에. 자주 갱신.">
+<link rel="canonical" href="https://ddeuzm.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ddeuzm">
+<meta property="og:title" content="ddeuzm · HOT10 | 실시간 화제성 랭킹">
+<meta property="og:description" content="게임·서브컬처·방송·영화·드라마·음악·유행, 이번 주 화제 TOP 10을 왜 떴는지까지. 자주 갱신.">
+<meta property="og:url" content="https://ddeuzm.vercel.app/">
+<meta property="og:image" content="https://i.ytimg.com/vi/a4GHbTROUes/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ddeuzm · HOT10 | 실시간 화제성 랭킹">
+<meta name="twitter:description" content="이번 주 화제 TOP 10 — 왜 떴는지·평점까지.">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/a4GHbTROUes/maxresdefault.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07070c; --text:#eef0f6; --muted:rgba(238,240,246,.5); --dim:rgba(238,240,246,.4);
+    --teal:#2fe6d6; --purple:#a06bff; --orange:#ffb26b; --pink:#ff5d78; --green:#46e08a;
+    --card:rgba(20,20,30,.55); --line:rgba(255,255,255,.07);
+    --chakra:'Chakra Petch',sans-serif; --sans:Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;white-space:nowrap}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;position:relative;min-height:100vh;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+    background:radial-gradient(40% 42% at 18% 12%,rgba(160,107,255,.26),transparent 70%),radial-gradient(38% 40% at 85% 18%,rgba(47,230,214,.18),transparent 70%),radial-gradient(45% 45% at 72% 88%,rgba(255,93,120,.13),transparent 72%),radial-gradient(50% 50% at 28% 82%,rgba(107,147,255,.11),transparent 72%);
+    filter:blur(30px);animation:drift 24s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.06)}}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  @media (prefers-reduced-motion:reduce){body::before{animation:none}}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,36px) 64px;position:relative}
+
+  header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    padding:14px clamp(16px,4vw,36px);margin:0 calc(-1*clamp(16px,4vw,36px)) 18px;
+    background:rgba(10,10,16,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:linear-gradient(150deg,rgba(255,178,107,.22),rgba(47,230,214,.14));border:1px solid rgba(255,178,107,.3);box-shadow:0 0 22px rgba(255,178,107,.18)}
+  .brand h1{font-family:var(--chakra);font-weight:700;font-size:22px;letter-spacing:.5px;line-height:1}
+  .brand h1 span{color:var(--teal)}
+  .brand .sub{font-size:11px;color:var(--muted);margin-top:2px}
+  .live{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(238,240,246,.55)}
+  .live .dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .live .lbl{font-family:var(--chakra);letter-spacing:1px;color:#ff8095;font-weight:600}
+
+  /* 오늘의 이슈(갑툭튀 화제) */
+  .breaking{margin-bottom:16px;padding:13px 16px;border-radius:16px;border:1px solid rgba(255,93,120,.35);background:linear-gradient(135deg,rgba(255,93,120,.1),rgba(20,20,30,.5))}
+  .brk-head{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#ff8095;margin-bottom:10px}
+  .brk-dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
+  .brk-sub{font-weight:500;font-size:11px;color:var(--muted);margin-left:auto}
+  .brk-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+  .brk-card{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,transform .2s}
+  .brk-card:hover{border-color:rgba(255,93,120,.5);transform:translateY(-1px)}
+  .brk-more{font-size:10.5px;color:var(--pink);margin-top:6px;font-weight:600}
+  .brk-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+  .brk-cat{font-size:11px;color:#c9aaff;background:rgba(160,107,255,.14);padding:2px 8px;border-radius:6px}
+  .brk-ago{font-size:11px;color:var(--dim)}
+  .brk-title{font-size:13.5px;font-weight:700;margin-bottom:3px;line-height:1.35}
+  .brk-desc{font-size:12px;color:var(--muted);line-height:1.45}
+  /* 카테고리 탭 */
+  .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cats button{flex:none;padding:9px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.03);color:rgba(238,240,246,.6);font-family:var(--sans);font-weight:600;font-size:14px;transition:all .2s;white-space:nowrap}
+  .cats button.on{border-color:rgba(160,107,255,.5);background:rgba(160,107,255,.14);color:#d9c4ff;box-shadow:0 0 18px rgba(160,107,255,.22)}
+
+  .controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+  .sample-note{font-size:11.5px;color:var(--orange);opacity:.85}
+  .search{position:relative;flex:1;min-width:220px;max-width:380px}
+  .search .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px}
+  .search input{width:100%;padding:11px 38px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--text);font-family:var(--sans);font-size:14px;outline:none}
+  .search input:focus{border-color:rgba(47,230,214,.4)}
+  .search .clr{position:absolute;right:9px;top:50%;transform:translateY(-50%);border:none;background:rgba(255,255,255,.08);color:rgba(238,240,246,.7);width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:12px;display:none}
+  .periods{display:flex;gap:8px}
+  .periods button{padding:8px 15px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(238,240,246,.55);font-family:var(--sans);font-weight:600;font-size:13px;transition:all .2s}
+  .periods button.on{border-color:rgba(47,230,214,.5);background:rgba(47,230,214,.12);color:#8ff5ec}
+  .sched{font-size:12.5px;color:#8ff5ec;background:rgba(47,230,214,.1);border:1px solid rgba(47,230,214,.28);padding:6px 13px;border-radius:999px;white-space:nowrap}
+  .plat{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
+  .plat.ch{background:rgba(0,255,163,.14);color:#4dffbf;border:1px solid rgba(0,255,163,.32)}
+  .plat.soop{background:rgba(80,140,255,.16);color:#9fbcff;border:1px solid rgba(80,140,255,.32)}
+  .plat.yt{background:rgba(255,80,80,.14);color:#ff9a9a;border:1px solid rgba(255,80,80,.32)}
+  .plat.etc{background:rgba(255,255,255,.08);color:var(--muted)}
+  .scoreb{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
+  .scoreb.rec{background:rgba(70,224,138,.16);color:#8ff5c6;border:1px solid rgba(70,224,138,.4)}
+  .scoreb.mid{background:rgba(255,200,80,.14);color:#ffe08a;border:1px solid rgba(255,200,80,.4)}
+  .scoreb.bad{background:rgba(255,93,120,.14);color:#ffb0be;border:1px solid rgba(255,93,120,.4)}
+  .scoreb.na{background:rgba(255,255,255,.07);color:var(--muted)}
+  .hbadges{display:flex;gap:6px;flex-wrap:wrap}
+  .viewsb{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--muted)}
+  .chartb{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:rgba(255,178,107,.13);color:var(--orange);border:1px solid rgba(255,178,107,.3)}
+  .revnote{font-size:12.5px;line-height:1.55;color:rgba(238,240,246,.72);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:8px 11px;margin-bottom:9px}
+  .revnote b{color:var(--orange)}
+  .revsrc{opacity:.55;font-size:11px}
+
+  /* 컴팩트 히어로(hot10 스타일) */
+  .hero{position:relative;display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vw,28px);padding:clamp(14px,2vw,20px);border-radius:20px;
+    border:1px solid rgba(160,107,255,.28);background:linear-gradient(135deg,rgba(160,107,255,.11),rgba(18,18,27,.55) 55%,rgba(47,230,214,.07));margin-bottom:30px;overflow:hidden}
+  .hero-art{position:relative;align-self:flex-start;flex:0 0 clamp(220px,32%,360px);min-width:220px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:pointer;background:#000}
+  .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-art .grad{position:absolute;inset:0}
+  .hero-art .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,7,12,.78))}
+  .badge{position:absolute;top:12px;left:12px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:7px;background:rgba(255,178,107,.16);border:1px solid rgba(255,178,107,.45);color:#ffd9b0}
+  .hero-art .big{position:absolute;bottom:6px;left:14px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:clamp(40px,5vw,58px);line-height:.8;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+  .hero-art .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.85);display:grid;place-items:center;font-size:17px;padding-left:3px;transition:background .2s}
+  .hero-art:hover .play{background:rgba(47,230,214,.85);color:#04120f}
+  .hero-info{flex:1;min-width:260px;display:flex;flex-direction:column;gap:11px}
+  .hero-en{font-family:var(--chakra);font-size:12px;letter-spacing:2px;color:var(--teal)}
+  .hero-info h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-.5px;line-height:1.08}
+  .tagrow{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:11.5px;padding:4px 10px;border-radius:999px;background:rgba(160,107,255,.14);border:1px solid rgba(160,107,255,.32);color:#c9aaff}
+  .tag.t{background:rgba(47,230,214,.1);border-color:rgba(47,230,214,.28);color:#8ff5ec}
+  .hero p{font-size:13.5px;line-height:1.6;color:rgba(238,240,246,.72)}
+  .hero-stats{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-top:2px}
+  .score-big{font-family:var(--chakra);font-weight:700;font-size:32px;color:var(--orange);line-height:1}
+  .lbl{font-size:11px;color:var(--muted)}
+  .vbar{width:1px;height:28px;background:rgba(255,255,255,.12)}
+
+  /* 순위 변화 칩 */
+  .rankmove{display:inline-flex;align-items:center;gap:6px;font-family:var(--chakra);font-weight:700;font-size:15px;padding:3px 10px;border-radius:8px}
+  .rankmove.up{color:#8ff5c6;background:rgba(70,224,138,.13);border:1px solid rgba(70,224,138,.4)}
+  .rankmove.down{color:#ffb0be;background:rgba(255,93,120,.12);border:1px solid rgba(255,93,120,.4)}
+  .rankmove.flat{color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--line)}
+  .rankmove.newin{color:#ffe08a;background:rgba(255,200,80,.14);border:1px solid rgba(255,200,80,.45)}
+  .rankmove small{font-family:var(--sans);font-weight:500;font-size:11px;opacity:.85}
+
+  .listhead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
+  .listhead .l{display:flex;align-items:center;gap:12px}
+  .tick{width:4px;height:20px;border-radius:4px;background:var(--teal);box-shadow:0 0 12px rgba(47,230,214,.6)}
+  .listhead h3{font-size:18px;font-weight:700}
+  .cnt{font-size:12px;color:rgba(238,240,246,.45)}
+  .legend{font-size:11.5px;color:rgba(238,240,246,.45)}
+
+  .list{display:flex;flex-direction:column;gap:10px}
+  .list:has(.row:hover) .row:not(:hover){opacity:.5;filter:saturate(.7)}
+  .row{position:relative;padding:12px 15px;border-radius:15px;border:1px solid var(--line);background:var(--card);transition:opacity .25s,filter .25s,border-color .22s,transform .22s,box-shadow .22s}
+  .row:hover{border-color:rgba(47,230,214,.45);background:rgba(24,24,36,.85);box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 24px rgba(47,230,214,.1);transform:translateY(-1px)}
+  .row-main{display:flex;align-items:center;gap:clamp(9px,1.5vw,15px);flex-wrap:wrap}
+  .bar{width:5px;height:44px;border-radius:5px;flex:none}
+  .rk{min-width:42px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:clamp(28px,2.8vw,34px);color:rgba(238,240,246,.9);text-align:center}
+  .thumb{position:relative;width:100px;height:60px;border-radius:9px;overflow:hidden;flex:none;border:1px solid rgba(255,255,255,.08);cursor:pointer;background:#000}
+  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .thumb .grad{position:absolute;inset:0;display:grid;place-items:center;font-size:22px}
+  .thumb .pi{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.85);display:grid;place-items:center;font-size:9px;padding-left:2px;opacity:0;transition:opacity .2s}
+  .thumb:hover .pi{opacity:1}
+  .mid{flex:1;min-width:140px}
+  .nm{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .nm b{font-size:16px;font-weight:700}
+  .nm .en2{font-family:var(--chakra);font-size:10.5px;letter-spacing:1px;color:var(--dim)}
+  .oneline{font-size:12px;color:var(--muted);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:420px}
+  .right{display:flex;align-items:center;gap:clamp(10px,1.8vw,20px);margin-left:auto}
+  .sc{text-align:right;min-width:54px}
+  .sc .num{font-family:var(--chakra);font-weight:700;font-size:21px;color:var(--orange);line-height:1}
+  .sc .l{font-size:10px;color:var(--dim);margin-top:2px}
+  .movecol{min-width:82px;text-align:right}
+  .movecol .l{font-size:10px;color:var(--dim);margin-top:3px}
+  .row-exp{max-height:0;overflow:hidden;opacity:0;transition:max-height .28s,opacity .28s,margin .28s,padding .28s}
+  .row:hover .row-exp{max-height:200px;opacity:1;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+  .row-exp p{font-size:13px;line-height:1.55;color:rgba(238,240,246,.78);margin-bottom:9px}
+  .row-exp .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .btn-watch{padding:8px 16px;border-radius:10px;border:none;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:12.5px;color:#04120f;background:linear-gradient(135deg,#2fe6d6,#46e08a)}
+  .empty{padding:44px;text-align:center;color:rgba(238,240,246,.45);border:1px dashed rgba(255,255,255,.12);border-radius:16px}
+
+  @supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+    .row{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 30%}
+    @keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  }}
+  footer{margin-top:32px;text-align:center;font-size:11.5px;color:rgba(238,240,246,.35);line-height:1.7}
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .lb.open{display:flex}
+  .lb-inner{width:100%;max-width:900px}.lb-video{position:relative;padding-top:56.25%}
+  .lb-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+  .lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;cursor:pointer;opacity:.85}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">🔥</div><div><h1>HOT<span>10</span></h1><div class="sub">실시간 화제성 랭킹</div></div></div>
+      <div class="live"><span class="dot"></span><span class="lbl">LIVE</span><span style="opacity:.7">정규 07.07 · 오늘의 이슈 수시</span></div>
+    </header>
+
+    <div class="breaking" id="breaking"></div>
+    <div class="cats" id="cats"></div>
+
+    <div class="controls">
+      <div class="search"><span class="ic">⌕</span><input id="searchInput" placeholder="검색" autocomplete="off"><button class="clr" id="clearBtn">✕</button></div>
+      <div style="display:flex;align-items:center;gap:14px"><span class="sample-note" id="sampleNote"></span>
+        <span class="sched" id="sched">🔄 주 2회 갱신 · 마지막 07/07</span>
+      </div>
+    </div>
+
+    <div id="hero"></div>
+    <div class="listhead"><div class="l"><div class="tick"></div><h3 id="listTitle"></h3><span class="cnt" id="resultCount"></span></div>
+      <div class="legend">🔥 화제성 · 지난 순위 대비 ▲▼ 변화</div></div>
+    <div id="list" class="list"></div>
+
+    <footer>ddeuzm · HOT10 · 이번 주 화제성 지수 기반 랭킹. 순위 변화는 직전 집계 대비입니다.<br>영상·썸네일은 원본 플랫폼 공식 임베드/링크(자체 저장 없음). 정규 랭킹 주 2회 · 오늘의 이슈 수시 갱신.</footer>
+<div class="sr-only"><h1>ddeuzm 데모 — 뉴스·남성/여성 인기·패션·IT 신규 카테고리</h1>
+<h2>📰 뉴스 이번 주 화제 TOP</h2>
+<p>1. 삼성전자 2분기 영업이익 89조 — 7월 7일 발표된 삼성전자 2분기 잠정 실적이 매출 171조·영업이익 89.4조원으로 역대 최대치를 경신하며 엔비디아·애플의 분기 이익까지 넘어서 화제. AI·HBM 메모리 수요 급증이 실적을 견인했으나 주가는 오히려 하락해 개미들 반응이 엇갈렸다.</p>
+<p>2. 괴물 장마·쌍태풍 물폭탄 — 7월 초 중부지방까지 장마가 본격화되며 시작부터 200mm 넘는 국지성 폭우가 전국을 강타. 이례적 쌍태풍 동시 북상까지 겹치며 &#x27;물폭탄&#x27; 경보가 이어져 이번 주 재난·안전 이슈로 부상했다.</p>
+<p>3. 이강인 아틀레티코 마드리드 이적 — 이강인이 PSG를 떠나 스페인 명문 아틀레티코 마드리드로 약 4000만 유로(700억원)에 이적하는 것이 사실상 확정돼 이번 주 스포츠 최대 화제. 손흥민을 넘어 한국 선수 역대 두 번째 이적료로, 그리즈만이 떠난 자리를 메울 핵심 자원으로 기대를 모은다.</p>
+<p>4. 2027년 최저임금 협상 막판 진통 — 2027년 최저임금을 두고 노동계와 경영계가 수정안을 거듭 제출하며 격차를 1290원까지 좁혔지만 여전히 평행선. 7월 7일 전원회의 등 이번 주 막판 협상에 관심이 집중됐고 8월 초 최종 고시를 앞두고 있다.</p>
+<p>5. 지커 7X 중국 전기차 돌풍 — 중국 프리미엄 전기차 지커의 SUV &#x27;7X&#x27;가 사전예약 한 달 만에 계약 1000대를 돌파해 화제. BYD에 이어 지커·샤오펑까지 가세하며 &#x27;중국차 안 산다&#x27;던 국내 전기차 시장 판도가 빠르게 재편되고 있다.</p>
+<p>6. 역대급 폭염·온열질환 급증 — 장마 사이사이 내륙 낮 최고기온이 33도 안팎까지 치솟는 폭염이 이어지며 온열질환자가 지난해 동기 대비 1.5배 급증. 질병관리청이 7월 초 폭염 취약계층 예방수칙을 배포하는 등 건강·안전 경보가 이번 주 이슈로 떠올랐다.</p>
+<h2>💪 남성 인기 이번 주 화제 TOP</h2>
+<p>1. 이강인 아틀레티코 이적 — 이강인이 PSG를 떠나 라리가 명문 아틀레티코 마드리드로 이적, 오늘(7/7) 이적료 약 4000만유로(700억원대)로 합의가 확정되며 &#x27;HERE WE GO&#x27;가 떴다. 한국 축구 역대 2위급 이적료로 남초 축구 커뮤니티가 온종일 들썩였다.</p>
+<p>2. 코스피 8000선 붕괴 — &#x27;1만피&#x27; 기대 속 질주하던 코스피가 7월 초 반도체 급락 여파로 하루 만에 7~8% 폭락하며 8000선이 무너지고 매도 사이드카가 발동했다. 개미 투자자들의 &#x27;멘붕&#x27;과 하반기 전망을 놓고 재테크 커뮤니티가 크게 술렁였다.</p>
+<p>3. 홍명보호 월드컵 탈락 후폭풍 — 2026 북중미 월드컵에서 손흥민·이강인 등 황금세대에도 조별리그 탈락하자 홍명보 감독이 두 번째 불명예 퇴진했고, 선임 절차·용병술을 둘러싼 비판 여론이 이번 주까지 이어지고 있다.</p>
+<p>4. 2026 KBO 올스타전 — 7월 11일 잠실에서 열리는 KBO 올스타전을 앞두고 베스트12 팬투표가 마무리됐다. 두산 양의지가 260만표로 역대 팬투표 최다 득표 기록을 새로 쓰며 야구 커뮤니티의 화제를 모았다.</p>
+<p>5. 신형 그랜저 페이스리프트 — 출시 40주년을 맞은 현대 그랜저가 플레오스 커넥트·17인치 디스플레이 등 &#x27;풀체인지급&#x27; 페이스리프트로 공개돼 사전예약 2만대가 몰렸다. 다만 개소세 종료로 500만원대 가격 인상이 겹치며 자동차 커뮤니티에서 갑론을박이 벌어졌다.</p>
+<p>6. KF-21 보라매 수출전 — 국산 초음속 전투기 KF-21이 3월 양산 1호기 출고에 이어 하반기 실전 배치를 앞두고, 인도네시아·UAE·필리핀·말레이시아 등 4개국을 상대로 수출 판촉전에 본격 돌입했다. K2 전차·K9 자주포와 함께 K-방산 호조가 밀리터리 커뮤니티의 관심을 끌었다.</p>
+<h2>💖 여성 인기 이번 주 화제 TOP</h2>
+<p>1. (여자)아이들 &#x27;We made&#x27; — 7월 6일 발매한 미니 9집 &#x27;We made&#x27; 타이틀곡 &#x27;Gimme Dat Love&#x27;가 라틴 팝 기반 여름 콘셉트로 벅스 실시간·멜론 최신 차트 1위 등 각종 음원 차트를 휩쓸며 이번 주 여초 커뮤니티에서 최대 화제. 발매 하루 만에 34개국 아이튠즈 정상을 기록했다.</p>
+<p>2. 내일도 출근! — 서인국·박지현 주연 tvN 월화 오피스 로맨스로, 인기 웹툰을 원작으로 한다. 회를 거듭할수록 입소문을 타며 자체 최고 시청률(최고 6%대)을 경신하고 TV 드라마 화제성 3위권에 오르는 등 이번 주 여초 드라마 토크의 중심이다.</p>
+<p>3. 모태솔로지만 연애는 하고 싶어 시즌2 — 연애 경험이 없는 출연자들의 성장 서사로 화제였던 넷플릭스 연애 예능이 7월 7일 시즌2로 공개됐다. 시즌1의 약 4배인 1만7천여 명이 지원했고 서인국·강한나·이은지 등 썸 메이커스가 복귀하며 공개 전부터 여초 커뮤니티 기대작으로 꼽혔다.</p>
+<p>4. 몬스타엑스 기현 &#x27;BORDERLINE&#x27; — 몬스타엑스 기현이 7월 7일 미니 2집 &#x27;BORDERLINE&#x27;과 타이틀곡 &#x27;So Good&#x27;으로 약 3년 9개월 만에 솔로 컴백했다. 전역 후 처음 선보이는 록 기반의 음악 색깔 변화가 팬덤과 여초 음악 커뮤니티에서 이번 주 관심을 모으고 있다.</p>
+<p>5. 스탠바이미 — 성별 조건을 넘어 감정과 선택에 집중하는 국내 첫 젠더 블라인드 연애 리얼리티. 6월 19일 웨이브 첫 공개 후 이번 주까지 웨이브 전체 유료 가입 견인 1위를 기록하며, 새로운 포맷을 두고 여초 커뮤니티에서 활발한 토론이 이어지고 있다.</p>
+<p>6. 피의 게임X — 개인전 중심이던 서바이벌 시리즈가 7월 3일 팀전 체제를 도입한 &#x27;X&#x27;로 돌아왔다. 시즌 1·2·3 레전드 출연진과 신규 참가자가 다섯 팀으로 얽히는 심리전 구도가 화제로, 두뇌 서바이벌을 즐기는 여초 시청자층에서 이번 주 몰입 콘텐츠로 부상했다.</p>
+<h2>👔 남성 패션 이번 주 화제 TOP</h2>
+<p>1. 블록코어 — 2026 북중미 월드컵 시즌을 타고 축구 유니폼을 데님·반바지와 일상복처럼 입는 블록코어가 폭발했다. 무신사 &#x27;유니폼&#x27; 검색량이 3월 대비 453%, &#x27;대한민국 축구 유니폼&#x27;은 5,476% 급증했고 지드래곤 피스마이너스원×나이키 협업 유니폼이 발매 즉시 완판됐다.</p>
+<p>2. 고프코어 — 고어텍스 재킷·트레일 슈즈 같은 아웃도어 기능성 아이템을 도심 룩에 섞는 고프코어가 2026년 들어 모스그린·오크·샌드 등 어스톤을 앞세운 &#x27;그래놀라 시크&#x27; 무드로 진화하며 스테디 트렌드로 자리 잡았다.</p>
+<p>3. 포엣코어 — 시인의 서정적 감수성을 담은 &#x27;포엣코어&#x27;가 2026 S/S 남녀 공통 최대 화제 키워드로 떠올랐다. 리넨·코튼의 빈티지한 소재감과 느슨한 핏, 소매 롤업 같은 자연스러움이 핵심으로 여름 셔츠 스타일링과 맞물려 확산 중이다.</p>
+<p>4. 배럴진 — 허벅지는 볼륨감 있게, 발목으로 갈수록 좁아지는 곡선 실루엣의 배럴 진이 2026년 가장 뜨거운 데님 키워드로 꼽힌다. 다리가 길어 보이고 체형 커버 효과가 있어 상의를 미니멀하게 매치하는 코디가 확산되고 있다.</p>
+<p>5. 럭비셔츠룩 — 블록코어의 뒤를 이을 스포츠 무드로 럭비셔츠·피케가 주목받는다. 랄프로렌이 20여 년 만에 밀라노 무대에 복귀해 데미지·패치 가공 럭비셔츠를 선보였고 미우미우·JW앤더슨 등도 럭비 스타일을 런웨이에 올리며 프레피 코드가 다시 부상했다.</p>
+<p>6. 카고·워크웨어 — 포엣코어와 함께 2026 핵심 흐름으로 꼽히는 워크웨어가 카고팬츠를 중심으로 다시 힘을 받고 있다. 넉넉한 포켓과 유틸리티 디테일에 미니멀 상의를 매치해 실용성과 무드를 동시에 잡는 코디가 인기다.</p>
+<p>7. 꾸안꾸 이펙트리스룩 — 배우 변우석으로 대표되는 &#x27;손질 안 한 듯&#x27; 자연스러운 무드가 여름 스타일링과 헤어 전반의 키워드로 떠올랐다. 힘 뺀 셔츠·경량 소재에 가벼운 질감과 흐르는 앞머리를 더해 &#x27;원래 분위기 좋은 사람&#x27; 같은 인상을 노리는 코디가 확산 중이다.</p>
+<h2>👗 여성 패션 이번 주 화제 TOP</h2>
+<p>1. 란제리룩 슬립 원피스 — 작년 SNS를 휩쓴 란제리룩이 2026 봄·여름 컬렉션(톰 포드·돌체앤가바나·끌로에)에서도 이어지며, 새틴 슬립 원피스에 카디건·데님을 레이어드하는 여름 코디가 이번 주에도 꾸준히 화제다. 여름 데일리룩의 정석 아이템으로 다시 소환되고 있다.</p>
+<p>2. 발레코어 — 리본·쉬폰·메리제인에 파스텔·베이비핑크를 더한 발레코어가 KREAM 해시태그와 가성비 여름 룩북을 중심으로 다시 뜨거워졌다. 지그재그·에이블리 1~4만원대 코디로 진입 장벽이 낮아 이번 주 여름 데일리룩 검색이 급증했다.</p>
+<p>3. 배럴·벌룬 데님 — 슬림의 시대가 저물고 부드러운 곡선의 배럴 진과 부푼 벌룬 팬츠가 2026 봄·여름 최강 데님 키워드로 떠올랐다(보그·하퍼스 바자). 하체 라인을 자연스럽게 커버해 여름 데님 코디 콘텐츠가 이번 주 쏟아지고 있다.</p>
+<p>4. 볼륨 실루엣 — 발렌시아가·알라이아·자크뮈스가 상하 볼륨 대비와 부풀린 실루엣을 대거 선보이며 &#x27;조용한 럭셔리&#x27; 이후의 핵심 공식으로 자리 잡았다(엘르). 리얼웨이 적용 팁을 다룬 2026 S/S 트렌드 영상이 이번 주 스타일링 레퍼런스로 회자된다.</p>
+<p>5. 백참·가방 꾸미기 — 작은 인형·말 모티브 키링, 스카프 장식으로 가방을 꾸미는 백참 트렌드가 2026년에도 진화하며 이어진다(더블유·코스모폴리탄). 새로 사지 않고 집에 있는 소품으로 따라 할 수 있어 여름 가방 스타일링으로 이번 주도 활발히 공유된다.</p>
+<p>6. 청순 여리핏 원피스 — 하늘하늘한 소재의 화이트·파스텔 여리핏 원피스가 피크닉·휴양지 룩으로 여름 원피스 검색 상위를 차지했다. 청순 코디 끝판왕으로 저장각 숏폼이 이번 주 빠르게 확산 중이다.</p>
+<p>7. 가성비 여름 팬츠 — 카고·유틸리티 무드부터 시원한 여름 팬츠까지 5만원 이하 가성비 하의를 총정리한 콘텐츠가 이번 주 여름 하의 쇼핑 수요와 맞물려 화제다. 유행 따라 큰돈 쓰지 않고 데일리로 활용하는 실용 코디가 관심을 모은다.</p>
+<h2>💻 IT 이번 주 화제 TOP</h2>
+<p>1. 갤럭시 Z폴드8 언팩 — 삼성이 7월 1일 8세대 폴더블 티저 영상을 공개하며 7월 22일 런던 언팩을 예고, 펼치면 약 4:3 비율의 &#x27;갤럭시 Z폴드8 와이드&#x27; 신규 폼팩터 루머까지 겹쳐 이번 주 테크 커뮤니티의 최대 화두다.</p>
+<p>2. 네이버 AI탭 — 네이버가 6월 말 대화형 검색 &#x27;AI탭&#x27;을 전체 사용자 대상으로 정식 출시하고 7월부터 AI 브리핑 지면 광고를 붙이며 수익화에 시동, 베타 2개월 만에 누적 400만 사용자를 넘겨 검색 개편 이슈로 주목받는다.</p>
+<p>3. 이미지 필터링 의무화 논란 — 7월 1일부터 불법촬영물 유통방지 기술적·관리적 조치 대상이 동영상에서 이미지까지 확대 시행되자, 국내 대형 커뮤니티가 서버 비용·업로드 지연·해외 이전을 거론하며 &#x27;사전검열&#x27; 반발이 이번 주 온라인을 달구고 있다.</p>
+<p>4. 클로드 페이블5 복원 — 미 상무부가 6월 30일 앤트로픽 최상위 모델 &#x27;페이블5·미토스5&#x27;의 수출통제를 전면 철회하면서 7월 1일부터 비미국인도 페이블5에 다시 접속 가능해져, 중단 18일 만의 서비스 복원이 AI 업계 화제다.</p>
+<p>5. 갤럭시 XR 스마트 안경 — 삼성이 젠틀몬스터·워비파커와 손잡은 안드로이드 XR 스마트 안경을 올해 하반기 첫 컬렉션으로 예고하고 22일 언팩 동반 공개설이 돌면서, 제미나이 연동 AI 안경 대결이 이번 주 다시 회자되고 있다.</p>
+<p>6. 화웨이 어센드 950 한국 상륙 — 화웨이가 4분기 국내에 AI 가속기 &#x27;어센드 950&#x27; 시리즈와 아틀라스 슈퍼포드를 출시한다는 소식이 7월 1일 보도되며, 엔비디아 H20 대비 추론 2.87배·가격 4분의 1을 내세운 도전이 반도체 업계 이슈로 떠올랐다.</p>
+</div>
+  </div>
+
+  <div class="lb" id="lb" onclick="if(event.target===this)closeVid()"><span class="lb-close" onclick="closeVid()">✕</span>
+    <div class="lb-inner"><div class="lb-video"><iframe id="lbframe" src="" title="영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div></div>
+
+<script type="application/ld+json" id="ld"></script>
+<script>
+// 카테고리별 데이터. item=[name,en,hue,delta(직전대비 상승칸),desc,tags,video?]
+// delta>0=상승, <0=하락, 0=유지, null=신규진입. prevRank=rank+delta.
+var CATS = {
+  news: {label:"📰 뉴스", real:true, items:[
+    ["삼성전자 2분기 영업이익 89조","Samsung Q2 Operating Profit 89 Trillion Won",218,null,"7월 7일 발표된 삼성전자 2분기 잠정 실적이 매출 171조·영업이익 89.4조원으로 역대 최대치를 경신하며 엔비디아·애플의 분기 이익까지 넘어서 화제. AI·HBM 메모리 수요 급증이 실적을 견인했으나 주가는 오히려 하락해 개미들 반응이 엇갈렸다.",["삼성전자","반도체","실적"],"a4GHbTROUes",{}],
+    ["괴물 장마·쌍태풍 물폭탄","Extreme Monsoon and Twin Typhoons",205,null,"7월 초 중부지방까지 장마가 본격화되며 시작부터 200mm 넘는 국지성 폭우가 전국을 강타. 이례적 쌍태풍 동시 북상까지 겹치며 '물폭탄' 경보가 이어져 이번 주 재난·안전 이슈로 부상했다.",["장마","폭우","태풍"],"ovlwwaf873o",{}],
+    ["이강인 아틀레티코 마드리드 이적","Lee Kang-in Joins Atletico Madrid",8,null,"이강인이 PSG를 떠나 스페인 명문 아틀레티코 마드리드로 약 4000만 유로(700억원)에 이적하는 것이 사실상 확정돼 이번 주 스포츠 최대 화제. 손흥민을 넘어 한국 선수 역대 두 번째 이적료로, 그리즈만이 떠난 자리를 메울 핵심 자원으로 기대를 모은다.",["이강인","축구","이적"],"5TwIbK6cC-s",{}],
+    ["2027년 최저임금 협상 막판 진통","2027 Minimum Wage Negotiations",145,null,"2027년 최저임금을 두고 노동계와 경영계가 수정안을 거듭 제출하며 격차를 1290원까지 좁혔지만 여전히 평행선. 7월 7일 전원회의 등 이번 주 막판 협상에 관심이 집중됐고 8월 초 최종 고시를 앞두고 있다.",["최저임금","노사","경제"],"OEuBuQFoZD8",{}],
+    ["지커 7X 중국 전기차 돌풍","Zeekr 7X EV Surge in Korea",175,null,"중국 프리미엄 전기차 지커의 SUV '7X'가 사전예약 한 달 만에 계약 1000대를 돌파해 화제. BYD에 이어 지커·샤오펑까지 가세하며 '중국차 안 산다'던 국내 전기차 시장 판도가 빠르게 재편되고 있다.",["전기차","지커","중국차"],"y5JNedwxVWU",{}],
+    ["역대급 폭염·온열질환 급증","Record Heatwave and Heat Illness Spike",28,null,"장마 사이사이 내륙 낮 최고기온이 33도 안팎까지 치솟는 폭염이 이어지며 온열질환자가 지난해 동기 대비 1.5배 급증. 질병관리청이 7월 초 폭염 취약계층 예방수칙을 배포하는 등 건강·안전 경보가 이번 주 이슈로 떠올랐다.",["폭염","온열질환","건강"],"Vsa2mv5mipc",{}],
+  ]},
+  mentopic: {label:"💪 남성 인기", real:true, items:[
+    ["이강인 아틀레티코 이적","Lee Kang-in Atletico Transfer",0,null,"이강인이 PSG를 떠나 라리가 명문 아틀레티코 마드리드로 이적, 오늘(7/7) 이적료 약 4000만유로(700억원대)로 합의가 확정되며 'HERE WE GO'가 떴다. 한국 축구 역대 2위급 이적료로 남초 축구 커뮤니티가 온종일 들썩였다.",["해외축구","이적시장","이강인"],"zCDq9Cy-88Q",{}],
+    ["코스피 8000선 붕괴","KOSPI 8000 Crash",210,null,"'1만피' 기대 속 질주하던 코스피가 7월 초 반도체 급락 여파로 하루 만에 7~8% 폭락하며 8000선이 무너지고 매도 사이드카가 발동했다. 개미 투자자들의 '멘붕'과 하반기 전망을 놓고 재테크 커뮤니티가 크게 술렁였다.",["재테크","증시","반도체"],"o91mUmT1Ty4",{}],
+    ["홍명보호 월드컵 탈락 후폭풍","World Cup Elimination Fallout",25,null,"2026 북중미 월드컵에서 손흥민·이강인 등 황금세대에도 조별리그 탈락하자 홍명보 감독이 두 번째 불명예 퇴진했고, 선임 절차·용병술을 둘러싼 비판 여론이 이번 주까지 이어지고 있다.",["국가대표","월드컵","축구"],"iLXgL70WVLo",{}],
+    ["2026 KBO 올스타전","2026 KBO All-Star Game",130,null,"7월 11일 잠실에서 열리는 KBO 올스타전을 앞두고 베스트12 팬투표가 마무리됐다. 두산 양의지가 260만표로 역대 팬투표 최다 득표 기록을 새로 쓰며 야구 커뮤니티의 화제를 모았다.",["프로야구","KBO","올스타"],"FA3W5xMyYRY",{}],
+    ["신형 그랜저 페이스리프트","New Grandeur Facelift",220,null,"출시 40주년을 맞은 현대 그랜저가 플레오스 커넥트·17인치 디스플레이 등 '풀체인지급' 페이스리프트로 공개돼 사전예약 2만대가 몰렸다. 다만 개소세 종료로 500만원대 가격 인상이 겹치며 자동차 커뮤니티에서 갑론을박이 벌어졌다.",["자동차","신차","현대"],"y220HoFx96E",{}],
+    ["KF-21 보라매 수출전","KF-21 Boramae Export Push",200,null,"국산 초음속 전투기 KF-21이 3월 양산 1호기 출고에 이어 하반기 실전 배치를 앞두고, 인도네시아·UAE·필리핀·말레이시아 등 4개국을 상대로 수출 판촉전에 본격 돌입했다. K2 전차·K9 자주포와 함께 K-방산 호조가 밀리터리 커뮤니티의 관심을 끌었다.",["밀리터리","K방산","KF-21"],"qvJcahCU3Oc",{}],
+  ]},
+  womentopic: {label:"💖 여성 인기", real:true, items:[
+    ["(여자)아이들 'We made'","i-dle 'We made' (Gimme Dat Love)",330,5,"7월 6일 발매한 미니 9집 'We made' 타이틀곡 'Gimme Dat Love'가 라틴 팝 기반 여름 콘셉트로 벅스 실시간·멜론 최신 차트 1위 등 각종 음원 차트를 휩쓸며 이번 주 여초 커뮤니티에서 최대 화제. 발매 하루 만에 34개국 아이튠즈 정상을 기록했다.",["여자아이돌","컴백","서머송"],"FFjDEkZg-54",{}],
+    ["내일도 출근!","See You at Work Tomorrow!",210,3,"서인국·박지현 주연 tvN 월화 오피스 로맨스로, 인기 웹툰을 원작으로 한다. 회를 거듭할수록 입소문을 타며 자체 최고 시청률(최고 6%대)을 경신하고 TV 드라마 화제성 3위권에 오르는 등 이번 주 여초 드라마 토크의 중심이다.",["드라마","오피스로맨스","웹툰원작"],"h6xsxwaAo-A",{}],
+    ["모태솔로지만 연애는 하고 싶어 시즌2","Better Late Than Single Season 2",350,null,"연애 경험이 없는 출연자들의 성장 서사로 화제였던 넷플릭스 연애 예능이 7월 7일 시즌2로 공개됐다. 시즌1의 약 4배인 1만7천여 명이 지원했고 서인국·강한나·이은지 등 썸 메이커스가 복귀하며 공개 전부터 여초 커뮤니티 기대작으로 꼽혔다.",["연애예능","넷플릭스","시즌2"],"JUgY2MxuxBw",{}],
+    ["몬스타엑스 기현 'BORDERLINE'","MONSTA X Kihyun 'BORDERLINE'",262,null,"몬스타엑스 기현이 7월 7일 미니 2집 'BORDERLINE'과 타이틀곡 'So Good'으로 약 3년 9개월 만에 솔로 컴백했다. 전역 후 처음 선보이는 록 기반의 음악 색깔 변화가 팬덤과 여초 음악 커뮤니티에서 이번 주 관심을 모으고 있다.",["아이돌","솔로컴백","가창력"],"fHtR7UunKE8",{}],
+    ["스탠바이미","Stand BI Me",288,null,"성별 조건을 넘어 감정과 선택에 집중하는 국내 첫 젠더 블라인드 연애 리얼리티. 6월 19일 웨이브 첫 공개 후 이번 주까지 웨이브 전체 유료 가입 견인 1위를 기록하며, 새로운 포맷을 두고 여초 커뮤니티에서 활발한 토론이 이어지고 있다.",["연애예능","웨이브","신규포맷"],"fOxnG_jd38k",{}],
+    ["피의 게임X","The Devil's Plan / Blood Game X",4,1,"개인전 중심이던 서바이벌 시리즈가 7월 3일 팀전 체제를 도입한 'X'로 돌아왔다. 시즌 1·2·3 레전드 출연진과 신규 참가자가 다섯 팀으로 얽히는 심리전 구도가 화제로, 두뇌 서바이벌을 즐기는 여초 시청자층에서 이번 주 몰입 콘텐츠로 부상했다.",["서바이벌예능","웨이브","두뇌게임"],"nKDJW2Xsgmg",{}],
+  ]},
+  menfashion: {label:"👔 남성 패션", real:true, items:[
+    ["블록코어","Blokecore",345,null,"2026 북중미 월드컵 시즌을 타고 축구 유니폼을 데님·반바지와 일상복처럼 입는 블록코어가 폭발했다. 무신사 '유니폼' 검색량이 3월 대비 453%, '대한민국 축구 유니폼'은 5,476% 급증했고 지드래곤 피스마이너스원×나이키 협업 유니폼이 발매 즉시 완판됐다.",["월드컵","축구유니폼","스트리트"],"YTuBafom-w4",{}],
+    ["고프코어","Gorpcore",95,1,"고어텍스 재킷·트레일 슈즈 같은 아웃도어 기능성 아이템을 도심 룩에 섞는 고프코어가 2026년 들어 모스그린·오크·샌드 등 어스톤을 앞세운 '그래놀라 시크' 무드로 진화하며 스테디 트렌드로 자리 잡았다.",["아웃도어","테크웨어","어스톤"],"29TMGstsIMQ",{}],
+    ["포엣코어","Poetcore",40,null,"시인의 서정적 감수성을 담은 '포엣코어'가 2026 S/S 남녀 공통 최대 화제 키워드로 떠올랐다. 리넨·코튼의 빈티지한 소재감과 느슨한 핏, 소매 롤업 같은 자연스러움이 핵심으로 여름 셔츠 스타일링과 맞물려 확산 중이다.",["리넨","감성","여백"],"-7ocmbvFUR8",{}],
+    ["배럴진","Barrel Jeans",220,null,"허벅지는 볼륨감 있게, 발목으로 갈수록 좁아지는 곡선 실루엣의 배럴 진이 2026년 가장 뜨거운 데님 키워드로 꼽힌다. 다리가 길어 보이고 체형 커버 효과가 있어 상의를 미니멀하게 매치하는 코디가 확산되고 있다.",["데님","배럴핏","실루엣"],"ud9zIMlJsUU",{}],
+    ["럭비셔츠룩","Rugby Shirt Look",10,null,"블록코어의 뒤를 이을 스포츠 무드로 럭비셔츠·피케가 주목받는다. 랄프로렌이 20여 년 만에 밀라노 무대에 복귀해 데미지·패치 가공 럭비셔츠를 선보였고 미우미우·JW앤더슨 등도 럭비 스타일을 런웨이에 올리며 프레피 코드가 다시 부상했다.",["프레피","저지","스포츠무드"],"pdZBPnbBgA8",{}],
+    ["카고·워크웨어","Cargo Workwear",55,2,"포엣코어와 함께 2026 핵심 흐름으로 꼽히는 워크웨어가 카고팬츠를 중심으로 다시 힘을 받고 있다. 넉넉한 포켓과 유틸리티 디테일에 미니멀 상의를 매치해 실용성과 무드를 동시에 잡는 코디가 인기다.",["카고팬츠","유틸리티","워크웨어"],"MOl_OBYlw5k",{}],
+    ["꾸안꾸 이펙트리스룩","Effortless Undone Look",200,null,"배우 변우석으로 대표되는 '손질 안 한 듯' 자연스러운 무드가 여름 스타일링과 헤어 전반의 키워드로 떠올랐다. 힘 뺀 셔츠·경량 소재에 가벼운 질감과 흐르는 앞머리를 더해 '원래 분위기 좋은 사람' 같은 인상을 노리는 코디가 확산 중이다.",["꾸안꾸","내추럴","여름코디"],"14UQ8qCvBOk",{}],
+  ]},
+  womenfashion: {label:"👗 여성 패션", real:true, items:[
+    ["란제리룩 슬립 원피스","Lingerie-look Slip Dress",345,3,"작년 SNS를 휩쓴 란제리룩이 2026 봄·여름 컬렉션(톰 포드·돌체앤가바나·끌로에)에서도 이어지며, 새틴 슬립 원피스에 카디건·데님을 레이어드하는 여름 코디가 이번 주에도 꾸준히 화제다. 여름 데일리룩의 정석 아이템으로 다시 소환되고 있다.",["슬립원피스","란제리코어","레이어드"],"ApC6IjHtnR4",{}],
+    ["발레코어","Balletcore",330,4,"리본·쉬폰·메리제인에 파스텔·베이비핑크를 더한 발레코어가 KREAM 해시태그와 가성비 여름 룩북을 중심으로 다시 뜨거워졌다. 지그재그·에이블리 1~4만원대 코디로 진입 장벽이 낮아 이번 주 여름 데일리룩 검색이 급증했다.",["발레코어","리본","여리핏"],"ICSDNp2SeNk",{}],
+    ["배럴·벌룬 데님","Barrel & Balloon Denim",215,null,"슬림의 시대가 저물고 부드러운 곡선의 배럴 진과 부푼 벌룬 팬츠가 2026 봄·여름 최강 데님 키워드로 떠올랐다(보그·하퍼스 바자). 하체 라인을 자연스럽게 커버해 여름 데님 코디 콘텐츠가 이번 주 쏟아지고 있다.",["배럴진","벌룬팬츠","데님"],"ycWXl2qnMI8",{}],
+    ["볼륨 실루엣","Volume Silhouette",270,null,"발렌시아가·알라이아·자크뮈스가 상하 볼륨 대비와 부풀린 실루엣을 대거 선보이며 '조용한 럭셔리' 이후의 핵심 공식으로 자리 잡았다(엘르). 리얼웨이 적용 팁을 다룬 2026 S/S 트렌드 영상이 이번 주 스타일링 레퍼런스로 회자된다.",["볼륨감","실루엣","트렌드"],"75cBeCJxCNM",{}],
+    ["백참·가방 꾸미기","Bag Charms",15,2,"작은 인형·말 모티브 키링, 스카프 장식으로 가방을 꾸미는 백참 트렌드가 2026년에도 진화하며 이어진다(더블유·코스모폴리탄). 새로 사지 않고 집에 있는 소품으로 따라 할 수 있어 여름 가방 스타일링으로 이번 주도 활발히 공유된다.",["백참","키링","액세서리"],"s50-VEf4FQw",{}],
+    ["청순 여리핏 원피스","Sheer Girlish Dress",195,2,"하늘하늘한 소재의 화이트·파스텔 여리핏 원피스가 피크닉·휴양지 룩으로 여름 원피스 검색 상위를 차지했다. 청순 코디 끝판왕으로 저장각 숏폼이 이번 주 빠르게 확산 중이다.",["여리핏","청순룩","여름원피스"],"2wxBR8DcIhg",{}],
+    ["가성비 여름 팬츠","Budget Summer Pants",45,null,"카고·유틸리티 무드부터 시원한 여름 팬츠까지 5만원 이하 가성비 하의를 총정리한 콘텐츠가 이번 주 여름 하의 쇼핑 수요와 맞물려 화제다. 유행 따라 큰돈 쓰지 않고 데일리로 활용하는 실용 코디가 관심을 모은다.",["여름팬츠","가성비","유틸리티"],"ZzpQnG6kSGQ",{}],
+  ]},
+  it: {label:"💻 IT", real:true, items:[
+    ["갤럭시 Z폴드8 언팩","Galaxy Z Fold 8 Unpacked",214,null,"삼성이 7월 1일 8세대 폴더블 티저 영상을 공개하며 7월 22일 런던 언팩을 예고, 펼치면 약 4:3 비율의 '갤럭시 Z폴드8 와이드' 신규 폼팩터 루머까지 겹쳐 이번 주 테크 커뮤니티의 최대 화두다.",["삼성","폴더블","언팩"],"cpqZtFWOUIw",{}],
+    ["네이버 AI탭","Naver AI Tab",140,null,"네이버가 6월 말 대화형 검색 'AI탭'을 전체 사용자 대상으로 정식 출시하고 7월부터 AI 브리핑 지면 광고를 붙이며 수익화에 시동, 베타 2개월 만에 누적 400만 사용자를 넘겨 검색 개편 이슈로 주목받는다.",["네이버","AI검색","에이전트"],"CAmUB-MtXJA",{}],
+    ["이미지 필터링 의무화 논란","Image Filtering Mandate",0,null,"7월 1일부터 불법촬영물 유통방지 기술적·관리적 조치 대상이 동영상에서 이미지까지 확대 시행되자, 국내 대형 커뮤니티가 서버 비용·업로드 지연·해외 이전을 거론하며 '사전검열' 반발이 이번 주 온라인을 달구고 있다.",["규제","커뮤니티","검열논란"],"X9r3Fzkqm5Q",{}],
+    ["클로드 페이블5 복원","Claude Fable 5 Restored",28,null,"미 상무부가 6월 30일 앤트로픽 최상위 모델 '페이블5·미토스5'의 수출통제를 전면 철회하면서 7월 1일부터 비미국인도 페이블5에 다시 접속 가능해져, 중단 18일 만의 서비스 복원이 AI 업계 화제다.",["앤트로픽","클로드","수출통제"],"MtWOmA8gVR4",{}],
+    ["갤럭시 XR 스마트 안경","Galaxy XR Smart Glasses",265,null,"삼성이 젠틀몬스터·워비파커와 손잡은 안드로이드 XR 스마트 안경을 올해 하반기 첫 컬렉션으로 예고하고 22일 언팩 동반 공개설이 돌면서, 제미나이 연동 AI 안경 대결이 이번 주 다시 회자되고 있다.",["삼성","XR","스마트안경"],"RBouHg9t69I",{}],
+    ["화웨이 어센드 950 한국 상륙","Huawei Ascend 950 in Korea",350,null,"화웨이가 4분기 국내에 AI 가속기 '어센드 950' 시리즈와 아틀라스 슈퍼포드를 출시한다는 소식이 7월 1일 보도되며, 엔비디아 H20 대비 추론 2.87배·가격 4분의 1을 내세운 도전이 반도체 업계 이슈로 떠올랐다.",["화웨이","AI반도체","엔비디아"],"YibIg2x9fnk",{}],
+  ]},
+};
+var BREAKING=[
+  {cat:"💪 남성 인기",key:"mentopic",ago:"오늘 확정",title:"이강인 아틀레티코 마드리드 이적 (700억)",desc:"한국 선수 역대 2위 이적료로 남초 커뮤니티 온종일 들썩."},
+  {cat:"💻 IT",key:"it",ago:"D-15 · 7/22",title:"삼성 갤럭시 Z폴드8 언팩 예고",desc:"'4:3 와이드' 신규 폼팩터 루머까지 겹쳐 테크 최대 화두."},
+  {cat:"💖 여성 인기",key:"womentopic",ago:"7/6 발매",title:"(여자)아이들 'Gimme Dat Love' 차트 올킬",desc:"발매 하루 만에 34개국 아이튠즈 1위, 여름 서머송 화제."},
+];
+var ORDER=["news", "mentopic", "womentopic", "menfashion", "womenfashion", "it"];
+var state={cat:'news', query:''};
+
+function ytThumb(id){return 'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function grad(hue){return 'background:linear-gradient(135deg,hsl('+hue+' 55% 26%),hsl('+hue+' 60% 14%))';}
+function catEmoji(){return CATS[state.cat].label.split(' ')[0];}
+
+function enrich(it,i){
+  var delta=it[3];
+  var prev = delta===null ? null : (i+1)+delta;
+  return {name:it[0],en:it[1],hue:it[2],delta:delta,prev:prev,desc:it[4],tags:it[5],video:it[6]||null,extra:it[7]||{},rank:i+1,rankStr:String(i+1).padStart(2,'0')};
+}
+function thumb(g,eager){
+  if(g.video) return '<img src="'+ytThumb(g.video)+'" '+(eager?'fetchpriority="high"':'loading="lazy"')+' alt="" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+g.video+'/hqdefault.jpg\'">';
+  return '<div class="grad" style="'+grad(g.hue)+'">'+catEmoji()+'</div>';
+}
+function rankMove(g,big){
+  var sz=big?'':'';
+  if(g.delta===null) return '<span class="rankmove newin">🆕 NEW<small>신규 진입</small></span>';
+  if(g.delta>0) return '<span class="rankmove up">▲ '+g.delta+'<small>지난 '+g.prev+'위</small></span>';
+  if(g.delta<0) return '<span class="rankmove down">▼ '+Math.abs(g.delta)+'<small>지난 '+g.prev+'위</small></span>';
+  return '<span class="rankmove flat">— 유지<small>지난 '+g.prev+'위</small></span>';
+}
+function onclickAttr(g){return g.video?(' onclick="openVid(\''+g.video+'\')"'):'';}
+function platBadge(p){if(!p)return '';var c={'치지직':'ch','SOOP':'soop','유튜브':'yt'}[p]||'etc';return '<span class="plat '+c+'">'+(p==='SOOP'?'숲':esc(p))+'</span>';}
+function scoreBadge(x){if(!x||!x.score)return '';var v=x.verdict||'',vc={'추천':'rec','보통':'mid','비추':'bad','미정':'na'}[v]||'na';var disp=x.scoreMax===5?('★'+x.score):(x.scoreMax===10?(x.score+'/10'):(''+x.score));return '<span class="scoreb '+vc+'" title="'+esc(x.src||'')+'">'+disp+(v?' · '+esc(v):'')+'</span>';}
+function fmtViews(n){if(!n)return '';if(n>=10000)return Math.round(n/10000)+'만';if(n>=1000)return (n/1000).toFixed(1)+'천';return ''+n;}
+function viewsBadge(x){if(!x||!x.views)return '';return '<span class="viewsb">▶ '+fmtViews(x.views)+'</span>';}
+function chartBadge(x){if(!x||!x.chartRank)return '';return '<span class="chartb">'+esc(x.chart||'차트')+' '+x.chartRank+'위</span>';}
+function revNote(g){var x=g.extra;if(!x||!x.note)return '';return '<p class="revnote">⭐ <b>평가('+esc(x.verdict||'')+')</b> '+esc(x.note)+' <span class="revsrc">— '+esc(x.src||'')+'</span></p>';}
+
+function renderHero(g){
+  return '<section class="hero">'+
+    '<div class="hero-art"'+onclickAttr(g)+'>'+thumb(g,true)+'<div class="shade"></div><div class="badge">RANK #1</div><div class="big">01</div>'+(g.video?'<div class="play">▶</div>':'')+'</div>'+
+    '<div class="hero-info">'+
+      '<div class="hero-en">'+esc(g.en)+'</div><h2>'+esc(g.name)+'</h2>'+((platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra))?'<div class="hbadges">'+platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+'</div>':'')+
+      '<div class="tagrow">'+g.tags.map(function(t){return '<span class="tag">#'+esc(t)+'</span>';}).join('')+'</div>'+
+      '<p>'+esc(g.desc)+'</p>'+revNote(g)+
+      '<div class="hero-stats">'+
+        '<div><span class="score-big">🔥'+(100-g.rank)+'</span> <span class="lbl">화제성</span></div>'+
+        '<div class="vbar"></div>'+
+        '<div>'+rankMove(g,true)+'</div>'+
+      '</div>'+
+    '</div></section>';
+}
+function renderRow(g){
+  return '<div class="row"><div class="row-main">'+
+    '<div class="bar" style="background:hsl('+g.hue+' 80% 62%);box-shadow:0 0 12px hsl('+g.hue+' 80% 55% / .6)"></div>'+
+    '<div class="rk">'+g.rankStr+'</div>'+
+    '<div class="thumb"'+onclickAttr(g)+'>'+thumb(g)+(g.video?'<div class="pi">▶</div>':'')+'</div>'+
+    '<div class="mid"><div class="nm"><b>'+esc(g.name)+'</b>'+platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+'<span class="en2">'+esc(g.en)+'</span></div><div class="oneline">'+esc(g.desc)+'</div></div>'+
+    '<div class="right">'+
+      '<div class="sc"><div class="num">🔥'+(100-g.rank)+'</div><div class="l">화제성</div></div>'+
+      '<div class="movecol">'+rankMove(g)+'<div class="l">순위 변화</div></div>'+
+    '</div></div>'+
+    '<div class="row-exp"><p>'+esc(g.desc)+'</p>'+revNote(g)+'<div class="foot"><div class="tagrow">'+g.tags.map(function(t){return '<span class="tag t">#'+esc(t)+'</span>';}).join('')+'</div>'+(g.video?'<button class="btn-watch" onclick="openVid(\''+g.video+'\')">▶ 시청</button>':'')+'</div></div>'+
+  '</div>';
+}
+function shift(items){ // 일간/월간 느낌으로 살짝 섞기(데모)
+  if(state.period==='weekly') return items;
+  var a=items.slice(); if(state.period==='daily'){ if(a.length>2){a.splice(1,0,a.splice(2,1)[0]);} } else { if(a.length>3){a.push(a.splice(1,1)[0]);} }
+  return a;
+}
+function gotoCat(k){var b=document.querySelector('#cats button[data-c="'+k+'"]');if(!b)return;b.click();var t=document.getElementById('bento')||document.getElementById('list');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
+function renderBreaking(){
+  var el=document.getElementById('breaking');
+  if(!BREAKING.length){el.style.display='none';el.innerHTML='';return;}
+  el.style.display='block';
+  el.innerHTML='<div class="brk-head"><span class="brk-dot"></span>🔥 지금 터진 이슈<span class="brk-sub">수시 갱신 · 예정 없이 튀는 화제</span></div>'+
+    '<div class="brk-row">'+BREAKING.slice(0,3).map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>';
+}
+function renderCats(){
+  document.getElementById('cats').innerHTML = ORDER.map(function(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}).join('');
+}
+function renderLD(list){var el=document.getElementById("ld");if(!el)return;var items=list.map(function(g,i){return {"@type":"ListItem","position":i+1,"name":g.name,"description":g.desc};});el.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"ddeuzm "+CATS[state.cat].label+" 화제성 랭킹","itemListElement":items});}
+function render(){
+  var raw = CATS[state.cat].items.map(enrich);
+  var q=state.query.trim().toLowerCase(), has=q.length>0;
+  var list = has ? raw.filter(function(g){return g.name.toLowerCase().includes(q)||g.en.toLowerCase().includes(q)||g.tags.some(function(t){return t.toLowerCase().includes(q);});}) : raw;
+  var hero = has?null:raw[0];
+  var rows = has?list:raw.slice(1);
+  document.getElementById('hero').innerHTML = hero?renderHero(hero):'';
+  document.getElementById('sampleNote').textContent = CATS[state.cat].real?'':'※ 샘플 데이터';
+  document.getElementById('listTitle').textContent = has?'검색 결과':(CATS[state.cat].label+' · 이번 주 화제 TOP '+raw.length);
+  document.getElementById('resultCount').textContent=(has?rows.length:raw.length)+'개';
+  document.getElementById('clearBtn').style.display=has?'block':'none';
+  var el=document.getElementById('list');
+  el.innerHTML=(has&&rows.length===0)?'<div class="empty">검색 결과가 없어요.</div>':rows.map(renderRow).join('');
+  renderLD(raw);
+}
+document.getElementById('cats').addEventListener('click',function(e){var b=e.target.closest('button[data-c]');if(!b)return;state.cat=b.dataset.c;state.query='';document.getElementById('searchInput').value='';renderCats();render();});
+/* 기간 토글 제거(가짜 일/월간) — 아카이브 기반 과거 날짜 선택은 다음 빌드 */
+var si=document.getElementById('searchInput');
+si.addEventListener('input',function(e){state.query=e.target.value;render();});
+document.getElementById('clearBtn').addEventListener('click',function(){si.value='';state.query='';render();si.focus();});
+function openVid(id){if(!id)return;document.getElementById('lbframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeVid(){document.getElementById('lb').classList.remove('open');document.getElementById('lbframe').src='about:blank';document.body.style.overflow='';}
+window.addEventListener('keydown',function(e){if(e.key==='Escape')closeVid();});
+renderBreaking();renderCats();render();
+</script>
+</body>
+</html>
