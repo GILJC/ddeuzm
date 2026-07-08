@@ -529,9 +529,9 @@ var CATS = {
   ]},
 };
 var BREAKING=[
-  {cat:"🎮 게임",key:"game",ago:"7/8 출격",title:"로스트아크 신규 클래스 '차원술사' 등장",desc:"시간·공간을 다루는 신규 클래스 + 다음날 카멘 익스트림 레이드로 유저 대거 복귀."},
-  {cat:"🎴 서브컬쳐 게임",key:"subgame",ago:"D-3 · 7/10",title:"명조 3.5 '몽주' 신규 지역·5성 예고",desc:"현방 트레일러 'Eisodus' 공개로 아카라이브·디시 화력 최상."},
-  {cat:"📺 방송",key:"live",ago:"진행중",title:"치지직 '2026 발락대' 스트리머 대회 개막",desc:"행돌·선데이 공동 주최, 7/12 결승까지."},
+  {cat:"💪 남성 인기",key:"mentopic",ago:"이적 확정",title:"이강인, 아틀레티코 마드리드 이적",desc:"약 4000만유로(700억원대) 한국 역대 2위 이적료로 합의 확정, 남초 축구 커뮤니티 온종일 들썩."},
+  {cat:"📱 SNS",key:"sns",ago:"7/1 시행 · 반발 확산",title:"인터넷 이미지 사전검열 논란",desc:"모든 이미지 AI 사전 필터링 시행에 표현의 자유·과잉검열 반발이 X·인스타·커뮤니티 전반으로 확산."},
+  {cat:"💻 IT",key:"it",ago:"D-14 · 7/22",title:"삼성 갤럭시 Z폴드8 언팩 예고",desc:"7/22 런던 언팩 예고 + '4:3 와이드' 신규 폼팩터 루머까지 겹쳐 테크 커뮤니티 최대 화두."},
 ];
 var ORDER=["game", "subgame", "culture", "live", "movie", "drama", "music", "trend", "it", "news", "mentopic", "womentopic", "menfashion", "womenfashion", "meme", "sns"];
 var state={cat:'game', query:''};
@@ -600,7 +600,7 @@ function shift(items){ // 일간/월간 느낌으로 살짝 섞기(데모)
   var a=items.slice(); if(state.period==='daily'){ if(a.length>2){a.splice(1,0,a.splice(2,1)[0]);} } else { if(a.length>3){a.push(a.splice(1,1)[0]);} }
   return a;
 }
-function gotoCat(k){var b=document.querySelector('#cats button[data-c="'+k+'"]');if(!b)return;b.click();var t=document.getElementById('bento')||document.getElementById('list');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
+function gotoCat(k){if(!CATS[k])return;if(ORDER.indexOf(k)>=MORESTART)state.moreOpen=true;state.cat=k;state.query='';document.getElementById('searchInput').value='';renderCats();render();var t=document.getElementById('list');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
 function renderBreaking(){
   var el=document.getElementById('breaking');
   if(!BREAKING.length){el.style.display='none';el.innerHTML='';return;}
