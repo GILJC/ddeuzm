@@ -83,6 +83,10 @@
   .periods button{padding:8px 15px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(238,240,246,.55);font-family:var(--sans);font-weight:600;font-size:13px;transition:all .2s}
   .periods button.on{border-color:rgba(47,230,214,.5);background:rgba(47,230,214,.12);color:#8ff5ec}
   .sched{font-size:12.5px;color:#8ff5ec;background:rgba(47,230,214,.1);border:1px solid rgba(47,230,214,.28);padding:6px 13px;border-radius:999px;white-space:nowrap}
+  .datanote{width:100%;font-size:11px;color:rgba(238,240,246,.5);margin:-6px 0 16px;display:flex;align-items:flex-start;gap:6px;line-height:1.55}
+  .datanote b{color:rgba(238,240,246,.72);font-weight:600}
+  .datanote .excl{color:var(--orange);opacity:.92}
+  .catdiv{flex-basis:100%;height:0;margin:0;padding:0;border:0}
   .plat{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
   .plat.ch{background:rgba(0,255,163,.14);color:#4dffbf;border:1px solid rgba(0,255,163,.32)}
   .plat.soop{background:rgba(80,140,255,.16);color:#9fbcff;border:1px solid rgba(80,140,255,.32)}
@@ -197,6 +201,7 @@
       </div>
     </div>
 
+    <div class="datanote" id="datanote"></div>
     <div id="hero"></div>
     <div class="listhead"><div class="l"><div class="tick"></div><h3 id="listTitle"></h3><span class="cnt" id="resultCount"></span></div>
       <div class="legend">🔥 화제성 · 지난 순위 대비 ▲▼ 변화</div></div>
@@ -317,6 +322,9 @@ var BREAKING=[
 ];
 var ORDER=["news", "mentopic", "womentopic", "menfashion", "womenfashion", "it"];
 var state={cat:'news', query:''};
+var DATANOTE_BASE='🔒 영상·이미지는 원본 플랫폼 <b>공식 임베드만</b> 사용(자체 저장 없음) · 저작권·초상권 우려 자료는 제외합니다';
+var EXCL={news:'뉴스는 <b>공식 언론사 채널</b> 클립만 임베드 — 개인 이슈·짜깁기 채널, 기사 원문/사진 제외',live:'스트리머 <b>본인 공식 채널</b> 영상만 — 방송 캡처·클립 재업 제외(초상권)',mentopic:'인물 관련은 공식 영상만 — 커뮤니티 짤·캡처 제외(초상권)',womentopic:'<b>공식 MV·예고편</b> 등 공식 소스만 — 팬캠·캡처 재업 제외(초상권)',menfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',womenfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',it:'<b>공식 발표·리뷰</b> 영상 임베드 — 언팩 전 유출/컨셉 렌더 이미지 제외'};
+var CATDIV='news';
 
 function ytThumb(id){return 'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -388,7 +396,7 @@ function renderBreaking(){
     '<div class="brk-row">'+BREAKING.slice(0,3).map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>';
 }
 function renderCats(){
-  document.getElementById('cats').innerHTML = ORDER.map(function(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}).join('');
+  document.getElementById('cats').innerHTML = ORDER.map(function(k,i){var d=(i>0&&k===CATDIV)?'<span class="catdiv" aria-hidden="true"></span>':'';return d+'<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}).join('');
 }
 function renderLD(list){var el=document.getElementById("ld");if(!el)return;var items=list.map(function(g,i){return {"@type":"ListItem","position":i+1,"name":g.name,"description":g.desc};});el.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"ddeuzm "+CATS[state.cat].label+" 화제성 랭킹","itemListElement":items});}
 function render(){
@@ -400,6 +408,7 @@ function render(){
   document.getElementById('hero').innerHTML = hero?renderHero(hero):'';
   document.getElementById('sampleNote').textContent = CATS[state.cat].real?'':'※ 샘플 데이터';
   document.getElementById('listTitle').textContent = has?'검색 결과':(CATS[state.cat].label+' · 이번 주 화제 TOP '+raw.length);
+  var _dn=document.getElementById('datanote');if(_dn){var _ex=EXCL[state.cat];_dn.innerHTML=DATANOTE_BASE+(_ex?' · <span class="excl">'+_ex+'</span>':'');}
   document.getElementById('resultCount').textContent=(has?rows.length:raw.length)+'개';
   document.getElementById('clearBtn').style.display=has?'block':'none';
   var el=document.getElementById('list');
