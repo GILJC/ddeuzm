@@ -208,10 +208,10 @@
     <div class="datanote" id="datanote"></div>
     <div id="hero"></div>
     <div class="listhead"><div class="l"><div class="tick"></div><h3 id="listTitle"></h3><span class="cnt" id="resultCount"></span></div>
-      <div class="legend">🔥 화제성 · 지난 순위 대비 ▲▼ 변화</div></div>
+      <div class="legend">지난 순위 대비 ▲▼ 변화</div></div>
     <div id="list" class="list"></div>
 
-    <footer>ddeuzm · HOT10 · 이번 주 화제성 지수 기반 랭킹. 순위 변화는 직전 집계 대비입니다.<br>영상·썸네일은 원본 플랫폼 공식 임베드/링크(자체 저장 없음). 정규 랭킹 주 2회 · 오늘의 이슈 수시 갱신.</footer>
+    <footer>ddeuzm · HOT10 · 이번 주 화제성 기반 랭킹. 순위 변화는 직전 집계 대비입니다.<br>영상·썸네일은 원본 플랫폼 공식 임베드/링크(자체 저장 없음). 정규 랭킹 주 2회 · 오늘의 이슈 수시 갱신.</footer>
 <div class="sr-only"><h1>ddeuzm — 이번 주 화제성 랭킹 (게임·서브컬처·방송·영화·드라마·음악·유행)</h1>
 <h2>🎮 게임 이번 주 화제 TOP</h2>
 <p>1. 로스트아크 — 7월 8일 완전 신규 오리지널 클래스 &#x27;차원술사&#x27;가 출격하며 로아 유저들이 대거 복귀했다. 시간·공간을 다루는 &#x27;시간 관리자/공간 검사&#x27; 두 전투 스타일과 1720 지원 성장 이벤트, 이튿날 &#x27;카멘 익스트림&#x27; 레이드까지 겹치며 이번 주 최대 화제작으로 떠올랐다.</p>
@@ -525,8 +525,6 @@ function renderHero(g){
       '<div class="tagrow">'+g.tags.map(function(t){return '<span class="tag">#'+esc(t)+'</span>';}).join('')+'</div>'+
       '<p>'+esc(g.desc)+'</p>'+revNote(g)+
       '<div class="hero-stats">'+
-        '<div><span class="score-big">🔥'+(100-g.rank)+'</span> <span class="lbl">화제성</span></div>'+
-        '<div class="vbar"></div>'+
         '<div>'+rankMove(g,true)+'</div>'+
       '</div>'+
     '</div></section>';
@@ -538,7 +536,6 @@ function renderRow(g){
     '<div class="thumb"'+onclickAttr(g)+'>'+thumb(g)+(g.video?'<div class="pi">▶</div>':'')+'</div>'+
     '<div class="mid"><div class="nm"><b>'+esc(g.name)+'</b>'+platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+'<span class="en2">'+esc(g.en)+'</span></div><div class="oneline">'+esc(g.desc)+'</div></div>'+
     '<div class="right">'+
-      '<div class="sc"><div class="num">🔥'+(100-g.rank)+'</div><div class="l">화제성</div></div>'+
       '<div class="movecol">'+rankMove(g)+'<div class="l">순위 변화</div></div>'+
     '</div></div>'+
     '<div class="row-exp"><p>'+esc(g.desc)+'</p>'+revNote(g)+'<div class="foot"><div class="tagrow">'+g.tags.map(function(t){return '<span class="tag t">#'+esc(t)+'</span>';}).join('')+'</div>'+(g.video?'<button class="btn-watch" onclick="openVid(\''+g.video+'\')">▶ 시청</button>':'')+'</div></div>'+
