@@ -67,9 +67,9 @@
   .brk-title{font-size:13.5px;font-weight:700;margin-bottom:3px;line-height:1.35}
   .brk-desc{font-size:12px;color:var(--muted);line-height:1.45}
   /* 카테고리 탭 */
-  .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none}
-  .cats-more{flex-wrap:wrap;overflow-x:visible;margin-bottom:16px}
-  .cattoggle{flex:none;padding:9px 13px;border-radius:12px;cursor:pointer;border:1px solid rgba(160,107,255,.42);background:rgba(160,107,255,.12);color:#d9c4ff;font-family:var(--sans);font-weight:700;font-size:14px;white-space:nowrap;transition:all .2s}
+  .cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .cats-more{margin-bottom:16px}
+  .cattoggle{flex:none;width:38px;padding:9px 0;border-radius:12px;cursor:pointer;border:1px solid rgba(160,107,255,.42);background:rgba(160,107,255,.12);color:#d9c4ff;font-family:var(--sans);font-weight:700;font-size:13px;line-height:1;text-align:center;white-space:nowrap;transition:all .2s}
   .cattoggle.open{background:rgba(160,107,255,.24);border-color:rgba(160,107,255,.6)}
   .cats::-webkit-scrollbar{display:none}
   .cats button{flex:none;padding:9px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.03);color:rgba(238,240,246,.6);font-family:var(--sans);font-weight:600;font-size:14px;transition:all .2s;white-space:nowrap}
@@ -560,7 +560,7 @@ function renderBreaking(){
 function renderCats(){
   var prim=ORDER.slice(0,MORESTART), sec=ORDER.slice(MORESTART);
   function btn(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}
-  var tg=sec.length?'<button class="cattoggle'+(state.moreOpen?' open':'')+'" id="cattoggle" aria-expanded="'+(state.moreOpen?'true':'false')+'">'+(state.moreOpen?'✕ 접기':'☰ 더보기')+'</button>':'';
+  var tg=sec.length?'<button class="cattoggle'+(state.moreOpen?' open':'')+'" id="cattoggle" aria-label="카테고리 더 보기" title="더 보기" aria-expanded="'+(state.moreOpen?'true':'false')+'">'+(state.moreOpen?'▴':'▾')+'</button>':'';
   document.getElementById('cats').innerHTML = tg + prim.map(btn).join('');
   var more=document.getElementById('catsMore');
   more.innerHTML = sec.map(btn).join('');
