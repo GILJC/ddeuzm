@@ -57,7 +57,14 @@
   .brk-head{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#ff8095;margin-bottom:10px}
   .brk-dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
   .brk-sub{font-weight:500;font-size:11px;color:var(--muted);margin-left:auto}
-  .brk-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+  .brk-wrap{position:relative}
+  .brk-row{display:flex;gap:10px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:2px}
+  .brk-row::-webkit-scrollbar{display:none}
+  .brk-card{flex:0 0 clamp(228px,74%,286px)}
+  .brk-nav{position:absolute;top:calc(50% - 1px);transform:translateY(-50%);z-index:3;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:rgba(18,18,28,.92);color:#ffd0d8;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .2s,background .2s}
+  .brk-nav:hover{background:rgba(255,93,120,.35)}
+  .brk-nav.prev{left:-8px}.brk-nav.next{right:-8px}
+  .brk-nav[disabled]{opacity:.22;cursor:default}
   .brk-card{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,transform .2s}
   .brk-card:hover{border-color:rgba(255,93,120,.5);transform:translateY(-1px)}
   .brk-more{font-size:10.5px;color:var(--pink);margin-top:6px;font-weight:600}
@@ -738,9 +745,13 @@ var CATS = {
   ]},
 };
 var BREAKING=[
-  {cat:"📰 뉴스",key:"news",ago:"7/8~9 · 전국 확대",title:"극한호우 전국 침수",desc:"7월 8~9일 충청권에 시간당 80mm 넘는 극한호우가 쏟아진 뒤 비구름이 수도권까지 북상해 도로·철도가 마비되고 요양병원 침수·산사태 주의보가 잇따르면서 호우긴급재난…."},
-  {cat:"💪 남성 인기",key:"mentopic",ago:"이적 확정",title:"이강인 아틀레티코 이적",desc:"이강인이 PSG를 떠나 이적료 약 700억원(4000만 유로)에 라리가 명문 아틀레티코 마드리드로 이적이 사실상 확정, 로마노의 'Here we go'와 아시아 역대 …."},
-  {cat:"💻 IT",key:"it",ago:"D-12 · 7/22 런던",title:"삼성 갤럭시 언팩 2026 티저",desc:"삼성전자가 7월 1일 'A New Shape Unfolds' 티저를 공개하며 7월 22일 런던 갤럭시 언팩을 예고, 초콜릿·스티커사진을 부러뜨리는 연출로 8세대 폴더블…."}
+  {cat:"📰 뉴스",key:"news",ago:"7/8~9 · 전국 확대",title:"극한호우 전국 침수",desc:"7월 8~9일 충청권에 시간당 80mm 넘는 극한호우가 쏟아진 뒤 비구름이 수도권까지 북상해 도로·철도가 마비되고 요양병원 침수·산사태 주의보가 잇따르면서 호우긴…."},
+  {cat:"💪 남성 인기",key:"mentopic",ago:"이적 확정",title:"이강인 아틀레티코 이적",desc:"이강인이 PSG를 떠나 이적료 약 700억원(4000만 유로)에 라리가 명문 아틀레티코 마드리드로 이적이 사실상 확정, 로마노의 'Here we go'와 아시아 …."},
+  {cat:"📰 뉴스",key:"news",ago:"장중 급락",title:"코스피 서킷브레이커",desc:"8,000선을 넘보던 코스피가 7월 7일 반도체주 추락과 외국인 매도 폭탄에 8% 넘게 폭락해 서킷브레이커까지 발동됐고, '검은 화요일'로 불리며 개미 투자자들이…."},
+  {cat:"💪 남성 인기",key:"mentopic",ago:"월드컵 탈락",title:"홍명보 경질론 · 월드컵 남아공전 충격패",desc:"한국이 2026 북중미 월드컵 조별리그 최약체 남아공에 0-1로 패해 32강 진출에 실패하면서, 홍명보 감독 즉각 경질을 요구하는 국민청원과 협회 책임론이 남초 …."},
+  {cat:"💻 IT",key:"it",ago:"D-12 · 7/22",title:"삼성 갤럭시 언팩 2026 티저",desc:"삼성전자가 7월 1일 'A New Shape Unfolds' 티저를 공개하며 7월 22일 런던 갤럭시 언팩을 예고, 초콜릿·스티커사진을 부러뜨리는 연출로 8세대 …."},
+  {cat:"📱 SNS",key:"sns",ago:"7/7 시행",title:"7·7법 '입틀막법' 검열 논란",desc:"허위조작정보에 최대 5배 배상·10억원 과징금을 물리는 개정 정보통신망법이 7월 7일 시행되자 X·스레드에 '입틀막법' '인터넷 계엄령' 비판과 '7월 7일 극복…."},
+  {cat:"📰 뉴스",key:"news",ago:"매도설 논란",title:"국민연금 74조 매도설",desc:"국내주식 비중 규정을 초과한 국민연금이 하반기 최대 74조 원어치를 팔아야 한다는 '매도 폭탄설'이 증시 급락 공포를 키우자, 국민연금이 직접 입을 열어 진화에 …."}
 ];
 var ORDER=["game", "subgame", "culture", "live", "vlive", "movie", "drama", "music", "trend", "it", "news", "mentopic", "womentopic", "menfashion", "womenfashion", "meme", "sns", "jpvt", "wvt", "jpstream", "wstream", "jpop", "pop", "jpnews", "usnews", "globalmeme", "jpsns", "ussns"];
 var state={cat:'game', query:''};
@@ -816,8 +827,14 @@ function renderBreaking(){
   if(!BREAKING.length){el.style.display='none';el.innerHTML='';return;}
   el.style.display='block';
   el.innerHTML='<div class="brk-head"><span class="brk-dot"></span>🔥 지금 터진 이슈<span class="brk-sub">수시 갱신 · 예정 없이 튀는 화제</span></div>'+
-    '<div class="brk-row">'+BREAKING.slice(0,3).map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>';
+    '<div class="brk-wrap"><button class="brk-nav prev" onclick="brkScroll(-1)" aria-label="이전">‹</button>'+
+    '<div class="brk-row" id="brkRow" onscroll="brkNavUpdate()">'+BREAKING.map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>'+
+    '<button class="brk-nav next" onclick="brkScroll(1)" aria-label="다음">›</button></div>';
+  brkNavUpdate();
 }
+function brkScroll(dir){var r=document.getElementById('brkRow');if(!r)return;r.scrollBy({left:dir*Math.max(220,r.clientWidth*0.8),behavior:'smooth'});}
+function brkNavUpdate(){var r=document.getElementById('brkRow');if(!r)return;var w=r.parentElement,sc=r.scrollWidth-r.clientWidth>4,p=w.querySelector('.prev'),n=w.querySelector('.next');[p,n].forEach(function(b){if(b)b.style.display=sc?'':'none';});if(p)p.disabled=r.scrollLeft<=2;if(n)n.disabled=r.scrollLeft>=r.scrollWidth-r.clientWidth-2;}
+window.addEventListener('resize',function(){if(document.getElementById('brkRow'))brkNavUpdate();});
 function renderCats(){
   var prim=ORDER.slice(0,MORESTART), sec=ORDER.slice(MORESTART);
   function btn(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}
