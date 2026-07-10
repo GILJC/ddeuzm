@@ -470,15 +470,23 @@
 // 카테고리별 데이터. item=[name,en,hue,delta(직전대비 상승칸),desc,tags,video?]
 // delta>0=상승, <0=하락, 0=유지, null=신규진입. prevRank=rank+delta.
 var CATS = {
-  game: {label:"🎮 게임", real:true, items:[
+  game: {label:"🎮 온라인 게임", real:true, items:[
     ["솔: 인챈트","SOL: enchant",42,null,"넷마블 신작 MMORPG로 출시 8시간 만에 앱스토어·22시간 만에 구글플레이 매출 1위를 석권했고, 유저가 서버를 지배하는 '신' 시스템의 첫 신 선출(7월 11일)을 앞두고 스트리머 서버마다 수십억대 나인 소모 경쟁이 벌어지며 이번 주 국내 최대 화제작으로 떠올랐다.",["MMORPG","넷마블","신선출"],"upYfgYx-D74",{}],
     ["로스트아크 - 차원술사","Lost Ark: Dimension Master (Chawonsulsa)",268,-1,"로스트아크가 7월 8일 스페셜리스트의 첫 남성 신규 클래스 '차원술사'를 출시, 시계를 무기로 시간을 되돌리고 공간을 뒤트는 콘셉트와 아이템 1720 지원 점핑 이벤트로 복귀·신규 유저가 몰리며 이번 주 화제를 모았다.",["로스트아크","신규클래스","차원술사"],"GgmWCmxzIOw",{}],
     ["마블 라이벌즈 - 시즌9 테베의 수수께끼","Marvel Rivals - Season 9: The Mystery of Thebes",322,null,"넷이즈 히어로 슈터가 7월 10일 시즌9 '테베의 수수께끼'를 개막하며 엑스맨 뮤턴트 '주빌리'와 빌런 '더 후드'를 신규 영웅으로 투입하고 신규 호송맵·어벤져스 모드까지 예고해 이번 주 커뮤니티가 들썩였다.",["히어로슈터","신규영웅","시즌9"],"YusekrZKvwQ",{}],
-    ["소드 아트 온라인: 에코스 오브 아인크라드","Sword Art Online: Echoes of Aincrad",205,null,"반다이남코의 '소드 아트 온라인' 신작 액션 RPG가 7월 9일 발매됐으나 메타크리틱 64점의 미지근한 평가를 받으며 '빈약한 오픈존·적 다양성 부족'이라는 혹평과 팬덤 실망이 이번 주 화제가 됐다.",["소아온","액션RPG","혹평"],"jjptcmVRHHw",{"score":64,"scoreMax":100,"src":"Metacritic","verdict":"미지근/혹평"}],
     ["메이플스토리","MapleStory",25,-3,"여름 업데이트 'OVERDRIVE'의 신규 직업 '서약의 지배자 레테'가 소환사 콘셉트로 등장해 큰 반응을 얻고 있다. 하이퍼 버닝으로 3시간 만에 260레벨 육성이 가능해지고, 7월 23일 신규 6차 스킬 2차 업데이트를 앞두고 테스트월드가 순차 공개되며 열기가 이어진다.",["신규직업","레테","하이퍼버닝"],"g49mAlrAo9I",{"score":59,"scoreMax":100,"src":"스팀 전체 59% 복합적, 최근 30일 12% 압도적 부정","verdict":"비추","note":"스팀 최근 평가가 압도적 부정(12%)으로 사실상 혹평. 페이투윈·무한 숙제 반복 구조에 대한 유저 반발이 지배적이라 정직하게 비추."}],
     ["발로란트","VALORANT",350,-3,"국내 팬들이 기다린 2026 VCT 퍼시픽 스테이지 2가 7월 16일 서울 상암 SOOP 콜로세움에서 개막한다. 젠지 vs ZETA 개막전을 시작으로 8월 9일까지 단판 풀리그가 펼쳐지며, 7월 2일 시작된 티켓 판매가 화제를 모으고 있다.",["VCT퍼시픽","e스포츠","스테이지2"],"VXYvdF6YQn8",{"score":80,"scoreMax":100,"src":"메타크리틱 크리틱 80, 오픈크리틱 81(추천율 86%)","verdict":"추천","note":"평론 다수가 강하게 호평(80~81, 추천 86%). 초기 유저 평점테러(부정 근거로 부적합)는 배제. 전술 슈터 완성도로 실여론도 대체로 긍정."}],
     ["오버워치 2","Overwatch 2",30,-3,"7월 시작된 2026 시즌 3에서 신속·치명적인 신규 공격 영웅 '시온'이 하시모토 일족을 이끌고 합류했다. 7월 1일부터 21일까지 진행되는 요아소비(YOASOBI) 콜라보와 '혼의 습격' 이벤트가 겹치며 복귀 유저가 늘고 있다.",["신규영웅","시온","시즌3"],"HnyJ5b7CXoo",{"score":40,"scoreMax":100,"src":"스팀 전체 40% 복합적(유저 다수 여론), 참고: 메타 크리틱 79 vs 유저 1.7","verdict":"비추","note":"크리틱은 79지만 메타 유저점수 1.7·스팀 전체 40%로 플랫폼 사상 최악급 유저-크리틱 괴리. 실제 다수 여론은 명백히 혹평이라 정직하게 비추(최근 57%로 소폭 회복 중)."}],
     ["리그 오브 레전드","League of Legends",210,-3,"6월 28일 대전에서 개막한 2026 MSI가 7월 12일 결승을 향해 달아오르며 e스포츠 화제를 독점하고 있다. 페이커의 T1이 9년 만의 MSI 우승에 도전하고, LCK 팀들의 국제전 성적에 커뮤니티가 매일 들끓는다.",["MSI2026","T1","e스포츠"],"TEb9qRf7qJc",{"score":78,"scoreMax":100,"src":"메타크리틱 크리틱 78, 유저점수 5.5 복합적","verdict":"보통","note":"평론은 대체로 호평(78)이나 유저는 매칭·독성·발적화 불만으로 복합적(5.5). 게임성은 인정받지만 실여론은 갈려 보통."}],
+  ]},
+  console: {label:"🎮 콘솔 게임", real:true, items:[
+    ["팰월드 1.0","Palworld 1.0",128,null,"얼리액세스 2년 6개월 만에 7월 10일 1.0 정식 출시로 전환하며 세계수 메인 스토리·신규 팰 72종을 대거 추가, 출시 당일 스팀 동시접속 25만·누적 4천만 플레이어를 돌파하고 PS5·Xbox 콘솔 동시 대규모 업데이트로 이번 주 최대 화제.",["정식출시","PS5/Xbox","서바이벌"],"1fpGg9wNM9A",{"score":95,"scoreMax":100,"src":"스팀 압도적 긍정(95%)","verdict":"추천"}],
+    ["어쌔신 크리드 블랙 플래그 리싱크드","Assassin's Creed Black Flag Resynced",40,null,"2013년 해적 명작 '블랙 플래그'를 앤빌 엔진으로 완전 리메이크해 7월 9일 PS5·Xbox·PC로 출시, 메타크리틱 84~88점으로 '블랙 플래그 이후 시리즈 최고점'을 받았으나 암살검·맨손 전투 등 원작 요소 삭제 논란도 함께 화제.",["리메이크","PS5/Xbox","메타 84~88"],"PhQ3yQjUgAc",{"score":85,"scoreMax":100,"src":"메타크리틱","verdict":"추천"}],
+    ["그랑블루 판타지 리링크 - 엔드리스 라그나로크","Granblue Fantasy: Relink - Endless Ragnarok",205,null,"본편 출시 약 2년 만인 7월 9일 대형 확장팩 '엔드리스 라그나로크'가 PS5·스위치2·스팀으로 출시, 파밍 구조 개편과 신규 캐릭터 6종·소환석 시스템으로 스팀 긍정 94%를 기록하며 스팀 인기 상위권에 올라 액션RPG 유저층에서 화제.",["대형 확장팩","액션RPG","스팀 94%"],"bEFYnDCYmvM",{"score":94,"scoreMax":100,"src":"스팀 긍정(94%)","verdict":"추천"}],
+    ["스플래툰 레이더스","Splatoon Raiders",22,null,"스플래툰 시리즈 첫 스핀오프이자 스위치2 독점작으로 7월 23일 발매를 앞두고, 이번 주(7/10~12) 스플래툰3 연동 페스티벌과 신규 조이콘2 컬러 공개로 팬 기대가 고조된 싱글 중심 보물사냥 액션.",["스위치2 독점","신작 스핀오프","발매 임박"],"Jaag4cVKOo8",{}],
+    ["프로야구스피리츠 2026","eBaseball: Pro Spirit 2026",220,null,"코나미 야구 시뮬레이션 시리즈 최초로 완전 한국어화되어 7월 16일 PS5·스팀 발매를 앞두고 예약판매를 개시, 프로야구스피리츠 6 이후 17년 만에 국제대회(2026 WBC) 모드를 수록해 국내 야구 팬 사이에서 화제.",["시리즈 첫 한글화","야구 시뮬","발매 임박"],"b9myOrAVcrE",{}],
+    ["소드 아트 온라인: 에코스 오브 아인크라드","Sword Art Online: Echoes of Aincrad",265,null,"소아온 아인크라드 편을 리부트해 '내가 만든 캐릭터'로 즐기는 액션RPG로 7월 9~10일 PS5·Xbox·PC 출시, 그러나 메타크리틱 64점으로 짙은 반복성이 지적되며 '아쉬운 출발'이라는 혹평이 화제.",["소아온 신작","액션RPG","메타 64 혹평"],"eyjinlCQC8c",{"score":64,"scoreMax":100,"src":"메타크리틱","verdict":"보통"}],
+    ["헤일로: 캠페인 이볼브드","Halo: Campaign Evolved",100,null,"2001년 원작을 언리얼엔진5로 리메이크한 작품으로, 헤일로 시리즈 최초로 PS5에 출시(7월 28일, 한국어 더빙 7/29)한다는 점이 최대 화제이며 PS5 Pro 성능 대응·신규 미션 3종 공개로 콘솔 팬 기대가 집중.",["시리즈 첫 PS5","리메이크","발매 예정"],"0MxBFXH2a_U",{}],
   ]},
   subgame: {label:"🎴 서브컬쳐 게임", real:true, items:[
     ["명조: 워더링 웨이브 3.5","Wuthering Waves 3.5 (Yangyang·Xuanling / Suisui)",188,0,"7월 10일 3.5 버전이 업데이트되며 양양의 이격 '양양·현령'과 응결 속성 서포터 '수수'가 실장, 쿠로게임즈 공식 캐릭터 트레일러 「악몽」이 공개되자 명조 커뮤가 뽑기 계획으로 달아올랐다.",["명조","신규캐릭","버전업데이트"],"bhu09u62vCA",{}],
@@ -753,13 +761,13 @@ var BREAKING=[
   {cat:"📱 SNS",key:"sns",ago:"7/7 시행",title:"7·7법 '입틀막법' 검열 논란",desc:"허위조작정보에 최대 5배 배상·10억원 과징금을 물리는 개정 정보통신망법이 7월 7일 시행되자 X·스레드에 '입틀막법' '인터넷 계엄령' 비판과 '7월 7일 극복…."},
   {cat:"📰 뉴스",key:"news",ago:"매도설 논란",title:"국민연금 74조 매도설",desc:"국내주식 비중 규정을 초과한 국민연금이 하반기 최대 74조 원어치를 팔아야 한다는 '매도 폭탄설'이 증시 급락 공포를 키우자, 국민연금이 직접 입을 열어 진화에 …."}
 ];
-var ORDER=["game", "subgame", "culture", "live", "vlive", "movie", "drama", "music", "trend", "it", "news", "mentopic", "womentopic", "menfashion", "womenfashion", "meme", "sns", "jpvt", "wvt", "jpstream", "wstream", "jpop", "pop", "jpnews", "usnews", "globalmeme", "jpsns", "ussns"];
+var ORDER=["game","console","subgame","culture","live","vlive","movie","drama","music","trend","it","news","mentopic","womentopic","menfashion","womenfashion","meme","sns","jpvt","wvt","jpstream","wstream","jpop","pop","jpnews","usnews","globalmeme","jpsns","ussns"];
 var state={cat:'game', query:''};
 var DATANOTE_BASE='🔒 영상·이미지는 원본 플랫폼 <b>공식 임베드만</b> 사용(자체 저장 없음) · 저작권·초상권 우려 자료는 제외합니다';
 var EXCL={news:'뉴스는 <b>공식 언론사 채널</b> 클립만 임베드 — 개인 이슈·짜깁기 채널, 기사 원문/사진 제외',live:'스트리머 <b>본인 공식 채널</b> 영상만 — 방송 캡처·클립 재업 제외(초상권)',mentopic:'인물 관련은 공식 영상만 — 커뮤니티 짤·캡처 제외(초상권)',womentopic:'<b>공식 MV·예고편</b> 등 공식 소스만 — 팬캠·캡처 재업 제외(초상권)',menfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',womenfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',it:'<b>공식 발표·리뷰</b> 영상 임베드 — 언팩 전 유출/컨셉 렌더 이미지 제외'};
-var MORESTART=10; state.moreOpen=false;
+var MORESTART=11; state.moreOpen=false;
 var LASTDATE='07/10';
-var CADENCE={game:'주 1회',subgame:'주 1회',culture:'격주',live:'주 1회',vlive:'주 1회',movie:'월 1회',drama:'주 1회',music:'주 1회',trend:'격주',it:'격주',news:'수시',mentopic:'격주',womentopic:'격주',menfashion:'월 1회',womenfashion:'월 1회',meme:'월 1회',sns:'주 1회',jpvt:'주 1회',wvt:'주 1회',jpstream:'격주',wstream:'격주',jpop:'격주',pop:'격주',jpnews:'주 1회',usnews:'주 1회',globalmeme:'월 1회',jpsns:'주 1회',ussns:'주 1회'};
+var CADENCE={game:'주 1회',console:'주 1회',subgame:'주 1회',culture:'격주',live:'주 1회',vlive:'주 1회',movie:'월 1회',drama:'주 1회',music:'주 1회',trend:'격주',it:'격주',news:'수시',mentopic:'격주',womentopic:'격주',menfashion:'월 1회',womenfashion:'월 1회',meme:'월 1회',sns:'주 1회',jpvt:'주 1회',wvt:'주 1회',jpstream:'격주',wstream:'격주',jpop:'격주',pop:'격주',jpnews:'주 1회',usnews:'주 1회',globalmeme:'월 1회',jpsns:'주 1회',ussns:'주 1회'};
 var GLOBALKEY='jpvt';
 
 function ytThumb(id){return 'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';}
