@@ -1,474 +1,55 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ddeuzm | 이번 주 화제성 랭킹 — 왜 떴는지까지</title>
-<meta name="description" content="게임·서브컬처·방송·영화·드라마·음악·유행 등 이번 주 화제 TOP 10. 순위 변화와 왜 떴는지, 평점까지 한눈에. 자주 갱신.">
-<link rel="canonical" href="https://ddeuzm.vercel.app/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="ddeuzm">
-<meta property="og:title" content="ddeuzm | 이번 주 화제성 랭킹">
-<meta property="og:description" content="게임·서브컬처·방송·영화·드라마·음악·유행, 이번 주 화제 TOP 10을 왜 떴는지까지. 자주 갱신.">
-<meta property="og:url" content="https://ddeuzm.vercel.app/">
-<meta property="og:image" content="https://i.ytimg.com/vi/GgmWCmxzIOw/maxresdefault.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ddeuzm | 이번 주 화제성 랭킹">
-<meta name="twitter:description" content="이번 주 화제 TOP 10 — 왜 떴는지·평점까지.">
-<meta name="twitter:image" content="https://i.ytimg.com/vi/GgmWCmxzIOw/maxresdefault.jpg">
+<meta name="description" content="이번 주 한국 화제성 랭킹. 게임·서브컬처·방송·영화·드라마·음악·유행·IT부터 해외까지, 왜 떴는지까지.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;0,6..96,900;1,6..96,500;1,6..96,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#07070c; --text:#eef0f6; --muted:rgba(238,240,246,.5); --dim:rgba(238,240,246,.4);
-    --teal:#2fe6d6; --purple:#a06bff; --orange:#ffb26b; --pink:#ff5d78; --green:#46e08a;
-    --card:rgba(20,20,30,.55); --line:rgba(255,255,255,.07);
-    --chakra:'Chakra Petch',sans-serif; --sans:Pretendard,-apple-system,'Malgun Gothic',sans-serif;
-  }
   *{box-sizing:border-box;margin:0;padding:0}
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;white-space:nowrap}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;position:relative;min-height:100vh;overflow-x:hidden}
-  body::before{content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
-    background:radial-gradient(40% 42% at 18% 12%,rgba(160,107,255,.26),transparent 70%),radial-gradient(38% 40% at 85% 18%,rgba(47,230,214,.18),transparent 70%),radial-gradient(45% 45% at 72% 88%,rgba(255,93,120,.13),transparent 72%),radial-gradient(50% 50% at 28% 82%,rgba(107,147,255,.11),transparent 72%);
-    filter:blur(30px);animation:drift 24s ease-in-out infinite alternate}
-  @keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.06)}}
-  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  @media (prefers-reduced-motion:reduce){body::before{animation:none}}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,36px) 64px;position:relative}
-
-  header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
-    padding:14px clamp(16px,4vw,36px);margin:0 calc(-1*clamp(16px,4vw,36px)) 18px;
-    background:rgba(10,10,16,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:linear-gradient(150deg,rgba(255,178,107,.22),rgba(47,230,214,.14));border:1px solid rgba(255,178,107,.3);box-shadow:0 0 22px rgba(255,178,107,.18)}
-  .brand h1{font-family:var(--chakra);font-weight:700;font-size:22px;letter-spacing:.5px;line-height:1}
-  .brand h1 span{color:var(--teal)}
-  .brand .sub{font-size:11px;color:var(--muted);margin-top:2px}
-  .live{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(238,240,246,.55)}
-  .live .dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  .live .lbl{font-family:var(--chakra);letter-spacing:1px;color:#ff8095;font-weight:600}
-
-  /* 오늘의 이슈(갑툭튀 화제) */
-  .breaking{margin-bottom:16px;padding:13px 16px;border-radius:16px;border:1px solid rgba(255,93,120,.35);background:linear-gradient(135deg,rgba(255,93,120,.1),rgba(20,20,30,.5))}
-  .brk-head{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#ff8095;margin-bottom:10px}
-  .brk-dot{width:8px;height:8px;border-radius:50%;background:#ff5d78;box-shadow:0 0 10px #ff5d78;animation:pulse 1.4s infinite}
-  .brk-sub{font-weight:500;font-size:11px;color:var(--muted);margin-left:auto}
-  .brk-wrap{position:relative}
-  .brk-row{display:flex;gap:10px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:2px}
-  .brk-row::-webkit-scrollbar{display:none}
-  .brk-card{flex:0 0 clamp(228px,74%,286px)}
-  .brk-nav{position:absolute;top:calc(50% - 1px);transform:translateY(-50%);z-index:3;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:rgba(18,18,28,.92);color:#ffd0d8;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .2s,background .2s}
-  .brk-nav:hover{background:rgba(255,93,120,.35)}
-  .brk-nav.prev{left:-8px}.brk-nav.next{right:-8px}
-  .brk-nav[disabled]{opacity:.22;cursor:default}
-  .brk-card{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,transform .2s}
-  .brk-card:hover{border-color:rgba(255,93,120,.5);transform:translateY(-1px)}
-  .brk-more{font-size:10.5px;color:var(--pink);margin-top:6px;font-weight:600}
-  .brk-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-  .brk-cat{font-size:11px;color:#c9aaff;background:rgba(160,107,255,.14);padding:2px 8px;border-radius:6px}
-  .brk-ago{font-size:11px;color:var(--dim)}
-  .brk-title{font-size:13.5px;font-weight:700;margin-bottom:3px;line-height:1.35}
-  .brk-desc{font-size:12px;color:var(--muted);line-height:1.45}
-  /* 카테고리 탭 */
-  .cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-  .cats-more{margin-bottom:16px}
-  .cattoggle{flex:none;width:38px;padding:9px 0;border-radius:12px;cursor:pointer;border:1px solid rgba(160,107,255,.42);background:rgba(160,107,255,.12);color:#d9c4ff;font-family:var(--sans);font-weight:700;font-size:13px;line-height:1;text-align:center;white-space:nowrap;transition:all .2s}
-  .cattoggle.open{background:rgba(160,107,255,.24);border-color:rgba(160,107,255,.6)}
-  .cats::-webkit-scrollbar{display:none}
-  .cats button{flex:none;padding:9px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.03);color:rgba(238,240,246,.6);font-family:var(--sans);font-weight:600;font-size:14px;transition:all .2s;white-space:nowrap}
-  .cats button.on{border-color:rgba(160,107,255,.5);background:rgba(160,107,255,.14);color:#d9c4ff;box-shadow:0 0 18px rgba(160,107,255,.22)}
-
-  .controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
-  .sample-note{font-size:11.5px;color:var(--orange);opacity:.85}
-  .search{position:relative;flex:1;min-width:220px;max-width:380px}
-  .search .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px}
-  .search input{width:100%;padding:11px 38px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--text);font-family:var(--sans);font-size:14px;outline:none}
-  .search input:focus{border-color:rgba(47,230,214,.4)}
-  .search .clr{position:absolute;right:9px;top:50%;transform:translateY(-50%);border:none;background:rgba(255,255,255,.08);color:rgba(238,240,246,.7);width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:12px;display:none}
-  .periods{display:flex;gap:8px}
-  .periods button{padding:8px 15px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(238,240,246,.55);font-family:var(--sans);font-weight:600;font-size:13px;transition:all .2s}
-  .periods button.on{border-color:rgba(47,230,214,.5);background:rgba(47,230,214,.12);color:#8ff5ec}
-  .sched{font-size:12.5px;color:#8ff5ec;background:rgba(47,230,214,.1);border:1px solid rgba(47,230,214,.28);padding:6px 13px;border-radius:999px;white-space:nowrap}
-  .datanote{width:100%;font-size:11px;color:rgba(238,240,246,.5);margin:-6px 0 16px;display:flex;align-items:flex-start;gap:6px;line-height:1.55}
-  .datanote b{color:rgba(238,240,246,.72);font-weight:600}
-  .datanote .excl{color:var(--orange);opacity:.92}
-  .catdiv{flex-basis:100%;height:0;margin:0;padding:0;border:0}
-  .catgroup{flex-basis:100%;width:100%;font-size:11px;font-weight:700;color:rgba(238,240,246,.45);letter-spacing:.5px;padding:6px 2px 0;margin-top:2px}
-  .plat{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
-  .plat.ch{background:rgba(0,255,163,.14);color:#4dffbf;border:1px solid rgba(0,255,163,.32)}
-  .plat.soop{background:rgba(80,140,255,.16);color:#9fbcff;border:1px solid rgba(80,140,255,.32)}
-  .plat.yt{background:rgba(255,80,80,.14);color:#ff9a9a;border:1px solid rgba(255,80,80,.32)}
-  .plat.etc{background:rgba(255,255,255,.08);color:var(--muted)}
-  .scoreb{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px}
-  .scoreb.rec{background:rgba(70,224,138,.16);color:#8ff5c6;border:1px solid rgba(70,224,138,.4)}
-  .scoreb.mid{background:rgba(255,200,80,.14);color:#ffe08a;border:1px solid rgba(255,200,80,.4)}
-  .scoreb.bad{background:rgba(255,93,120,.14);color:#ffb0be;border:1px solid rgba(255,93,120,.4)}
-  .scoreb.na{background:rgba(255,255,255,.07);color:var(--muted)}
-  .hbadges{display:flex;gap:6px;flex-wrap:wrap}
-  .viewsb{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.06);color:var(--muted)}
-  .chartb{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:rgba(255,178,107,.13);color:var(--orange);border:1px solid rgba(255,178,107,.3)}
-  .periodb{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:6px;background:rgba(160,107,255,.13);color:#cbb6ff;border:1px solid rgba(160,107,255,.3);white-space:nowrap}
-  .revnote{font-size:12.5px;line-height:1.55;color:rgba(238,240,246,.72);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:8px 11px;margin-bottom:9px}
-  .revnote b{color:var(--orange)}
-  .revsrc{opacity:.55;font-size:11px}
-
-  /* 컴팩트 히어로(hot10 스타일) */
-  .hero{position:relative;display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vw,28px);padding:clamp(14px,2vw,20px);border-radius:20px;
-    border:1px solid rgba(160,107,255,.28);background:linear-gradient(135deg,rgba(160,107,255,.11),rgba(18,18,27,.55) 55%,rgba(47,230,214,.07));margin-bottom:30px;overflow:hidden}
-  .hero-art{position:relative;align-self:flex-start;flex:0 0 clamp(220px,32%,360px);min-width:220px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);cursor:pointer;background:#000}
-  .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-art .grad{position:absolute;inset:0}
-  .hero-art .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,7,12,.78))}
-  .badge{position:absolute;top:12px;left:12px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:7px;background:rgba(255,178,107,.16);border:1px solid rgba(255,178,107,.45);color:#ffd9b0}
-  .hero-art .big{position:absolute;bottom:6px;left:14px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:clamp(40px,5vw,58px);line-height:.8;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.6)}
-  .hero-art .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.85);display:grid;place-items:center;font-size:17px;padding-left:3px;transition:background .2s}
-  .hero-art:hover .play{background:rgba(47,230,214,.85);color:#04120f}
-  .hero-info{flex:1;min-width:260px;display:flex;flex-direction:column;gap:11px}
-  .hero-en{font-family:var(--chakra);font-size:12px;letter-spacing:2px;color:var(--teal)}
-  .hero-info h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-.5px;line-height:1.08}
-  .tagrow{display:flex;flex-wrap:wrap;gap:6px}
-  .tag{font-size:11.5px;padding:4px 10px;border-radius:999px;background:rgba(160,107,255,.14);border:1px solid rgba(160,107,255,.32);color:#c9aaff}
-  .tag.t{background:rgba(47,230,214,.1);border-color:rgba(47,230,214,.28);color:#8ff5ec}
-  .hero p{font-size:13.5px;line-height:1.6;color:rgba(238,240,246,.72)}
-  .hero-stats{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-top:2px}
-  .score-big{font-family:var(--chakra);font-weight:700;font-size:32px;color:var(--orange);line-height:1}
-  .lbl{font-size:11px;color:var(--muted)}
-  .vbar{width:1px;height:28px;background:rgba(255,255,255,.12)}
-
-  /* 순위 변화 칩 */
-  .rankmove{display:inline-flex;align-items:center;gap:6px;font-family:var(--chakra);font-weight:700;font-size:15px;padding:3px 10px;border-radius:8px}
-  .rankmove.up{color:#8ff5c6;background:rgba(70,224,138,.13);border:1px solid rgba(70,224,138,.4)}
-  .rankmove.down{color:#ffb0be;background:rgba(255,93,120,.12);border:1px solid rgba(255,93,120,.4)}
-  .rankmove.flat{color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--line)}
-  .rankmove.newin{color:#ffe08a;background:rgba(255,200,80,.14);border:1px solid rgba(255,200,80,.45)}
-  .rankmove small{font-family:var(--sans);font-weight:500;font-size:11px;opacity:.85}
-
-  .listhead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
-  .listhead .l{display:flex;align-items:center;gap:12px}
-  .tick{width:4px;height:20px;border-radius:4px;background:var(--teal);box-shadow:0 0 12px rgba(47,230,214,.6)}
-  .listhead h3{font-size:18px;font-weight:700}
-  .cnt{font-size:12px;color:rgba(238,240,246,.45)}
-  .legend{font-size:11.5px;color:rgba(238,240,246,.45)}
-
-  .list{display:flex;flex-direction:column;gap:10px}
-  .list:has(.row:hover) .row:not(:hover){opacity:.5;filter:saturate(.7)}
-  .row{position:relative;padding:12px 15px;border-radius:15px;border:1px solid var(--line);background:var(--card);transition:opacity .25s,filter .25s,border-color .22s,transform .22s,box-shadow .22s}
-  .row:hover{border-color:rgba(47,230,214,.45);background:rgba(24,24,36,.85);box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 24px rgba(47,230,214,.1);transform:translateY(-1px)}
-  .row-main{display:flex;align-items:center;gap:clamp(9px,1.5vw,15px);flex-wrap:wrap}
-  .bar{width:5px;height:44px;border-radius:5px;flex:none}
-  .rk{min-width:42px;font-family:var(--chakra);font-weight:700;font-style:italic;font-size:clamp(28px,2.8vw,34px);color:rgba(238,240,246,.9);text-align:center}
-  .thumb{position:relative;width:100px;height:60px;border-radius:9px;overflow:hidden;flex:none;border:1px solid rgba(255,255,255,.08);cursor:pointer;background:#000;transition:width .28s cubic-bezier(.4,0,.2,1),height .28s cubic-bezier(.4,0,.2,1)}
-  .row:hover .thumb{width:clamp(180px,28vw,300px);height:auto;aspect-ratio:16/9}
-  .row:hover .row-main{align-items:flex-start}
+  html,body{background:#0B0B0C;color:#F1ECE1;font-family:Pretendard,-apple-system,'Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{min-height:100vh;overflow-x:hidden}
+  a{color:#E4B061;text-decoration:none}a:hover{color:#F0C888}
+  ::selection{background:rgba(228,176,97,.28);color:#fff}
+  .ddz-scroll::-webkit-scrollbar{height:0;width:0;display:none}
+  .ddz-scroll{scrollbar-width:none}
+  @keyframes ddzpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.82)}}
+  @keyframes ddzdrift{from{transform:translate3d(-1%,-1%,0)}to{transform:translate3d(1%,2%,0)}}
+  @keyframes ddzfade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  /* rows (hover expand via CSS) */
+  .rrow{position:relative;padding:12px 16px;border-radius:15px;border:1px solid rgba(241,236,225,.09);background:rgba(20,19,21,.5);transition:opacity .25s,filter .25s,border-color .2s,transform .2s,box-shadow .2s}
+  .rows:has(.rrow:hover) .rrow:not(:hover){opacity:.4;filter:saturate(.6)}
+  .rrow:hover{border-color:rgba(228,176,97,.34);background:rgba(26,24,27,.9);transform:translateY(-1px);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .huebar{width:4px;align-self:stretch;border-radius:4px;flex:none;min-height:46px}
+  .ranknum{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:clamp(28px,3vw,38px);color:rgba(241,236,225,.82);min-width:44px;text-align:center;flex:none;line-height:1;font-variant-numeric:tabular-nums}
+  .thumb{position:relative;width:104px;height:62px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(241,236,225,.1);cursor:pointer;background:#000;transition:width .3s cubic-bezier(.4,0,.2,1),height .3s cubic-bezier(.4,0,.2,1)}
+  .thumb.novid{cursor:default}
   .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .thumb .grad{position:absolute;inset:0;display:grid;place-items:center;font-size:22px}
-  .thumb .pi{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.5);border:1.5px solid rgba(255,255,255,.85);display:grid;place-items:center;font-size:9px;padding-left:2px;opacity:0;transition:opacity .2s}
-  .thumb:hover .pi{opacity:1}
-  .mid{flex:1;min-width:140px}
-  .nm{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-  .nm b{font-size:16px;font-weight:700}
-  .nm .en2{font-family:var(--chakra);font-size:10.5px;letter-spacing:1px;color:var(--dim)}
-  .oneline{font-size:12px;color:var(--muted);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:420px}
-  .right{display:flex;align-items:center;gap:clamp(10px,1.8vw,20px);margin-left:auto}
-  .sc{text-align:right;min-width:54px}
-  .sc .num{font-family:var(--chakra);font-weight:700;font-size:21px;color:var(--orange);line-height:1}
-  .sc .l{font-size:10px;color:var(--dim);margin-top:2px}
-  .movecol{min-width:82px;text-align:right}
-  .movecol .l{font-size:10px;color:var(--dim);margin-top:3px}
-  .row-exp{max-height:0;overflow:hidden;opacity:0;transition:max-height .28s,opacity .28s,margin .28s,padding .28s}
-  .row:hover .row-exp{max-height:200px;opacity:1;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
-  .row-exp p{font-size:13px;line-height:1.55;color:rgba(238,240,246,.78);margin-bottom:9px}
-  .row-exp .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .btn-watch{padding:8px 16px;border-radius:10px;border:none;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:12.5px;color:#04120f;background:linear-gradient(135deg,#2fe6d6,#46e08a)}
-  .empty{padding:44px;text-align:center;color:rgba(238,240,246,.45);border:1px dashed rgba(255,255,255,.12);border-radius:16px}
-
-  @supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
-    .row{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 30%}
-    @keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  }}
-  footer{margin-top:32px;text-align:center;font-size:11.5px;color:rgba(238,240,246,.35);line-height:1.7}
-  .lb{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
-  .lb.open{display:flex}
-  .lb-inner{width:100%;max-width:900px}.lb-video{position:relative;padding-top:56.25%}
-  .lb-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
-  .lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;cursor:pointer;opacity:.85}
+  .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:1px;color:rgba(241,236,225,.55)}
+  .rrow:hover .thumb{width:clamp(190px,26vw,280px);height:auto;aspect-ratio:16/9}
+  .oneline{font-size:12px;color:rgba(241,236,225,.5);margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:460px;display:block}
+  .rrow:hover .oneline{display:none}
+  .exp{overflow:hidden;max-height:0;opacity:0;margin-top:0;padding-top:0;border-top:0 solid rgba(241,236,225,.08);transition:max-height .32s,opacity .3s,margin .3s,padding .3s}
+  .rrow:hover .exp{max-height:340px;opacity:1;margin-top:12px;padding-top:12px;border-top-width:1px}
+  .movecol{margin-left:auto;text-align:right;min-width:88px;flex:none}
+  .brk-card:hover{border-color:rgba(219,86,72,.5)!important;transform:translateY(-2px)}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand"><div class="logo">🔥</div><div><h1>ddeu<span>zm</span></h1><div class="sub">이번 주 화제성 랭킹 · 왜 떴는지까지</div></div></div>
-      <div class="live"><span style="opacity:.7">🔄 주제별 갱신 주기 상이 · 오늘의 이슈 우선</span></div>
-    </header>
+<div style="position:fixed;inset:-15%;z-index:0;pointer-events:none;background:radial-gradient(46% 40% at 78% 6%,rgba(228,176,97,.12),transparent 68%),radial-gradient(50% 44% at 10% 96%,rgba(219,86,72,.07),transparent 70%);animation:ddzdrift 26s ease-in-out infinite alternate"></div>
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 
-    <div class="breaking" id="breaking"></div>
-    <div class="cats" id="cats"></div>
-    <div class="cats cats-more" id="catsMore" style="display:none"></div>
-
-    <div class="controls">
-      <div class="search"><span class="ic">⌕</span><input id="searchInput" placeholder="검색" autocomplete="off"><button class="clr" id="clearBtn">✕</button></div>
-      <div style="display:flex;align-items:center;gap:14px"><span class="sample-note" id="sampleNote"></span>
-        <span class="sched" id="sched">🔄 마지막 07/10</span>
-      </div>
-    </div>
-
-    <div class="datanote" id="datanote"></div>
-    <div id="hero"></div>
-    <div class="listhead"><div class="l"><div class="tick"></div><h3 id="listTitle"></h3><span class="cnt" id="resultCount"></span></div>
-      <div class="legend">지난 순위 대비 ▲▼ 변화</div></div>
-    <div id="list" class="list"></div>
-
-    <footer>ddeuzm · 이번 주 화제성 기반 랭킹. 순위 변화는 직전 집계 대비입니다.<br>영상·썸네일은 원본 플랫폼 공식 임베드/링크(자체 저장 없음). 갱신 주기는 주제마다 다름 · 오늘의 이슈 우선.</footer>
-<div class="sr-only"><h1>ddeuzm — 이번 주 화제성 랭킹 (게임·서브컬처·방송·영화·드라마·음악·유행)</h1>
-<h2>🎮 게임 이번 주 화제 TOP</h2>
-<p>1. 로스트아크 — 7월 8일 완전 신규 오리지널 클래스 &#x27;차원술사&#x27;가 출격하며 로아 유저들이 대거 복귀했다. 시간·공간을 다루는 &#x27;시간 관리자/공간 검사&#x27; 두 전투 스타일과 1720 지원 성장 이벤트, 이튿날 &#x27;카멘 익스트림&#x27; 레이드까지 겹치며 이번 주 최대 화제작으로 떠올랐다.</p>
-<p>2. 메이플스토리 — 여름 업데이트 &#x27;OVERDRIVE&#x27;의 신규 직업 &#x27;서약의 지배자 레테&#x27;가 소환사 콘셉트로 등장해 큰 반응을 얻고 있다. 하이퍼 버닝으로 3시간 만에 260레벨 육성이 가능해지고, 7월 23일 신규 6차 스킬 2차 업데이트를 앞두고 테스트월드가 순차 공개되며 열기가 이어진다.</p>
-<p>3. 발로란트 — 국내 팬들이 기다린 2026 VCT 퍼시픽 스테이지 2가 7월 16일 서울 상암 SOOP 콜로세움에서 개막한다. 젠지 vs ZETA 개막전을 시작으로 8월 9일까지 단판 풀리그가 펼쳐지며, 7월 2일 시작된 티켓 판매가 화제를 모으고 있다.</p>
-<p>4. 오버워치 2 — 7월 시작된 2026 시즌 3에서 신속·치명적인 신규 공격 영웅 &#x27;시온&#x27;이 하시모토 일족을 이끌고 합류했다. 7월 1일부터 21일까지 진행되는 요아소비(YOASOBI) 콜라보와 &#x27;혼의 습격&#x27; 이벤트가 겹치며 복귀 유저가 늘고 있다.</p>
-<p>5. 리그 오브 레전드 — 6월 28일 대전에서 개막한 2026 MSI가 7월 12일 결승을 향해 달아오르며 e스포츠 화제를 독점하고 있다. 페이커의 T1이 9년 만의 MSI 우승에 도전하고, LCK 팀들의 국제전 성적에 커뮤니티가 매일 들끓는다.</p>
-<p>6. 검은사막 모바일 — 펄어비스가 7월 11일 온라인으로 &#x27;2026 하이델 연회&#x27;를 개최하며 하반기 대규모 업데이트 로드맵을 공개한다. &#x27;붉은사막&#x27; 흥행으로 관심이 쏠린 펄어비스 IP의 후속 행보라는 점에서 유저들의 기대가 집중되고 있다.</p>
-<p>7. PUBG: 배틀그라운드 — 2026 &#x27;블랙 마켓&#x27;이 돌아와 논란이던 &#x27;이중 가챠&#x27;를 없애고 하나의 화물에서 성장형 무기 스킨을 획득하는 방식으로 개편됐다. 토큰·화물권이 7월 중순까지 유효해 이번 주 유저들의 구매 열기가 이어지고 있다.</p>
-<h2>🎴 서브컬쳐 게임 이번 주 화제 TOP</h2>
-<p>1. 명조: 워더링 웨이브 — 쿠로게임즈가 7월 10일 3.5 버전 &#x27;남겨진 울림, 검에 기대 꿈속에서 노래하리&#x27;를 예고하며 신규 지역 &#x27;몽주&#x27;와 신규 5성 캐릭터 공개로 아카라이브·디시가 달아올랐다. 사이버펑크 콜라보 여운이 채 가시기 전 현방 트레일러 &#x27;Eisodus&#x27;가 공개되며 이번 주 최고 화제작으로 부상했다.</p>
-<p>2. 붕괴: 스타레일 — 7월 15일 4.4 버전 대문으로 5성 화염 캐릭터 &#x27;히메코·노바&#x27;가 등장. 이번엔 무기가 검이 아닌 창이라 &#x27;이번엔 안 죽는다&#x27;는 죽음 밈이 커뮤를 달궜다. Fate 2차 콜라보(린·길가메시)는 7월 24일로 예고됐다.</p>
-<p>3. 승리의 여신: 니케 — 7월 2일 시작된 여름 업데이트로 수영복 신규 니케 &#x27;신데렐라: 크리스탈 웨이브&#x27;가 등장하자 국내 앱스토어 매출 1위, 일본·대만 2위로 역주행에 성공했다. A-1 Pictures가 제작한 &#x27;OLD TALES&#x27; 스페셜 애니메이션과 풀보이스 스토리 &#x27;WAVE TO YOU&#x27;가 호평받으며 이번 주 화제성을 끌어올렸다.</p>
-<p>4. 원신 — 7월 1일 업데이트된 6.7 버전 &#x27;여름! 귀향? 폰티날리아 축제!&#x27;에서 우인단 집행관 제7위 &#x27;산드로네&#x27;가 5성 얼음 양손검 딜러로 합류했다. 신규 얼음·번개 반응 &#x27;별 초전도&#x27;와 폐쇄적 설계 논쟁이 겹치며 이번 주 커뮤니티에서 찬반이 갈렸다.</p>
-<p>5. 젠레스 존 제로 — 3.0 버전 &#x27;꿈속을 헤매는 이의 고백&#x27;에서 정식 출시 이후 최초의 바람 속성 에이전트 &#x27;벨리나 아르기드&#x27;가 S급 메인 딜러로 등장하며 신규 원소·소용돌이 반응이 화제가 됐다. 공중 도시 로스카엘리페르 스토리 개막과 함께 2주년 시즌3 예고까지 겹쳐 이번 주 언급량이 급증했다.</p>
-<p>6. 우마무스메 프리티 더비 — 국내 서비스 4주년을 맞아 오프라인 페스티벌과 신규 육성 시나리오를 선보이며 매출 상위권을 유지 중이다. 이번 주 신규 육성 우마무스메 &#x27;나카야마 페스타&#x27;가 합류하고 7월 10일 4주년 셀렉트 픽업(스틸 인 러브·스마트 팔콘 등)이 예고되며 말딸 커뮤니티가 지갑 방어 논의로 뜨겁다.</p>
-<p>7. 블루 아카이브 — 산해경 콘셉트의 신규 이벤트 &#x27;오욕내강&#x27;과 6차 메인 스토리 PV가 공개되며 스토리 전개와 신규 학생에 대한 기대감이 커졌다. 7월 22일 파키사키(수영복) 한정 픽업과 여름 리콜렉트 모집이 예고되며 이번 주 샬레 유저들의 저축 계획이 화제가 됐다.</p>
-<p>8. 트릭컬 리바이브 — 신규 최상위 등급 &#x27;엘다인 사도&#x27; 계통이 추가되며 &#x27;진은의 대공 실비아&#x27;와 냉정 엘다인 &#x27;끝나지 않는 꿈 이드&#x27; 출시로 대규모 업데이트가 진행됐다. 15일 출석 이벤트와 300연차 재화 살포가 겹치며 국산 미소녀 게임 중 이번 주 가성비 화제를 독차지했다.</p>
-<h2>🌸 서브컬쳐 문화 이번 주 화제 TOP</h2>
-<p>1. 무직전생 3기 — 이세계 판타지의 대표작 &#x27;무직전생&#x27; 3기가 7월 4일 1·2화 특별 연속 방영으로 포문을 연다. 스튜디오 바인드가 그리는 &#x27;에리스 수행편&#x27;의 새 티저 PV가 공개되며 이번 주 애니 팬덤 화제 1순위로 떠올랐다.</p>
-<p>2. 이세계아이돌 — 왁타버스 소속 6인조 버추얼 아이돌 이세계아이돌이 신곡 &#x27;Smile For You&#x27; 스페셜 클립을 공개하며 여름 활동에 시동을 걸었다. 고척돔 입성 이후 국내 버추얼 신을 견인하는 이세돌의 신보에 팬덤 반응이 뜨겁다.</p>
-<p>3. 스텔라이브 아카네 리제 — 스텔라이브 2기 멤버 아카네 리제의 첫 단독 콘서트 &#x27;OVT&#x27;가 7월 11일 고려대 화정체육관에서 개최를 앞두고 예매 열기가 달아올랐다. &#x27;OVERTONE·Over the Twilight&#x27;을 내건 무대 공식 트레일러가 이번 주 버튜버 커뮤니티를 뜨겁게 달구고 있다.</p>
-<p>4. 플레이브 — 버추얼 보이그룹 플레이브가 9월 인천을 시작으로 7개 도시를 도는 첫 월드투어 &#x27;KEEP IT MANIC&#x27; 개최를 확정하며 화제몰이 중이다. 빌보드 차트에 오른 대표곡 &#x27;BBUU!&#x27;의 인기와 함께 글로벌 팬덤 규모를 입증하고 있다.</p>
-<p>5. 체인소맨 — 후지모토 타츠키의 인기 만화 &#x27;체인소맨&#x27;이 6월 19일 스마트폰 게임화를 발표하며 팬덤이 들썩였다. 애니 제작사 MAPPA가 직접 만든 게임 오프닝 무비가 공개돼 원작 팬들의 기대감을 끌어올리고 있다.</p>
-<p>6. 극장판 암살교실 모두의 시간 — 명작 &#x27;암살교실&#x27; 방영 10주년 기념 완전 신작 극장판이 7월 1일 국내 개봉하며 옛 팬들을 극장으로 불러 모으고 있다. 살생님과 E반의 졸업을 앞둔 마지막 15일을 그린 신작 에피소드가 이번 주 개봉작 화제작으로 꼽힌다.</p>
-<p>7. 유녀전기 2기 — 9년 만에 돌아오는 밀리터리 판타지 &#x27;유녀전기&#x27; 2기가 7월 8일 방영을 앞두고 메인 PV 제2탄을 공개했다. 전작의 두터운 팬층과 오랜 공백기 덕에 이번 주 복귀작 중 가장 큰 주목을 받고 있다.</p>
-<p>8. 그랑블루 3기 — 대학 다이빙 동아리 개그물의 대명사 &#x27;그랑블루&#x27; 3기가 7월 7일 방영을 시작하며 여름 시즌 웃음 담당으로 복귀했다. 술과 근육, 청춘 코미디의 진수를 담은 본 PV가 공개되며 시즌 개그 애니 기대작으로 자리매김했다.</p>
-<h2>📺 방송·스트리밍 이번 주 화제 TOP</h2>
-<p>1. 눈파티 — 치지직 최대 규모 마인크래프트 포켓몬 합방 서버 &#x27;봉켓몬&#x27;(6/22~7/1)에서 국내 실전배틀 레전드 눈파티가 윤가놈을 꺾고 최종 챔피언에 등극하며 최대 화제. 대형 서버 첫 참가에서 우승해 클립이 폭발적으로 확산됐다.</p>
-<p>2. 케인 — 방음부스 에어컨 결로로 물이 새는 실제 사고에서 파생된 &#x27;누수&#x27; 밈이 6월 중순부터 커뮤니티 전반으로 확산. 곰팡이 테이블·의자자님 등 후속 밈까지 이어지며 여름 인방 최대 밈으로 자리잡았다.</p>
-<p>3. 침착맨 — 7월 7일 유튜브 콘텐츠 &#x27;단군 vs 우정잉 최강의 치타급 인간 대결&#x27;을 공개해 화제. 두 게스트의 초고속 리액션 대결이 짤·클립으로 확산되며 이번 주 침착맨 채널 최대 조회 콘텐츠가 됐다.</p>
-<p>4. 윤가놈 — 봉켓몬 서버 초반부터 각종 챌린지 퍼스트클리어를 휩쓸며 선두를 질주, 결승에서 눈파티에 아깝게 패했으나 &#x27;운영자도 예측 못한 클리어 속도&#x27;로 서버 최대 화제 인물 중 하나가 됐다.</p>
-<p>5. 이호종 — 전 프로게이머 출신 스트리머 플레임(이호종)이 주최한 롤 스트리머 대회 &#x27;2026 호종컵&#x27;이 풀세트 접전 끝에 결승을 치르며 화제. 치즈공장이 우승했고 결승 하이라이트가 이번 주 인방가에서 크게 회자됐다.</p>
-<p>6. 라꼰즈(파김치갱) — 곽튜브·빠니보틀·김풍·키드밀리 등이 뭉친 웹예능 크루 &#x27;파김치갱&#x27; 8화가 7월 8일 공개돼 화제. 여행 유튜버·래퍼 조합의 케미가 다시 주목받으며 시즌 최고 기대작으로 꼽혔다.</p>
-<h2>👾 버추얼 방송 이번 주 화제 TOP</h2>
-<p>1. 이세계아이돌 — 우왁굳 왁타버스 소속 6인 버추얼 걸그룹으로, 6월 새 공식 로고·모션 공개와 리브랜딩 이후 멤버 개인방송·합방 클립이 다시 상위 화제로 올라섰다. 방송 활동 기반 국내 버추얼 대표 IP로 꾸준한 시청자층을 유지 중이다.</p>
-<p>2. 플레이브 — 버추얼 아이돌 플레이브가 6월 12일·25일 네이버 치지직에서 2026 북중미 월드컵 한국전 특집 라이브를 단독 진행해, 버추얼 그룹이 국가적 스포츠 중계 플랫폼과 연계한 이례적 방송 사례로 화제가 됐다. 개별 멤버 라이브 방송도 병행 중이다.</p>
-<p>3. 고세구 — 이세계아이돌 멤버 고세구가 게임·리액션 위주 개인방송에서 특유의 팬서비스와 성대모사로 클립이 꾸준히 확산되며 개인 화제도를 높이고 있다. 이세돌 내 방송 활동이 가장 활발한 멤버 중 하나로 꼽힌다.</p>
-<p>4. 스텔라이브 — 강지가 운영하는 버추얼 소속사 스텔라이브가 4기생 데뷔를 2026년 내로 예고하며, 7월 8일 강지 개인방송에서 모집 마감·합격자 선정 진행 상황을 언급해 신인 데뷔 떡밥이 방송가에서 화제다. 이세돌과 국내 버추얼 양강 구도를 형성 중이다.</p>
-<p>5. 아라하시 타비 — 스텔라이브 2기 아라하시 타비가 6월 아바타 2.0 개선을 진행하며 개편된 모습으로 방송에 복귀, 전라도 사투리 캐릭터성과 합방 케미로 클립이 재확산됐다. 스텔라이브 내 방송 화제 상승세가 뚜렷하다.</p>
-<p>6. 릴파 — 이세계아이돌 멤버 릴파가 노래·합방·게임을 아우르는 방송에서 특유의 입담과 콘텐츠 기획으로 클립이 꾸준히 화제에 오른다. 이세돌 리브랜딩 국면에서 개인 방송 활동도 함께 주목받고 있다.</p>
-<p>7. 주르르 — 이세계아이돌 멤버 주르르가 몰카·합방·소통 방송에서 특유의 예능감으로 클립이 확산되며 개인 화제도를 유지하고 있다. 이세돌 멤버 간 합방 콘텐츠의 중심축 중 하나로 꼽힌다.</p>
-<h2>🎬 영화 이번 주 화제 TOP</h2>
-<p>1. 토이 스토리 5 — 개봉 18일째인 7월 4일 200만 관객을 돌파하며 3주 연속 주말 박스오피스 정상을 지켰다. 픽사 시리즈의 저력으로 올해 개봉작 흥행 TOP5에 진입, 역주행 흥행세가 이어지고 있다.</p>
-<p>2. 눈동자 — 신민아의 1인 2역 도전으로 화제를 모은 서스펜스 스릴러가 CGV 에그지수 88%, 네이버 실관람객 평점 8.8점으로 입소문을 타며 박스오피스 2위를 유지했다. 할리우드 대작 &#x27;슈퍼걸&#x27;을 제치고 국내 영화 자존심을 지켰다는 평가다.</p>
-<p>3. 군체 — 연상호 감독의 감염 재난 스릴러가 누적 500만 관객을 넘기며 올해 최단기간 400만 돌파 기록을 세웠다. 제79회 칸영화제 미드나잇 스크리닝 초청작으로 150여 개국에 선판매되며 K-장르물의 위상을 다시 입증했다.</p>
-<p>4. 마티 슈프림 — 티모시 샬라메 주연, 조쉬 사프디 감독의 A24 화제작이 7월 1일 개봉해 CGV 에그지수 91%의 호평을 받았다. &#x27;야망 폭발&#x27; 연기와 A24 특유의 스타일로 여름 극장가 마니아층의 관심을 집중시키고 있다.</p>
-<p>5. 극장판 도라에몽: 신 진구의 해저비밀성 — 여름방학 시즌을 겨냥한 도라에몽 극장판이 7월 1일 롯데시네마 단독 개봉했다. 시리즈 사상 최초로 MX4D 포맷 동시 상영을 확정하며 가족 관객 예매를 끌어모으고 있다.</p>
-<p>6. 그린랜드 2: 마이그레이션 — 제라드 버틀러·모레나 바카린 주연의 재난 블록버스터 속편이 7월 1일 국내 개봉했다. 혜성 충돌 5년 후 지하 벙커 생존기를 그리며 &#x27;촬영 중 실제로 땅이 갈라졌다&#x27;는 역대급 현장 비하인드로 화제를 모았다.</p>
-<p>7. 다윗 — 박보검이 데뷔 후 처음으로 애니메이션 목소리 연기에 도전한 성경 애니메이션이 7월 15일 개봉을 앞두고 예매를 시작했다. 북미 개봉 당시 8038만 달러로 &#x27;킹 오브 킹스&#x27;를 넘어선 역대 종교 애니메이션 최고 오프닝 기록으로 관심을 끈다.</p>
-<p>8. 슈퍼걸 — 밀리 앨콕 주연의 DCU 두 번째 작품이 개봉 첫날 2위로 출발했으나 이틀 만에 4위로 추락하며 &#x27;한국서 힘 못 쓴다&#x27;는 흥행 부진 기사가 쏟아졌다. DC 히어로물의 국내 부진이 오히려 화제가 되고 있다.</p>
-<h2>🎭 드라마 이번 주 화제 TOP</h2>
-<p>1. 김부장 — 소지섭 주연 SBS 금토극이 방송 4회 만에 전국 시청률 21.6%를 돌파하며 2년 만의 20%대 대박을 터뜨렸다. 넷플릭스 동시 공개로 플릭스패트롤 기준 20개국 1위에 오르며 국내외 화제성 정상을 굳혔다.</p>
-<p>2. 참교육 — 김무열 주연 넷플릭스 오리지널이 공개 7일차 45개국 1위로 전 세계 넷플릭스 비영어권 정상에 올랐고, 2주차 시청 2억 시간을 돌파했다. 교권 붕괴를 소재로 한 사이다 액션에 미국 포브스가 &#x27;올해 최고 드라마&#x27;라 극찬했다.</p>
-<p>3. 동궁 — 남주혁·노윤서·조승우 주연의 넷플릭스 궁중 오컬트 사극이 7월 17일 공개를 앞두고 최종 예고편을 풀며 기대감이 폭발했다. 조승우의 3년 만의 드라마 복귀작이자 아시아권 유일의 넷플릭스 글로벌 라인업으로 &#x27;킹덤 잇는다&#x27;는 반응이 쏟아진다.</p>
-<p>4. 결혼의 완성 — &#x27;흥행 보증수표&#x27; 남궁민이 첫 회부터 이혼 선언과 아내 납치 전개로 몰아친 KBS2 토일 스릴러가 7월 4일 첫방 4.4%로 출발해 2회 만에 6.4%로 수직 상승했다. 김부장 독주에 맞선 남궁민표 심리 스릴러로 주말극 판도를 흔들고 있다.</p>
-<p>5. 친애하는 X — 글로벌 108개국 1위를 휩쓴 티빙 역대 흥행작이 tvN 토일 편성으로 안방극장에 상륙, 김유정의 파격 싸이코패스 연기가 다시 화제몰이 중이다. TV 시청률은 1%대로 낮지만 김유정은 통합 출연자 화제성 상위권을 지키고 있다.</p>
-<p>6. 오싹한 연애 — 박은빈·양세종 주연 tvN 오컬트 로맨스가 7월 18일 첫방을 앞두고 &#x27;연애의 시작&#x27; &#x27;맞닿은 손&#x27; 티저를 연달아 공개하며 혐관 케미 기대감을 끌어올렸다. 귀신 보는 재벌 상속녀와 귀신 무서워하는 검사의 조합이 화제다.</p>
-<p>7. 가족관계증명서 — 박세영·한고은·임지은이 얽힌 MBC 새 일일극이 7월 6일 첫 방송되며 &#x27;우아한 균열&#x27;을 예고한 파격 티저로 입소문을 탔다. 히든페이스 제작사 &#x27;보이드&#x27;가 합류한 120부작 막장극으로 저녁 시간대 화제를 정조준한다.</p>
-<p>8. 신입사원 강회장 — 손현주·이준영 주연 JTBC 토일극이 7월 5일 최종회에서 영혼이 뒤바뀐 강회장의 정체와 전혜진 처단 작전을 공개하며 유종의 미를 거뒀다. 부진하던 JTBC 토일 라인업 중 초반 시청률 흐름이 가장 좋았던 리마인드 라이프물로 마무리 화제성을 모았다.</p>
-<h2>🎵 음악 이번 주 화제 TOP</h2>
-<p>1. 아이오아이 - 갑자기 — 데뷔 10주년 재결합으로 돌아온 아이오아이의 &#x27;갑자기&#x27;가 이번 주 멜론 TOP100 1위를 지키며 롱런 중이다. 한국어 가사 비중이 높은 점이 재조명받으며 옛 대표곡 &#x27;너무너무너무&#x27;보다 긴 차트 1위 기록을 세웠다.</p>
-<p>2. 코르티스 - REDRED — 코르티스 &#x27;REDRED&#x27;가 한국 애플뮤직 일간차트 70일 연속 1위라는 최근 5년 데뷔 보이그룹 최장 기록을 세우며 멜론 2위까지 치솟았다. 7월 18일 인천 인스파이어 아레나 첫 단독투어와 롤라팔루자 시카고 무대까지 예정돼 화제가 이어진다.</p>
-<p>3. 리센느 - LOVE ATTACK — &#x27;거제 야호&#x27; 밈이 2026 올해의 유행어로 뜨며 리센느의 2024년 곡 &#x27;LOVE ATTACK&#x27;이 멜론 일간 3위까지 재역주행, 지난해 성적마저 넘어섰다. 멤버들이 고향 홍보대사로 위촉되고 웹예능 화제성까지 겹쳐 &#x27;신 국민 아이돌&#x27;로 부상했다.</p>
-<p>4. 에스파 - LEMONADE — 정규 2집 타이틀 &#x27;LEMONADE&#x27;가 특유의 &#x27;쇠맛&#x27;을 벗은 상큼한 여름 사운드로 멜론 TOP5를 지키고 있다. G-DRAGON이 참여한 선공개곡 &#x27;WDA&#x27;와 도넛·편의점 브랜드 협업 완판 행렬까지 겹치며 여름 팝 시장을 장악 중이다.</p>
-<p>5. 아이들 - Gimme Dat Love — 아이들이 7월 6일 미니 9집 &#x27;We made&#x27; 타이틀 &#x27;Gimme Dat Love&#x27;로 여름 컴백, 강렬한 포인트 안무와 파워풀한 무대로 쇼케이스 화제몰이에 성공했다. 이번 주 첫 진입해 음원차트 상승세를 타고 있는 신곡이다.</p>
-<p>6. 최예나 - 캐치 캐치 — 최예나 &#x27;캐치 캐치&#x27;가 발매 3개월 넘게 멜론 TOP10에 머무는 롱런을 이어가며 스포티파이 월간 리스너 578만 명으로 4세대 솔로 최고 기록을 세웠다. 중국 빌리빌리 MV 조회수 679만 뷰로 2026년 K-팝 MV 1위에 올라 숏폼 챌린지까지 장악했다.</p>
-<p>7. 아일릿 - It&#x27;s Me — 아일릿 4번째 EP 타이틀 &#x27;It&#x27;s Me&#x27;가 중독성 강한 테크노 사운드로 인기가요 3주 연속 1위를 기록하며 이번 주 멜론 TOP5권을 지키고 있다. 애플뮤직·유튜브 글로벌 차트에도 안착하며 상승 탄력을 이어가는 중이다.</p>
-<p>8. 하츠투하츠 - RUDE! — SM 신인 걸그룹 하츠투하츠의 &#x27;RUDE!&#x27;가 이번 주 멜론 TOP10 진입 상승세를 타며 후속곡 &#x27;Lemon Tang&#x27;까지 동반 급상승 중이다. 데뷔 후 꾸준한 차트 롱런으로 4세대 신인 걸그룹 다크호스로 주목받고 있다.</p>
-<h2>🔥 유행 이번 주 화제 TOP</h2>
-<p>1. 다이소 냉감템 (아이스 넥쿨링밴드) — 이른 폭염에 3,000원짜리 PCM 넥쿨링밴드가 2~3만원대 브랜드 넥쿨러 대체재로 뜨며 출시 직후 품절. 냉감 이너웨어 매출도 전년비 100% 급증하며 여름 필수템으로 자리잡음.</p>
-<p>2. 얼먹젤리 — 젤리를 냉동실에 3~4시간 얼려 콰직·쫀득 식감으로 먹는 유행. 2월 급등 후 여름 들어 재점화, 하리보 골든베어 등 신맛 젤리 매출이 폭증하며 편의점 얼먹 코너까지 등장.</p>
-<p>3. 토이스토리5 굿즈 (다이소 콜라보) — 6월 17일 극장 개봉에 맞춘 다이소 토이스토리5 콜라보 60여 종이 5천원 이하 굿즈로 화제. 팝업 감성을 저가로 누르며 캐릭터 카테고리 이번 달 화제성 최상위.</p>
-<p>4. 메가커피 팥빙 젤라또 파르페 — 4,400원대 저가 컵빙수 신드롬. &#x27;혼빙족(1인 빙수족)&#x27;을 겨냥한 컵빙수 3종이 2주간 105만 잔 판매, 매장 품절로 &#x27;10군데 돌아 겨우 찾았다&#x27;는 후기가 SNS에 도는 여름 히트.</p>
-<p>5. 다이소 해파리 여름 캐릭터 — 다이소 여름 시즌 테마 &#x27;썸머 글로시&#x27;의 얼굴인 해파리 캐릭터. 두피 괄사·어항 파우치·샴푸 브러쉬 등 파란색·투명 소재 라인이 릴스에서 돌고 매장에서 품절되는 여름 굿즈 유행.</p>
-<p>6. 상하이 버터떡 — 상하이발 겉바속쫀 버터떡. 1월 X 여행 게시물에서 시작해 3월 편의점 4사가 앞다퉈 출시하며 두쫀쿠 후속으로 떴으나, 여름 들어 화제성은 하락세.</p>
-<p>7. 두바이 초콜릿 음료 (공차) — 두쫀쿠 열풍의 음료화. 공차가 카다이프·피스타치오를 얹은 &#x27;두바이 쫀득 초콜릿 크러쉬&#x27; 등을 1월 말 출시했으나, 두바이 디저트 전반이 2월 정점 후 뚜렷한 하락세.</p>
-<p>8. 이마트24 두바이 모찌 — 두바이 초콜릿을 한국식 모찌로 재해석한 이마트24 품절 대란템. 두카모·두카카가 두 달 만에 40만 개 판매 등 하나의 소비 코드로 자리잡았으나 초기 열풍 대비 화제성은 둔화.</p>
-<h2>💻 IT 이번 주 화제 TOP</h2>
-<p>1. 커뮤니티 AI 이미지 사전검열 논란 — 7월 1일부터 전기통신사업법 확대로 대형 커뮤니티·SNS가 업로드 이미지를 게시 전 AI로 필터링해야 하면서 &#x27;사전검열&#x27; 논란이 폭발했다. 밈·수영복·수학문제까지 오탐된 전력과 운영자 GPU 비용 부담이 겹쳐 이번 주 IT 커뮤니티 최대 화두다.</p>
-<p>2. 밸브 스팀 머신 출시 — 밸브의 소형 게임전용 PC &#x27;스팀 머신&#x27;이 6월 25일 출시되며 국내 체감가 145만원~(512GB 1,049달러)로 공개돼 화제다. AI발 메모리 대란으로 가격이 예상보다 높게 책정돼 가성비 논쟁이 뜨겁다.</p>
-<p>3. 갤럭시 언팩 2026 (폴드8·와이드폴드) — 삼성전자가 7월 7일 갤럭시 언팩 공식 초대장을 공개하며 7월 하순 신형 폴더블 공개를 예고했다. Z 폴드8·플립8과 함께 가로가 넓어진 &#x27;와이드 폴드&#x27; 신규 라인업 루머가 돌며 관심이 집중되고 있다.</p>
-<p>4. AI발 메모리 대란 (D램·램값 폭등) — AI 서버용 HBM 수요 폭증으로 삼성전자가 3분기 D램 가격을 최대 20% 인상하는 등 범용 메모리·SSD 값이 1년 새 수배로 폭등했다. PC·노트북 조립 비용 급등으로 소비자 체감 부담이 이번 주에도 최대 이슈다.</p>
-<p>5. 클로드 &#x27;나홀로 성장&#x27; — 앤트로픽 클로드가 6월 국내 MAU 141만명(전년比 12배)으로 급성장하며 챗GPT·제미나이·그록이 주춤한 사이 홀로 상승세를 이어갔다. &#x27;클로드 코드&#x27;·&#x27;클로드 코워크&#x27; 등 에이전트 AI 인기가 비결로 꼽힌다.</p>
-<p>6. 그래픽카드 대란 (RTX 5090) — 메모리 대란 여파로 엔비디아 RTX 5090 실거래가가 권장가의 두 배 안팎까지 치솟고 품귀가 이어지며 &#x27;살 수 없는 GPU&#x27;로 불린다. 소비자용 그래픽카드 생산 축소로 PC 게이머들의 불만이 이번 주에도 커지고 있다.</p>
-<p>7. 테슬라 옵티머스 7월 양산 — 테슬라가 휴머노이드 로봇 &#x27;옵티머스&#x27;의 본격 양산을 올 7~8월 시작한다고 밝히며 상용화 로드맵에 관심이 쏠린다. 삼성디스플레이·삼성전기의 얼굴 OLED·카메라 공급 협력설도 함께 화제다.</p>
-<p>8. 네이버 AI 브리핑 검색광고 — 네이버가 7월 21일부터 AI 검색요약 &#x27;AI 브리핑&#x27; 지면에 검색광고를 노출하며 AI 수익화에 본격 시동을 건다. 다음(카카오)의 &#x27;AI 오버뷰&#x27; 확대와 맞물려 국내 포털의 AI 검색 전환·광고 경쟁이 이번 주 이슈로 떠올랐다.</p>
-<h2>📰 뉴스 이번 주 화제 TOP</h2>
-<p>1. 호르무즈 유조선 잇단 피격 — 7월 7~8일 호르무즈 해협 인근에서 카타르 LNG선과 유조선 등 상선 3척이 연달아 피격됐다. 원유 수송의 요충지가 다시 긴장 국면에 들어가면서 국내외 언론이 속보로 다루고 있다.</p>
-<p>2. 국제유가 급등·기름값 비상 — 호르무즈 선박 피격과 미국의 이란 원유판매 면허 철회가 겹치며 국제유가가 장중 5%대 급등, 브렌트유가 배럴당 76달러선까지 치솟았다. 국내 주유소 기름값 인상 우려로 소비자 관심이 높다.</p>
-<p>3. 괴물 장마·물폭탄 — 중부지방에 시간당 최대 50mm의 국지성 호우가 쏟아지며 &#x27;괴물 장마&#x27;라는 표현이 나왔다. 밤사이 전국 곳곳에 물폭탄이 예고돼 침수·안전사고 주의가 당부됐다.</p>
-<p>4. 폭염↔폭우 반복 이상기후 — 올해 장마는 폭우와 폭염이 번갈아 나타나는 &#x27;변덕 날씨&#x27;가 특징으로, 질병관리청은 온열질환 예방 행동요령을 배포했다. 체감온도 급상승과 국지성 호우가 반복되며 생활 불편이 커지고 있다.</p>
-<p>5. 초강력 태풍 &#x27;바비&#x27; 북상 경계 — 초강력 태풍 &#x27;바비&#x27;가 중국 남부를 강타해 산사태로 수십 명이 매몰되는 등 큰 피해를 냈다. 향후 진로와 한반도 영향 가능성에 관심이 쏠리며 기상 당국이 예의주시하고 있다.</p>
-<p>6. 코스피 변동성·증시 출렁 — 국제유가 급등과 지정학 리스크가 겹치며 코스피가 개장부터 2%대 하락, 삼성전자·하이닉스 등 주요 종목이 동반 약세를 보였다. 최근 사상 최고치 랠리 이후 변동성이 커진 흐름이다.</p>
-<p>7. 미국-이란 확전 비상 — 호르무즈 상선 공격에 미국이 &#x27;강력한 공습 개시&#x27;를 선언하며 이란과의 확전 우려가 커졌다. 중동 정세 급변이 유가·안보·교역 전반에 미칠 파장에 국내 관심이 집중되고 있다.</p>
-<p>8. 국산 무인기 엔진 첫선 — 전투기·무인기용 엔진 국산화가 본격화되며 무인기용 엔진 시제품이 처음 공개됐다. 방산 기술 자립과 K-방산 수출 확대 흐름 속에서 주목받는 소식이다.</p>
-<h2>💪 남성 인기 이번 주 화제 TOP</h2>
-<p>1. 홍명보 경질론 · 월드컵 남아공전 충격패 — 한국이 2026 북중미 월드컵 조별리그 최약체 남아공에 0-1로 패해 32강 진출에 실패하면서, 홍명보 감독 즉각 경질을 요구하는 국민청원과 협회 책임론이 남초 커뮤니티 전반으로 확산됐다. 귀국길 공항 시위와 &#x27;역대 최악 경기력&#x27; 논쟁이 이번 주 스포츠 화제를 지배 중이다.</p>
-<p>2. 노르웨이 돌풍 · 홀란드 브라질 격침 — 엘링 홀란드가 멀티골로 우승 후보 브라질을 2-1로 꺾으며 노르웨이가 28년 만의 월드컵 본선에서 사상 첫 8강, 역대 최고 성적을 냈다. &#x27;괴물 홀란드&#x27;의 노 젓기 세리머니와 12일 잉글랜드(케인)와의 8강 빅뱅 매치가 커뮤니티 최대 화젯거리다.</p>
-<p>3. 정보통신망법 개정 · 인터넷 검열 논란 — 7월 7일 시행된 개정 정보통신망법(허위조작정보 근절·불법촬영물 AI 필터링 확대)을 두고 디시·루리웹·펨코 등 대형 커뮤니티가 &#x27;입틀막법·인터넷 계엄령&#x27;이라며 강하게 반발, 국회 철회 청원이 14만 명을 넘겼다. 남초 커뮤니티가 직접 규제 대상이라 이번 주 체감 화제성이 극대화됐다.</p>
-<p>4. 메시 눈물의 역전승 · 아르헨 vs 이집트 — 아르헨티나가 살라의 이집트에 끌려가다 후반 13분 만에 3골을 몰아쳐 3-2 대역전으로 8강에 올랐고, 메시가 감격의 눈물을 흘리는 장면이 오늘(8일) 새벽 커뮤니티를 강타했다. &#x27;라스트 댄스&#x27; 서사와 극장승 하이라이트가 실시간 화제.</p>
-<p>5. 호날두 눈물 · 스페인이 포르투갈 침몰 — 이베리아 더비 16강에서 스페인이 후반 추가시간 극장골로 포르투갈을 꺾자, &#x27;마지막 월드컵&#x27;을 언급하며 무릎 꿇고 눈물 흘린 호날두 장면이 밈과 함께 커뮤니티에 대량 확산됐다. 세대교체 서사와 GOAT 논쟁이 다시 불붙었다.</p>
-<p>6. 테슬라 기습 가격 인상 — 하반기 전기차 보조금 지급 첫날 테슬라가 모델3·모델Y 가격을 최대 700만 원 기습 인상하면서, &#x27;보조금을 제조사가 흡수한다&#x27;는 비판이 보배드림 등 자동차 커뮤니티를 중심으로 폭발했다. 구매 대기자들의 성토가 이번 주 자동차 화제 1순위.</p>
-<h2>💖 여성 인기 이번 주 화제 TOP</h2>
-<p>1. 모태솔로지만 연애는 하고 싶어 시즌2 — 넷플릭스 연애 예능이 7월 7일 시즌2 1~4회를 한꺼번에 공개하며 이번 주 여초 커뮤니티 화제를 독점했다. 서인국·강한나·이은지 등 썸 메이커스가 복귀했고 첫 회부터 출연자 반응·짝 매칭 예측 글이 쏟아지고 있다.</p>
-<p>2. 신입사원 강회장 — 이준영·이주명 주연 JTBC 주말극이 7월 5일 자체 최고 13.6%로 종영하며 드라마 화제성 2위에 올랐다. 몸이 바뀐 회장·인턴의 관계성과 마지막 회 ITZY 류진 카메오 반전 엔딩을 두고 여초 커뮤니티에서 갑론을박이 이어졌다.</p>
-<p>3. 아이들 &#x27;Gimme Dat Love&#x27; — 아이들이 7월 6일 미니 9집 &#x27;We made&#x27;와 타이틀곡 &#x27;Gimme Dat Love&#x27;로 여름 서머 러브송 컴백을 했다. 소연·우기가 참여한 수록곡과 서머 콘셉트가 팬 커뮤니티에서 화제를 모으고 있다.</p>
-<p>4. 리센느 &#x27;Pretty Girl&#x27; — 7월 신인 아이돌 브랜드평판 1위 리센느가 오늘(7월 8일) 카라 &#x27;Pretty Girl&#x27; 리메이크 싱글로 컴백했다. 원이·미나미의 갸루·사투리 유튜브 콘텐츠가 연이어 대박 나며 인지도가 급상승한 대세 신인 걸그룹이다.</p>
-<p>5. 연준 &#x27;Ice Cream&#x27; — 투모로우바이투게더 연준이 8개월 만에 7월 10일 두 번째 솔로 미니 &#x27;NO LABELS: PART 02&#x27;로 컴백을 앞두고 있다. 펑크 록 타이틀곡 &#x27;Ice Cream&#x27; 공개를 앞두고 팬덤 기대감이 이번 주 커뮤니티에서 높게 형성됐다.</p>
-<p>6. 결혼의 완성 — 남궁민이 7년 만에 KBS로 복귀한 토일 범죄 스릴러가 7월 4일 첫 방송했다. 이혼 직전 아내가 납치되는 설정과 2회 전국 6.4% 시청률로 방영 전부터 화제를 모으며 주말극 기대작으로 떠올랐다.</p>
-<p>7. 김부장 — 소지섭 주연 SBS 금토 액션 느와르가 27주차 드라마 화제성 1위(26.19%)를 기록했다. 평범한 아빠가 딸을 위해 각성하는 &#x27;아빠 유니버스&#x27; 웹툰 원작 실사화로, 2화 만에 시청률 18%를 찍으며 이번 주 최대 화제작으로 올라섰다.</p>
-<h2>👔 남성 패션 이번 주 화제 TOP</h2>
-<p>1. 블록코어 (축구 유니폼) — 2026 북중미 월드컵(6월 개막)을 계기로 축구 유니폼을 데님·트랙탑과 매치하는 블록코어가 이번 주 최대 화제 스타일로 떠올랐다. 대표팀 카모 홈킷과 해외 클럽 저지가 일상복으로 소비되며 완판 행렬이 이어지는 중.</p>
-<p>2. 배럴진 — 엉덩이·허벅지는 볼륨감 있게, 발목은 슬림하게 떨어지는 곡선 실루엣의 배럴진이 올여름 데님 키워드 1순위로 언급된다. 유니클로 저지 배럴 레그 팬츠가 남성 사이에서 입소문을 타며 인기가 이어지는 중.</p>
-<p>3. 포엣코어 — 핀터레스트가 꼽은 2026 트렌드 &#x27;포엣코어&#x27;가 남성 룩으로 번지며 이번 주 코디 콘텐츠가 늘고 있다. 느슨한 셔츠·리넨 소재·서정적 무드의 여유로운 실루엣이 특징으로, 클래식을 개성 있게 흩트리는 감성이 포인트.</p>
-<p>4. 워크웨어 — 디키즈 셔츠·카고 등 실용성과 빈티지 무드를 살린 워크웨어가 2026 핵심 트렌드로 이어지고 있다. 고프코어와 테일러드의 중간 지점에서 여름용 크롭 셔츠·팀버랜드 매치 코디가 소개되는 중.</p>
-<p>5. 네오 프레피 — 아가일 니트·폴로·럭비셔츠를 대담한 컬러와 매치하는 네오 프레피 룩이 여름 시즌으로 넘어오며 화제다. 반바지+셔츠 체형별 코디처럼 단정하면서 자유로운 무드가 20~30대 사이에서 언급된다.</p>
-<p>6. 그라미치 카고 쇼츠 — 기능성 아웃도어 무드의 그라미치 반바지가 여름 고프코어·캠핑룩 수요와 맞물려 다시 화제다. 다양한 핏과 컬러의 반바지 라인업을 비교하는 콘텐츠가 이번 주에도 조회되는 중.</p>
-<h2>👗 여성 패션 이번 주 화제 TOP</h2>
-<p>1. 벌룬 팬츠 &amp; 스커트 — 풍선처럼 부푼 볼륨 실루엣이 2026 여름 하의의 공식으로 자리잡으며 이번 주에도 룩북·쇼핑몰 상위권을 지켰다. 미니·미디·맥시로 길이가 다양해지고 레트로 컬러·플라워 패턴 변주가 늘며 화제성이 유지되고 있다.</p>
-<p>2. 배럴 진 (커브드 데님) — 와이드 진의 자리를 이어받은 곡선형 배럴·커브드 데님이 이번 시즌 가장 뜨거운 데님 키워드로 떠올랐다. 다리를 길어 보이게 하고 하체 라인을 자연스럽게 커버한다는 점에서 커뮤니티·핀터레스트 코디로 확산 중이다.</p>
-<p>3. 란제리코어 슬립 원피스 — 란제리에서 영감받은 슬립 드레스·캐미솔이 올여름 핵심 무드로, 관련 검색량이 전년 대비 크게 급증했다. 카디건·재킷을 겹치는 레이어드 스타일링으로 노출을 중화하는 &#x27;요즘식&#x27; 연출이 이번 주 룩북에서 인기다.</p>
-<p>4. 프렌치 걸 서머 — 벨라 하디드의 남프랑스 휴양 룩을 계기로 빈티지·보헤미안·2000년대 무드를 섞은 &#x27;프렌치 걸 서머&#x27;가 올여름 스타일링 힌트로 급부상했다. 브라톱·크로셰·시어 카디건을 간결하게 조합하는 것이 특징이다.</p>
-<p>5. 포엣코어 — &#x27;시인&#x27;과 &#x27;코어&#x27;를 합친 서정적·지적 무드의 포엣코어가 2026 SS 트렌드로 확산되며 이번 주 관련 룩북·해설 영상이 쏟아졌다. 화이트 하이넥 셔츠·스카프·스퀘어 안경 같은 지적인 디테일이 핵심이다.</p>
-<p>6. 피셔맨 샌들 — 발등을 감싸고 앞코가 막힌 피셔맨 샌들이 올여름 신발 트렌드로 다양한 디자인으로 돌아왔다. 젤리·러버 소재로 가볍게 변주되며 꾸안꾸 데일리룩의 필수템으로 이번 주 코디 콘텐츠가 활발하다.</p>
-<p>7. 카프리 팬츠 — 종아리 길이의 카프리 팬츠가 Y2K·레트로 감성과 프렌치 시크 무드를 타고 올여름 다시 떠올랐다. 크롭탑·발레플랫과 매치하는 코디가 핀터레스트·룩북에서 이번 주 확산되고 있다.</p>
-<h2>🗿 밈 이번 주 화제 TOP</h2>
-<p>1. 스핔이 — 트릭컬 리바이브의 조연 &#x27;스피키&#x27;를 병맛 2차창작한 밈으로, 팬이 만든 &#x27;스피키 네르지 마세요&#x27;(더빙 오류로 &#x27;누르지&#x27;가 &#x27;네르지&#x27;로 들림) 영상이 원조다. 2025년 말 &#x27;가랑눈&#x27; 합성 영상이 한국·일본 유튜브 하이프와 니코니코동화 1위를 석권하며 한일 양쪽에서 역수출식으로 폭발, 2026년 상반기 서브컬처 밈 최대 화제작이 됐다.</p>
-<p>2. 거제 야호 — 걸그룹 리센느 일본인 멤버 미나미가 갸루 분장으로 멤버 원이(거제 출신)에게 일본어를 알려주다 &quot;거제 야~호~!&quot;(일본식 인사 やっほー)를 외친 데서 나온 밈이다. 무맥락의 하이텐션 갸루 감성이 숏폼에서 폭발해 2026 상반기 최대 밈으로 커졌고, 거제시가 멤버 전원을 홍보대사로 위촉하는 등 7월까지 화제가 이어지고 있다.</p>
-<p>3. 국기무스메 — 국가를 미소녀로 의인화한 창작물이 모여 형성된 밈으로, 한국·중국·일본을 그린 &#x27;한중일쨩&#x27;이 시발점이다. 서로 티격태격하다가도 뭉치는 자매/친구 관계 묘사가 재미 요소로, 2026년 7월 트위터를 중심으로 급속히 확산되기 시작한 신상 밈이다.</p>
-<p>4. 파라파라나 춰야겠다 — 미나미가 갸루 콘셉트로 뜬금없이 &quot;난 파라파라나 춰야겠다&quot;(파라파라=일본식 유로비트 레트로 클럽 댄스)라고 말한 장면에서 파생된 밈이다. 춤 자체보다 &#x27;할 게 없으니 그냥 파라파라나 춘다&#x27;는 상황 회피 문장이 &quot;손님 올 때까지 파라파라나 춰야겠다&quot; 식으로 무한 응용되며 6~7월 인스타 릴스·틱톡에서 급확산 중이다.</p>
-<p>5. 야르 — 코미디언 류근일이 &#x27;웃고리즘&#x27; 채널 먹방 연기에서 맛있을 때 내지르는 감탄사 &quot;야르~&quot;에서 나온 밈으로, &#x27;앗싸/오예/신난다&#x27; 뉘앙스로 텐션을 표현할 때 쓴다. 6월부터 본격 유행해 7월에도 커뮤·숏폼에서 계속 도는 상승세 밈이다.</p>
-<p>6. 마우가 정신 — 5v5 개편 후 탱커 한 명에게 책임이 몰리는 구조에 지친 유저들이 시위성 플레이를 하며 생긴 &#x27;탱장연&#x27;(탱커+전장연) 밈의 대표 구호다. 해맑게 웃으며 적진으로 돌진하는 탱커 마우가가 마스코트로 떠올라, 2026년 4월부터 오버워치 커뮤니티를 중심으로 크게 번졌다.</p>
-<p>7. 도로롱 — 니케에서 가장 무겁고 비극적인 캐릭터 &#x27;도로시&#x27;를, 큰 머리에 띨빵한 표정의 하찮은 팬 캐릭터로 그린 갭 모에 밈이다. 니케 채널발 2차창작에서 시작해 공식 이모티콘·피규어·옥외광고·콜라보까지 확장됐고, 이제는 게임을 넘어 한국 인터넷 팬 캐릭터로 자리잡아 꾸준히 화제다.</p>
-<p>8. 난리자베스 — &#x27;난리(났다)&#x27;와 &#x27;엘리자베스&#x27;를 합친 말로, 놀라거나 호들갑 떨 때 호들갑+우아함을 함께 표현하는 유행어다. 크리에이터 오상추가 새해 유행어로 배포한 릴스가 조회수 200만을 넘기며 떡상했고 &#x27;[감정]+자베스&#x27;(슬프자베스·행복자베스) 구조로 응용되며 지자체·브랜드 계정까지 쓰는 밈이 됐다.</p>
-<p>9. 샤갈 — 유튜브 채널 &#x27;여단오&#x27;에서 출연자가 자주 쓰는 감탄사로, 놀람·짜증·민망함을 순화해 표현하는 &#x27;귀여운 대체 감탄사&#x27;다. 실제 욕설 대신 &quot;아 샤갈&quot; 식으로 쓰기 좋아 신조어로 빠르게 퍼지며 인스타·틱톡에서 도는 중이다.</p>
-<p>10. 몰?루 — 블루 아카이브의 아로나가 &#x27;모른다&#x27;는 뜻으로 쓰던 &#x27;몰?루&#x27;가 대표 유행어이자 마스코트 밈이 된 케이스다. 서브컬처 밈의 원조 격으로 오래 살아남았고, 2025년 &#x27;코유키의 난&#x27;(서버 이슈로 특정 캐릭터가 대량 복제된 사건)이 분탕 문화와 맞물리며 다시 회자돼 재유행했다.</p>
-<p>11. 윾돌이 — 브라운더스트 2의 캐릭터 &#x27;유리&#x27;를 성의 없는 그림체와 처량한 표정으로 재해석한 디시콘 캐릭터로, 문돌이콘을 변형한 3차창작에서 출발했다. 원본 캐릭터보다 콘 인지도가 압도적으로 높아 반공식 마스코트가 됐고, 공식 굿즈·오프라인 행사에까지 등장하며 커뮤니티에서 꾸준히 쓰인다.</p>
-<p>12. 밤티 — &#x27;별로다/촌스럽다/올드하다&#x27;는 뜻으로 패션·디자인·상황이 어딘가 어색할 때 쓰는 신조어로, 아바타 게임 라인플레이의 한 닉네임에서 비롯됐다고 알려져 있다. 릴스·쇼츠에서 &#x27;밤티 뜻&#x27; 설명 영상이 쏟아지며 친구끼리 가볍게 놀리는 말로 확산 중이다.</p>
-<p>13. 장항준적 사고 — 영화감독 장항준이 힘든 상황도 &quot;슬픔은 새로운 기쁨으로 돌려 막는다&quot; 식으로 넘기는 태도에서 나온 긍정 사고 밈으로, &#x27;원영적 사고&#x27;(럭키비키)의 계보를 잇는다. 남 눈치보다 내 행복을 앞세우는 화법이 공감을 얻어 방송 클립과 함께 커뮤·숏폼에서 인용되고 있다.</p>
-<p>14. 윤정아 챌린지 — 코미디언 정이랑의 &#x27;윤정아&#x27; 캐릭터 말투를 초등학생들이 부른 자작곡 릴스(&quot;윤정아 윤정아 / 왜요 쌤 왜요 쌤 / ~하지 말랬지&quot;)에서 시작된 콜앤리스폰스 밈이다. 이름·상황만 바꾸면 되는 낮은 진입장벽 덕에 아이돌·배우(고윤정 등)와 지자체까지 패러디하며 1월 이후 전 플랫폼으로 퍼졌다.</p>
-<h2>📱 SNS 이번 주 화제 TOP</h2>
-<p>1. 인터넷 이미지 사전검열 논란 — 7월 시행된 개정법으로 대형 커뮤니티·SNS가 올라오는 모든 이미지를 AI로 사전 필터링하게 되면서, 표현의 자유·과잉검열 우려로 X·인스타·커뮤니티 전반에서 반대 여론과 청원이 터졌다.</p>
-<p>2. X 앱 19금 연령등급 상향 — 구글 플레이스토어가 선정성·폭력 콘텐츠를 이유로 X(트위터) 앱을 청소년 이용불가(19금)로 재분류하면서, 국내 이용자 사이에서 플랫폼 유해성과 접근 제한을 둘러싼 논쟁이 확산됐다.</p>
-<p>3. 그록 AI 딥페이크 논란 — X의 이미지 생성 AI &#x27;그록&#x27;이 실존 인물 얼굴로 선정적·딥페이크 이미지를 만들어낸다는 사례가 퍼지며, 초상권·성착취물 우려로 X 플랫폼 책임론이 크게 번졌다.</p>
-<p>4. 스레드 반말 문화 급성장 — 메타 스레드가 나이·친분 상관없이 반말로 소통하는 특유의 &#x27;대나무숲&#x27; 문화를 앞세워 국내 월 630만 이용자로 급성장, X를 추격하는 신흥 SNS 현상으로 주목받고 있다.</p>
-<p>5. 네이버 지식인 익명답변 유출 — 네이버 오류로 유명인·연예인이 과거 익명으로 남긴 지식iN 답변이 실명과 함께 노출되면서, 사생활 침해·흑역사 유출 이슈가 SNS를 타고 크게 확산됐다.</p>
-<p>6. 인스타 위치공유 지도 논란 — 인스타그램이 친구 위치를 지도에 실시간 표시하는 &#x27;지도(맵)&#x27; 기능을 도입하자, 원치 않는 위치 노출·스토킹 우려로 프라이버시 논란과 기능 끄기 안내가 SNS에서 화제가 됐다.</p>
-<p>7. 인스타 피드 리포스트 도입 — 인스타그램이 남의 게시물을 내 피드에 그대로 재공유하는 &#x27;리포스트&#x27; 기능을 도입하면서, 리그램 문화 변화와 리포스팅 계정 추천 제한 등 콘텐츠 공유 방식 변화가 SNS에서 논의됐다.</p>
-<p>8. 연애기회비용 바이럴 — iM금융의 유튜브 예능 &#x27;연애기회비용&#x27;이 유튜버 찰스엔터의 리얼 소개팅과 성사 시 전액 환급 콘셉트로 화제를 모아, 관련 클립·밸런스게임 반응이 X·인스타로 확산됐다.</p>
-<h2>🇯🇵 일본 버추얼 이번 주 화제 TOP</h2>
-<p>1. 니지산지 코시엔 2026 — 니지산지 여름 최대 기획 &#x27;고교야구&#x27; 육성 대회. 7월 4일 드래프트 회의가 3D로 생중계돼 감독 10명 중 8명이 첫 참가하는 역대급 새 얼굴 개편으로 화제. 본선은 8월 8~11일 3일간 진행 예정.</p>
-<p>2. 키즈나 아이 컵 2026 — 버추얼 유튜버 원조 키즈나 아이의 활동 10주년·생일(6/30) 기념 게임 대회. 사쿠라 미코, 모리 칼리오페, 히구치 카에데, 타치바나 히나노 등 총 등록자 1300만 넘는 10명이 어몽어스 3D·폴가이즈로 격돌해 컬래버 화제.</p>
-<p>3. 오오조라 스바루 — 홀로라이브 2기생 스바루가 7월 3일 신곡 &#x27;Okie Dokie Dance&#x27;를 내고 7월 6~10일 컬래버 위크를 진행. 마지막 날 우사다 페코라 집에서의 오프 컬래버(페코스바)가 예고돼 팬들 사이에서 화제.</p>
-<p>4. 카나에 — 니지산지 인기 라이버 카나에의 두 번째 단독 라이브 &#x27;孤独 -solitude-&#x27;가 7월 31일 도쿄 국제포럼 홀A에서 개최 예정. 히구치 카에데·켄모치 토야 등 호화 게스트와 티저 영상 공개로 티켓 화제.</p>
-<p>5. 호시마치 스이세이 — 홀로라이브 간판 스이세이가 개인 사무소 &#x27;Studio STELLAR&#x27; 설립을 발표(홀로라이브 잔류 유지)하고 자신 최대 규모 4개 도시 아레나 투어(9~11월)를 예고. 8월 신곡 EP도 겹쳐 화제 지속.</p>
-<h2>🌎 서양 버추얼 이번 주 화제 TOP</h2>
-<p>1. 홀로라이브 EN 4th 콘서트 -Serendipity- — 7월 3~4일 LA 슈라인 오디토리엄에서 홀로라이브 잉글리시 15인이 총출동한 4번째 대규모 콘서트가 열렸다. 7개 특별 유닛 무대와 게스트 합류로 이번 주 서양 버추얼 씬 최대 화제이며, 공식 오리지널 곡 &#x27;Serendipity&#x27;가 6월 19일 선공개됐다.</p>
-<p>2. 아이언마우스 — 독립 버추얼로 활동 중인 아이언마우스가 6월 1일부터 한 달간 면역결핍재단(IDF) 자선 서바톤을 진행해 6월 27일 자신의 최고 기록을 넘는 동시구독 20만 5천 명대를 달성했다. 7월 4일 애니메 엑스포에서 CDawgVA와 합동 패널까지 열며 화제를 이어갔다.</p>
-<p>3. 아이리스 — 홀로라이브 EN의 아이리스가 Serendipity 콘서트에서 솔로 무대로 존재감을 보인 데 이어, &#x27;Echoes of Aincrad&#x27;(소드아트온라인 콘셉트) 데스게임 챌린지 특별 방송으로 화제를 모았다. 파워보컬 곡과 게임 콜라보를 오가는 행보가 주목받는다.</p>
-<p>4. 네리사 레이븐크로프트 — 홀로라이브 EN -Advent-의 네리사가 6월 12일 유튜브 구독자 100만 명을 돌파하며 EN 13번째·Advent 3번째 밀리언 멤버가 됐다. 그 여세로 7월 Serendipity 콘서트 무대와 오리지널 곡으로 이번 주 팬덤 화제의 중심에 섰다.</p>
-<p>5. 후와모코 — 홀로라이브 EN의 쌍둥이 유닛 후와모코가 7월 초 LA 애니메 엑스포 2026에서 전용 굿즈 컬렉션·부스로 오프라인 팬들을 대거 끌어모았고, Serendipity 콘서트 무대에도 올랐다. 오프라인 팬미팅형 인기가 이번 주 두드러진다.</p>
-<p>6. 사메코 사바 (거북이 구라) — 홀로라이브 슈퍼스타 가우르 구라의 새 페르소나로 알려진 독립 버추얼 사메코 사바가 만성 질환 악화로 장기 휴방에 들어가 2월 8일 이후 방송이 멈췄다. 5월 멤버십 일시중지·건강 업데이트 이후 복귀 시점 관심이 이번 주에도 이어진다.</p>
-<p>7. 마리아 마리오네트 (니지산지 EN) — 니지산지 EN이 5월 &#x27;카오틱 카리스마&#x27; 오디션 발표 이후 신규 세대 기대감이 도는 가운데, 기존 인기 라이버 마리아 마리오네트가 케이팝 커버 댄스·짧은 챌린지 영상으로 이번 주 클립 화제를 이어가고 있다.</p>
-<h2>🇯🇵 일본 인방 이번 주 화제 TOP</h2>
-<p>1. 샤카 (석가) — 일본 트위치 상위권 FPS 스트리머(ZETA DIVISION 크리에이터). 7월 3일 시작된 대규모 &#x27;스트리머 공식 서버 RUST 제2회&#x27;에서 거점 공업 시스템을 맡은 &#x27;오야카타(親方)&#x27; 역으로 이틀 연속 장시간 방송을 이어가며 이번 주 인방판 최대 화제의 중심에 섰다.</p>
-<p>2. 가드맨 — 구독자 300만 과격계 유튜버였던 가드맨이 유튜브 &#x27;은퇴&#x27;를 선언하고 트위치 스트리머로 전향, 해산 4개월 만에 현황 보고 방송을 올리며 커뮤니티를 달궜다. 첫 방송에서 대형 기획을 예고해 전향 행보에 이목이 쏠린다.</p>
-<p>3. 카센 — ZETA DIVISION 소속 스트리머로 자신이 주최하는 LoL 스트리머 대회 &#x27;LTK 시즌: 판데모니엄&#x27;을 운영. 6월 20~21일 TOYOTA ARENA TOKYO 오프라인 플레이오프 결승을 마치며 60명 규모 대회의 여운이 이번 주까지 이어지고 있다.</p>
-<p>4. 카토 준이치 — 일본 최대급 실사 스트리머로, 5월 설립한 스트리머 매니지먼트 사무소 &#x27;DOROKUSA(DRKS)&#x27;가 이번 주 소속 라인업 활동을 본격화. 11월 도쿄돔 &#x27;배信자 하이퍼게임 대회 FINAL&#x27; 개최도 예고돼 화제성을 이어가고 있다.</p>
-<p>5. 스탄미 재팬 — LoL·VRChat 붐을 이끈 인기 스트리머이자 본명 스가와라 유야로 배우·모델로도 활동. 7월 7일 시작된 게임 소재 애니 &#x27;대ありでした。&#x27; 응원 코멘트 공개와 드라마 촬영 근황이 겹치며 방송 밖 행보까지 주목받고 있다.</p>
-<p>6. 모코우 — MURASH GAMING GM 겸 포켓몬·게임 실황으로 유명한 베테랑 스트리머. 신작 &#x27;포켓몬 챔피언스&#x27; 실황이 반향을 얻는 한편, 앞서 스즈하라 루루 무단 미러 논란의 여파와 DOROKUSA 합류 이슈가 아직 회자되고 있다.</p>
-<h2>🌎 서양 인방 이번 주 화제 TOP</h2>
-<p>1. 카이 세넷 — 9개월 잠정 휴방 후 7월 7일 트위치·유튜브 동시 복귀 방송을 열어 합산 최고 100만+ 시청자를 기록했다. 트위치 71만 명은 2026년 플랫폼 최대 방송으로 집계됐고, 약 900개 채널이 합방·리액션에 참여하며 서양 인방판 최대 화두가 됐다.</p>
-<p>2. 아이쇼스피드 — 7월 3일 마이애미 FIFA 클럽 월드컵 아르헨티나-카보베르데전을 카보베르데 유니폼 차림으로 직관 방송하던 중 일부 관중의 인종차별 발언·조롱을 받는 장면이 그대로 송출됐다. 클립이 확산되며 FIFA가 조사에 착수했다고 보도됐다.</p>
-<p>3. 스트리머 유니버시티 2026 — 카이 세넷이 복귀 방송에서 두 번째 시즌 명단을 공개, 교수진에 포키메인·루드윅·듀크 데니스, 학생 120명 중 스케치·플라크보이맥스 등 이미 유명한 크리에이터가 대거 포함돼 &#x27;지원서가 사기냐&#x27;는 논란이 일었다. 여름 최대 스트리밍 이벤트로 주목받는 중.</p>
-<p>4. 엑스큐씨 — 월드컵 하이라이트 5초 클립을 잠깐 틀었다가 6월 22일 통산 6번째 트위치 정지를 당했고, 이를 킥 방송 중 실시간으로 확인하며 &#x27;하루짜리 스트라이크일 뿐&#x27;이라 반응한 장면이 계속 회자되고 있다. 저작권·플랫폼 정책 논쟁의 단골 사례로 재소환됐다.</p>
-<p>5. 케이스오 — 7월 1~7일 트위치 평균 시청자 순위에서 카이 세넷에 이어 2위로 치고 올라왔다. 저챗·게임 리액션에 더해 월드컵 시즌을 겨냥한 축구 밈 콘텐츠가 쇼츠로 확산되며 상승세를 이어가고 있다.</p>
-<p>6. 듀크 데니스 — 카이 세넷의 스트리머 유니버시티 2026 교수진으로 정식 선정되며 다시 화제에 올랐다. AMP 소속 멤버로서 이번 대형 콜라보 이벤트의 핵심 진행 인력으로 이름을 올려 여름 시즌 노출이 크게 늘었다.</p>
-<h2>🎌 J-POP 이번 주 화제 TOP</h2>
-<p>1. 요네즈 켄시 - 카라스(烏) — 요네즈 켄시가 2026 FIFA 월드컵 시기 NHK 축구 테마곡으로 낸 신곡. 일본 대표팀 엠블럼의 &#x27;까마귀&#x27;를 모티프로 삼아 발매 직후 오리콘·빌보드재팬 데일리 1위를 다수 기록하며 화제.</p>
-<p>2. 큐티 스트리트 - Cute한 구체(球体) — KAWAII LAB. 소속 8인조 아이돌 큐티 스트리트의 신곡으로 빌보드재팬 핫100 1위(6월 초)를 차지. 데뷔곡의 TikTok 흥행에 이어 &#x27;카와이&#x27; 콘셉트로 SNS 챌린지 화제가 이어지는 중.</p>
-<p>3. 피노키오피 - 가희실격 feat. 하츠네 미쿠 — 보카로P 피노키오피가 하츠네 미쿠라는 존재의 특이성을 유머와 아이러니로 그린 신곡. 오디션 서사를 빌린 가사와 중독성 있는 전개로 X·틱톡에서 확산되며 보카로 팬층에서 화제.</p>
-<p>4. 비퍼스트 - Missing — 7인조 보이그룹 비퍼스트의 신곡으로 빌보드재팬 핫100 최신 주간(7월 8일자) 1위에 오르며 가장 따끈한 화제작. 안무 중심의 퍼포먼스 영상으로 발매 직후 스트리밍·유튜브 조회수가 급상승.</p>
-<p>5. 사사네(楽音) - mosi mosi? — 싱어송라이터 사사네의 곡으로 공개 첫 주에 틱톡 4억 뷰를 기록했다고 알려질 만큼 폭발적으로 확산. 박수 동작을 활용한 간단한 댄스 챌린지가 밈처럼 번지며 커버·립싱크 영상이 쏟아지는 중.</p>
-<p>6. 사쿠라자카46 - Lonesome rabbit — 사쿠라자카46의 신곡으로 발매와 함께 빌보드재팬 핫100 1위(6월 중순)를 기록. 대형 아이돌 그룹 특유의 군무 퍼포먼스 MV가 공개되며 팬덤과 커뮤니티에서 화제.</p>
-<p>7. 넘버아이(Number_i) - 3XL — 히라노 쇼 등 3인조 그룹 넘버아이의 신곡으로, 감각적인 사운드와 완성도 높은 퍼포먼스 MV로 발매 직후 유튜브·스트리밍에서 상위권을 유지하며 화제.</p>
-<p>8. 미세스 그린 애플 - 바람과 마을(風と町) — 일본 대표 밴드 미세스 그린 애플의 신곡. 서정적인 멜로디와 밴드 특유의 밝은 사운드로 발매 직후 스트리밍 상위권에 진입하며 폭넓은 세대의 지지를 받는 중.</p>
-<h2>🌎 POP 이번 주 화제 TOP</h2>
-<p>1. 재니스 STFU — 드레이크의 신곡으로 빌보드 핫100 1위 데뷔, 남성 솔로 아티스트 역대 최다 1위곡 기록을 세우며 마이클 잭슨을 넘어섰다. 대화하듯 흐르는 랩과 곡 제목을 둘러싼 온라인 화제로 여름 최대 이슈곡.</p>
-<p>2. 다이 다이 — 2026 FIFA 월드컵(캐나다·멕시코·미국) 공식 주제곡으로, 샤키라와 버나 보이가 아프로비츠·댄스팝·레게톤을 섞었다. 6월 개막식 공연 이후 미국 외 글로벌 차트 1위를 이어가며 축구 열기와 함께 확산.</p>
-<p>3. 스투피드 송 — 올리비아 로드리고의 신곡으로 빌보드 글로벌 200 1위로 데뷔했다. 특유의 취약한 감성과 폭발하는 후렴이 맞물려 스포티파이 글로벌 상위권에 자리하며 여름 대표곡으로 부상.</p>
-<p>4. 헤이트 댓 아이 메이드 유 러브 미 — 아리아나 그란데가 낮은 음역과 내면을 파고드는 가사로 성장과 세간의 시선을 담아낸 신곡. 절제된 분위기가 오히려 호평을 받으며 스포티파이 글로벌 주간 차트 상위권에 안착.</p>
-<p>5. 아이 뉴 잇, 아이 뉴 유 — 픽사 &#x27;토이 스토리 5&#x27;를 위해 테일러 스위프트가 만든 곡으로 빌보드 핫100 1위로 데뷔했다. 사운드트랙 곡의 크로스오버 파급력을 다시 증명하며 개봉 시즌과 맞물려 화제.</p>
-<p>6. 걸 라이크 미 — 핑크팬서리스가 베이스먼트 잭스를 샘플링하고 UK 개러지 리듬을 입힌 곡으로, 틱톡을 타고 다시 확산됐다. &#x27;리듬 천국&#x27; 게임에서 영감받은 뮤직비디오까지 공개되며 밈으로 번짐.</p>
-<p>7. 추징 텍사스 — 엘라 랭글리의 컨트리 곡으로 통산 12주(비연속) 빌보드 핫100 1위를 기록하며 올해 최장기 1위곡이 됐다. 여러 차례 정상을 탈환하는 끈질긴 인기로 컨트리 대세를 상징.</p>
-<h2>🇯🇵 일본 뉴스 이번 주 화제 TOP</h2>
-<p>1. 트모다치 컬렉션 두근두근 생활 — 13년 만에 나온 닌텐도 &#x27;트모다치 컬렉션&#x27; 신작이 4월 발매 후 스위치 e숍 1위를 계속 지키고 있다. Mii 캐릭터로 지인·연예인을 만들어 섬 생활을 시키는 특유의 기묘한 재미가 틱톡에서 다시 대유행하며 화제다.</p>
-<p>2. 태풍 9호 오키나와 접근 — 대형·강한 세력의 태풍 9호가 서진하며 7월 11일경 오키나와 사키시마 제도에 직격할 우려가 커졌다. 집을 부술 수준의 강풍과 높은 파도가 예보돼 기상청이 경계를 호소하는 등 실시간 최대 관심 뉴스다.</p>
-<p>3. 오타니 통산 300호 홈런 — 오타니 쇼헤이가 MLB 통산 300홈런을 달성하며 사상 최초 300홈런·100도루를 역대 5번째 빠른 속도로 세웠다. 일본 스폰서 기업들이 SNS에서 축하 게시물을 잇달아 올리며 국민적 화제가 됐다.</p>
-<p>4. 밀크 (M!LK) 대박 돌풍 — 5인조 그룹 M!LK가 &#x27;爆裂愛してる&#x27;로 오리콘 2026년 상반기 싱글 차트 1위에 오르며 올해 일본 음악계 대표 돌풍으로 자리 잡았다. 마이나비 트렌드 조사에서 톱 아티스트·톱 곡·톱 유행어를 싹쓸이했다.</p>
-<p>5. 여권 수수료 인하 · 출국세 인상 — 7월 1일부터 10년 여권 수수료가 최대 7,000엔 인하돼(온라인 8,900엔) 신주쿠 등 신청 창구에 사람이 몰렸다. 동시에 출국 시 내는 국제관광여객세(출국세)가 1,000엔에서 3,000엔으로 오르며 갑론을박이 이어진다.</p>
-<p>6. 리듬 천국 그루브 — 11년 만의 &#x27;리듬 천국&#x27; 신작이 7월 2일 전 지역 발매됐다. 80개 솔로 스테이지와 신규 &#x27;비트스펠&#x27; 모드를 담아 특유의 엉뚱하고 중독적인 리듬 게임이 예약만으로 e숍 1위에 오르며 SNS에서 재조명됐다.</p>
-<p>7. 리니어 중앙신칸센 시즈오카 착공 용인 — 9년간 대립하던 리니어 중앙신칸센 시즈오카 구간에 대해 시즈오카 지사가 7월 7일 착공을 용인했다. 마지막 미착공 구간의 장벽이 풀리며 프로젝트가 크게 전진했지만, 개통은 여전히 2036년 이후로 전망된다.</p>
-<p>8. 후쿠오카 코타로 최연소 혼인보 — 20세 6개월의 후쿠오카 코타로 七단이 바둑 최고 기전 중 하나인 혼인보 타이틀을 따내 55년 만에 최연소 기록을 경신했다. &#x27;따낸 것에 놀랐다&#x27;는 소감과 함께 젊은 기사의 쾌거로 화제가 됐다.</p>
-<h2>🇺🇸 미국 뉴스 이번 주 화제 TOP</h2>
-<p>1. 테일러 스위프트 x 트래비스 켈시 결혼 — 팝스타 테일러 스위프트와 NFL 스타 트래비스 켈시가 7월 3일 매디슨 스퀘어 가든에서 1000명 규모의 초호화 결혼식을 올렸다. 애덤 샌들러가 주례를 맡고 2600만 달러를 자선단체에 기부하는 등 A급 셀럽 총출동으로 전 세계 SNS를 도배했다.</p>
-<p>2. 2026 FIFA 월드컵 결승 (미국 개최) — 미국·캐나다·멕시코 공동 개최, 사상 첫 48개국 체제의 월드컵이 결승(7월 19일 뉴저지 메트라이프 스타디움)을 향해 달아오르고 있다. 홈에서 뛰는 미국 대표팀, 각국 팬들의 밈성 응원 세리머니까지 겹치며 미국 전역이 축구 열기에 빠졌다.</p>
-<p>3. 오디세이 (크리스토퍼 놀란) — 크리스토퍼 놀란이 호메로스의 서사시를 맷 데이먼·톰 홀랜드·젠데이아 등으로 영화화한 대작이 7월 17일 개봉을 앞두고 있다. IMAX 70mm 회차가 1년 전부터 매진되고 오프닝 8000만~1억 달러가 점쳐지며 여름 최대 화제작으로 꼽힌다.</p>
-<p>4. 방글라데시 (이안 맥코넬) — 이안 맥코넬의 49초짜리 부조리 중독송 &#x27;방글라데시&#x27;가 틱톡 립싱크·대체 밈 포맷으로 폭발하며 올여름 노래 후보로 떠올랐다. &#x27;왜 날 방글라데시에 안 데려가&#x27;로 시작해 소시지·복수 음료 등 말도 안 되는 요구로 치닫는 가사가 웃음 포인트다.</p>
-<p>5. 핫도그 서머 (제니퍼 쿨리지 밈) — 제니퍼 쿨리지의 영화 &#x27;금발이 너무해 2&#x27; 명대사 &#x27;넌 독립기념일처럼 보여, 핫도그가 당겨&#x27;가 7월 4일 시즌마다 부활하는데 올해 역대급으로 커졌다. 여기에 핫도그 네일·케이크·굿즈까지 겹치며 여름 밈 문화를 지배 중이다.</p>
-<p>6. 더 베어 마지막 시즌 — 요리 드라마 &#x27;더 베어&#x27;가 마지막 시즌으로 막을 내리며 팬들의 아쉬움과 화제를 동시에 불러모으고 있다. 주방 스태프의 마지막 영업일을 그린 피날레가 훌루에서 스트리밍되며 시상식 단골작의 유종의 미로 주목받는다.</p>
-<h2>🌍 해외 밈 이번 주 화제 TOP</h2>
-<p>1. 두 비스트 굿 게눅 (넌 충분해) — 독일 듀오 Blumengarten의 5월 곡 후렴 &#x27;너는 충분해(Du bist gut genug)&#x27;를 고음으로 부르는 클립이 6월 틱톡에서 폭발했다. 오토튠 섞인 과장된 창법과 &#x27;클리블랜드 주니어&#x27; 합성 짤로 편집되며 유럽·미국권 밈으로 번졌다.</p>
-<p>2. 색소폰이 점점 커진다 — 1991년 영화 &#x27;보이즈 앤 더 후드&#x27;에서 비극 직전 흐르는 색소폰 테마를 빌린 밈. 일상 속 상황이 나빠질 징조를 &#x27;색소폰이 커진다&#x27;로 예고하는 포맷으로, 결말을 이미 안다는 특유의 불길함이 공감을 얻으며 확산됐다.</p>
-<p>3. 킷캣 강탈 사건 — 이탈리아에서 폴란드로 향하던 트럭에서 킷캣 약 41만 개(12톤)가 통째로 도난당한 실제 사건. 브랜드다운 &#x27;우리가 훔쳤다&#x27; 패러디 성명과 브레이킹배드 짤로 확산돼 여러 기업이 참전하는 마케팅 밈으로 번졌다.</p>
-<p>4. 허무주의 펭귄 — 베르너 헤어초크 2007년 다큐 속 무리를 떠나 내륙 산으로 향하는 펭귄 클립이 1월 틱톡에서 재발굴됐다. &#x27;죽음을 향한 여정&#x27;을 번아웃·조용한 퇴사의 상징으로 투영하며 자기 감정을 얹는 밈으로 확산됐다.</p>
-<p>5. 방글라데시 (이언 맥코넬) — 진지한 연인 하소연으로 시작해 소시지·기름·소설·복수 음료 등 황당한 요구로 치닫는 49초짜리 곡. 진심과 부조리가 겹치는 반전으로 7월 틱톡 사운드 밈으로 급부상해 립싱크·상황극에 쓰이고 있다.</p>
-<p>6. 폭염 스타워즈 (타투인 밈) — 기록적 폭염을 두고 동네 사진에 스타워즈 사막 종족(터스켄 레이더·자와)을 합성해 &#x27;사막 주민이 이사 왔다&#x27;고 농담하는 밈. 평범한 배경일수록 대비가 커 더 웃기며, 여름 폭염철 공감 밈으로 확산됐다.</p>
-<h2>🇯🇵 일본 SNS 이번 주 화제 TOP</h2>
-<p>1. 일본-미국 X 자동번역 대융합 — X가 번역 엔진을 Grok AI로 바꾸고 타임라인 알고리즘을 손보면서, 미국 이용자 피드에 일본어 게시물이 대량 추천되기 시작한 현상. 일본 BBQ집에서 베이컨 굽는 미군 사진이 도화선이 돼 양국 유저가 고기·일상 밈으로 훈훈하게 교류하며 &#x27;요즘 X에서 제일 재밌는 코너&#x27;로 떴는데, 일부 일본 유저는 저질 게시물까지 번역돼 나라 이미지가 걸린다고 우려한다.</p>
-<p>2. 밤의 무희 / 파쿠 잘루르 (아우라 파밍) — 인도네시아 전통 보트레이스 뱃머리에서 무표정하게 춤추는 11세 소년 영상에 사카나쿠션의 14년 전 곡 &#x27;밤의 무희&#x27;가 얹히며 전 세계로 퍼진 밈. 이 초연한 태도가 &#x27;아우라 파밍&#x27;으로 불리며 F1·축구선수·BTS 멤버까지 세리머니로 따라 해, 원곡이 빌보드 재팬 재진입하고 스트리밍 2천만 회를 넘겼다.</p>
-<p>3. 판치군 (아기 원숭이) — 지바현 이치카와시 동식물원의 육아 방기된 아기 일본원숭이가, 사육사가 준 이케아 오랑우탄 인형을 엄마처럼 끌어안는 모습으로 누적 3천만 뷰를 넘긴 국민적 화제. 해당 이케아 인형이 품절·되팔이될 정도로 파급됐고, 미 백악관 공식 X까지 판치군을 언급했다. 팬 채널에서 매일 근황이 올라온다.</p>
-<p>4. 엣호엣호 (달리는 부엉이) — 네덜란드 사진가가 찍은, 풀밭을 종종 달리는 원앙올빼미 새끼 사진에 &#x27;엣호엣호~ ○○해야 엣호엣호&#x27; 식 대사를 붙이는 이미지 밈. 어떤 동사든 끼워 넣을 수 있는 만능성 덕에 X 대喜利(말놀이)판이 됐고, 여고생 유행어 예측 1위에 오른 뒤 공식 &#x27;엣호엣호의 노래&#x27;까지 나왔다.</p>
-<p>5. 스피키 — 한국 게임 &#x27;트리컬·말랑볼따구 대작전&#x27;의 캐릭터 스피키 음성이 원본인 밈. &#x27;전자 마약&#x27;이라 불릴 만큼 중독성 있는 짧은 보이스가 틱톡·유튜브를 휩쓸어 패러디가 쏟아졌고, 2026년 1월 공식이 &#x27;SPIKI AWARDS&#x27;를 열 정도로 국경을 넘은 컬처 현상이 됐다.</p>
-<p>6. 노해 아저씨 도감 (AI 밈) — ChatGPT 같은 생성 AI로 각 분야의 &#x27;민폐 부리는 중년 아저씨(노해)&#x27;를 사실적인 일러스트로 뽑아 도감처럼 나열하는 밈. 게임·프로그래밍 언어·직군별로 &#x27;이런 노해 있다&#x27;며 공감 웃음을 유발해 X에서 크게 번졌고, AI 밈 양산 흐름을 상징하는 사례로 꼽힌다.</p>
-<p>7. 코라쇼 밈 — 베네세 진연구세미나의 초등학생용 마스코트 &#x27;코라쇼&#x27;를 소재로, Z세대가 &#x27;초등학교 1학년으로 돌아가기 싫다&#x27;는 불안과 향수를 공감하듯 올리는 밈. 공식이 댄서 YUMEKI와 콜라보하며 다시 화제가 됐고, 어린 시절 상징이 성인의 자조 개그로 재해석됐다.</p>
-<p>8. K2 구문 — 의료 만화 &#x27;슈퍼 닥터 K&#x27;의 명대사 &#x27;한때는 ○○였다── 하지만 지금은 다르다!!&#x27;를 일상 상황에 갖다 붙이는 텍스트 밈. 어떤 소재든 비장하게 만들어주는 범용성 덕에 장수 밈으로 자리 잡아 픽시브 백과사전에도 등재됐고, X에서 꾸준히 재생산된다.</p>
-<h2>🇺🇸 미국 SNS 이번 주 화제 TOP</h2>
-<p>1. 독일인 프레디 — 2026 북미 월드컵 원정 온 독일 축구팬 프레디가 버키스·와플하우스·타코벨 등 미국 소도시 일상을 X에 올리며 팔로워 75만 돌파, JJ 왓의 선물까지 받는 국민 마스코트가 됐다. 이후 과거 미국 체류 이력이 드러나며 역풍을 맞아 X를 접고 인스타로 옮긴 것까지 화제.</p>
-<p>2. 유 네버 테이크 미 투 방글라데시 — 미국 싱어송라이터 이언 맥코넬의 49초짜리 곡으로, &#x27;넌 날 방글라데시에 데려간 적 없어&#x27;라는 황당한 첫 소절이 틱톡·X를 장악하며 &#x27;올여름 노래&#x27;로 불린다. 이별 불평이 소시지·복수 등 초현실적 요구로 번지는 부조리 밈 포맷이라 커버·패러디가 쏟아지는 중.</p>
-<p>3. 그록 딥페이크 스캔들 — X의 AI 챗봇 그록이 여성·미성년자 사진을 무단으로 비키니·선정적 이미지로 변형해주는 기능이 논란이 되며, EU·인도·영국 오프컴 등 각국이 X·xAI에 대한 조사와 소송에 착수했다. 플랫폼 AI의 비동의 딥페이크 책임 문제로 X 안팎에서 계속 시끄러운 이슈.</p>
-<p>4. 러브 아일랜드 USA 시즌8 — 미국 인기 데이팅 리얼리티 시즌8이 방영 중 출연자 에이스·안드레이나의 관계설, 가브리엘 관련 폭로 영상(X에서 500만 조회) 등으로 X 실트를 도배했다. 팬 투표 방식·빌라 정체불명 남성까지 매 회차 화제를 몰고 다니는 이번 여름 최대 리얼리티 떡밥.</p>
-<p>5. 6-7 밈 (식스 세븐) — 스크릴라의 곡 &#x27;Doot Doot (6 7)&#x27;과 농구선수 라멜로 볼에서 파생돼, 아이들이 뜻도 없이 &#x27;식스 세븐!&#x27;을 외치며 손을 저울처럼 흔드는 Gen Alpha &#x27;브레인롯&#x27; 밈. 교실·생방송을 넘어 인앤아웃이 67번 주문번호를 없앨 정도로 확산돼 무의미함 자체가 유행이 됐다.</p>
-<p>6. 폭염 계란 프라이 챌린지 — 2026년 기록적 유럽 폭염(프랑스 43도 이상) 속에 창작자들이 인도·프라이팬에 불 없이 계란을 익히는 &#x27;폭염 계란&#x27; 영상이 X·틱톡에서 바이럴됐다. 이케아에서 더위를 피하는 파리 시민 영상 등과 함께 기후 극단화를 체감케 하는 여름 밈으로 번지는 중.</p>
-<p>7. 라부부 열풍 — 팝마트의 블라인드박스 인형 라부부가 2026년에도 SNS를 달구며, 인형 내부를 뜯어 개조하는 &#x27;#MeCrackingLabubu&#x27; 트렌드가 틱톡·릴스 누적 수십억 조회를 찍었다. 검색량은 작년 대비 꺾였지만 리셀·수집 문화로 명맥을 이어가는 대표 굿즈 밈.</p>
-<p>8. 가짜 GTA6 트레일러 소동 — 락스타의 공식 발표가 없는데도 &#x27;GTA6 트레일러3 오늘 공개&#x27; 같은 가짜 정보와 AI로 만든 위조 트레일러가 X에서 수백만 조회를 찍으며 반복 확산, 커뮤니티 노트로 줄줄이 반박되고 있다. 팬들의 극심한 대기감이 만들어낸 헛소문 바이럴 현상.</p>
+<div style="max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px) 110px;position:relative;z-index:1">
+  <div id="app"></div>
 </div>
-  </div>
+<div id="ddz-lb"></div>
 
-  <div class="lb" id="lb" onclick="if(event.target===this)closeVid()"><span class="lb-close" onclick="closeVid()">✕</span>
-    <div class="lb-inner"><div class="lb-video"><iframe id="lbframe" src="" title="영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div></div>
-
-<script type="application/ld+json" id="ld"></script>
 <script>
-// 카테고리별 데이터. item=[name,en,hue,delta(직전대비 상승칸),desc,tags,video?]
-// delta>0=상승, <0=하락, 0=유지, null=신규진입. prevRank=rank+delta.
 var CATS = {
   game: {label:"🎮 온라인 게임", real:true, items:[
     ["솔: 인챈트","SOL: enchant",42,null,"넷마블 신작 MMORPG로 출시 8시간 만에 앱스토어·22시간 만에 구글플레이 매출 1위를 석권했고, 유저가 서버를 지배하는 '신' 시스템의 첫 신 선출(7월 11일)을 앞두고 스트리머 서버마다 수십억대 나인 소모 경쟁이 벌어지며 이번 주 국내 최대 화제작으로 떠올랐다.",["MMORPG","넷마블","신선출"],"upYfgYx-D74",{}],
@@ -762,129 +343,184 @@ var BREAKING=[
   {cat:"📰 뉴스",key:"news",ago:"매도설 논란",title:"국민연금 74조 매도설",desc:"국내주식 비중 규정을 초과한 국민연금이 하반기 최대 74조 원어치를 팔아야 한다는 '매도 폭탄설'이 증시 급락 공포를 키우자, 국민연금이 직접 입을 열어 진화에 …."}
 ];
 var ORDER=["game","console","subgame","culture","live","vlive","movie","drama","music","trend","it","news","mentopic","womentopic","menfashion","womenfashion","meme","sns","jpvt","wvt","jpstream","wstream","jpop","pop","jpnews","usnews","globalmeme","jpsns","ussns"];
-var state={cat:'game', query:''};
 var DATANOTE_BASE='🔒 영상·이미지는 원본 플랫폼 <b>공식 임베드만</b> 사용(자체 저장 없음) · 저작권·초상권 우려 자료는 제외합니다';
 var EXCL={news:'뉴스는 <b>공식 언론사 채널</b> 클립만 임베드 — 개인 이슈·짜깁기 채널, 기사 원문/사진 제외',live:'스트리머 <b>본인 공식 채널</b> 영상만 — 방송 캡처·클립 재업 제외(초상권)',mentopic:'인물 관련은 공식 영상만 — 커뮤니티 짤·캡처 제외(초상권)',womentopic:'<b>공식 MV·예고편</b> 등 공식 소스만 — 팬캠·캡처 재업 제외(초상권)',menfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',womenfashion:'패션 유튜버·브랜드 <b>공식 영상</b> 임베드 — 화보·로고 이미지 재업 제외',it:'<b>공식 발표·리뷰</b> 영상 임베드 — 언팩 전 유출/컨셉 렌더 이미지 제외'};
-var MORESTART=11; state.moreOpen=false;
+var MORESTART=11;
 var LASTDATE='07/10';
 var CADENCE={game:'주 1회',console:'주 1회',subgame:'주 1회',culture:'격주',live:'주 1회',vlive:'주 1회',movie:'월 1회',drama:'주 1회',music:'주 1회',trend:'격주',it:'격주',news:'수시',mentopic:'격주',womentopic:'격주',menfashion:'월 1회',womenfashion:'월 1회',meme:'월 1회',sns:'주 1회',jpvt:'주 1회',wvt:'주 1회',jpstream:'격주',wstream:'격주',jpop:'격주',pop:'격주',jpnews:'주 1회',usnews:'주 1회',globalmeme:'월 1회',jpsns:'주 1회',ussns:'주 1회'};
 var GLOBALKEY='jpvt';
 
+var A='#E4B061', ACCENT_RED='#DB5648';
+function hexRgba(hex,a){hex=hex.replace('#','');if(hex.length===3)hex=hex.split('').map(function(c){return c+c;}).join('');var n=parseInt(hex,16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';}
+var aSoft=hexRgba(A,.13), aBorder=hexRgba(A,.34);
+var watchBtn='padding:9px 17px;border-radius:10px;border:none;cursor:pointer;font-family:Pretendard,sans-serif;font-weight:700;font-size:12.5px;color:#0B0B0C;background:'+A;
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function jsq(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function stripEmoji(s){return String(s).replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{26FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}️]/gu,'').replace(/^[\s·]+/,'').replace(/\s{2,}/g,' ').trim();}
 function ytThumb(id){return 'https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function grad(hue){return 'background:linear-gradient(135deg,hsl('+hue+' 55% 26%),hsl('+hue+' 60% 14%))';}
-function catEmoji(){return CATS[state.cat].label.split(' ')[0];}
-
-function enrich(it,i){
-  var delta=it[3];
-  var prev = delta===null ? null : (i+1)+delta;
-  return {name:it[0],en:it[1],hue:it[2],delta:delta,prev:prev,desc:it[4],tags:it[5],video:it[6]||null,extra:it[7]||{},rank:i+1,rankStr:String(i+1).padStart(2,'0')};
-}
-function thumb(g,eager){
-  if(g.video) return '<img src="'+ytThumb(g.video)+'" '+(eager?'fetchpriority="high"':'loading="lazy"')+' alt="" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+g.video+'/hqdefault.jpg\'">';
-  return '<div class="grad" style="'+grad(g.hue)+'">'+catEmoji()+'</div>';
-}
-function rankMove(g,big){
-  var sz=big?'':'';
-  if(g.delta===null) return '<span class="rankmove newin">🆕 NEW<small>신규 진입</small></span>';
-  if(g.delta>0) return '<span class="rankmove up">▲ '+g.delta+'<small>지난 '+g.prev+'위</small></span>';
-  if(g.delta<0) return '<span class="rankmove down">▼ '+Math.abs(g.delta)+'<small>지난 '+g.prev+'위</small></span>';
-  return '<span class="rankmove flat">— 유지<small>지난 '+g.prev+'위</small></span>';
-}
-function onclickAttr(g){return g.video?(' onclick="openVid(\''+g.video+'\')"'):'';}
-function platBadge(p){if(!p)return '';var c={'치지직':'ch','SOOP':'soop','유튜브':'yt'}[p]||'etc';return '<span class="plat '+c+'">'+(p==='SOOP'?'숲':esc(p))+'</span>';}
-function scoreBadge(x){if(!x||!x.score)return '';var v=x.verdict||'',vc={'추천':'rec','보통':'mid','비추':'bad','미정':'na'}[v]||'na';var disp=x.scoreMax===5?('★'+x.score):(x.scoreMax===10?(x.score+'/10'):(''+x.score));return '<span class="scoreb '+vc+'" title="'+esc(x.src||'')+'">'+disp+(v?' · '+esc(v):'')+'</span>';}
 function fmtViews(n){if(!n)return '';if(n>=10000)return Math.round(n/10000)+'만';if(n>=1000)return (n/1000).toFixed(1)+'천';return ''+n;}
-function viewsBadge(x){if(!x||!x.views)return '';return '<span class="viewsb">▶ '+fmtViews(x.views)+'</span>';}
-function chartBadge(x){if(!x||!x.chartRank)return '';return '<span class="chartb">'+esc(x.chart||'차트')+' '+x.chartRank+'위</span>';}
-function periodBadge(x){if(!x||!x.period)return '';return '<span class="periodb">🗓 '+esc(x.period)+'</span>';}
-function revNote(g){var x=g.extra;if(!x||!x.note)return '';return '<p class="revnote">⭐ <b>평가('+esc(x.verdict||'')+')</b> '+esc(x.note)+' <span class="revsrc">— '+esc(x.src||'')+'</span></p>';}
+function catWord(){return (stripEmoji(CATS[state.cat].label).split(' ')[0])||'';}
 
-function renderHero(g){
-  return '<section class="hero">'+
-    '<div class="hero-art"'+onclickAttr(g)+'>'+thumb(g,true)+'<div class="shade"></div><div class="badge">RANK #1</div><div class="big">01</div>'+(g.video?'<div class="play">▶</div>':'')+'</div>'+
-    '<div class="hero-info">'+
-      '<div class="hero-en">'+esc(g.en)+'</div><h2>'+esc(g.name)+'</h2>'+((platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+periodBadge(g.extra))?'<div class="hbadges">'+platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+periodBadge(g.extra)+'</div>':'')+
-      '<div class="tagrow">'+g.tags.map(function(t){return '<span class="tag">#'+esc(t)+'</span>';}).join('')+'</div>'+
-      '<p>'+esc(g.desc)+'</p>'+revNote(g)+
-      '<div class="hero-stats">'+
-        '<div>'+rankMove(g,true)+'</div>'+
-      '</div>'+
-    '</div></section>';
+function badgeStyle(tone){
+  var base="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.3px;padding:3px 8px;border-radius:6px;white-space:nowrap;";
+  var t={neutral:'color:rgba(241,236,225,.6);background:rgba(241,236,225,.06);border:1px solid rgba(241,236,225,.1)',gold:'color:'+A+';background:'+hexRgba(A,.13)+';border:1px solid '+hexRgba(A,.32),good:'color:#7FC6A2;background:rgba(127,198,162,.11);border:1px solid rgba(127,198,162,.34)',warn:'color:#E7C066;background:rgba(231,192,102,.11);border:1px solid rgba(231,192,102,.34)',bad:'color:#E0776B;background:rgba(224,119,107,.11);border:1px solid rgba(224,119,107,.34)'};
+  return base+(t[tone]||t.neutral);
 }
-function renderRow(g){
-  return '<div class="row"><div class="row-main">'+
-    '<div class="bar" style="background:hsl('+g.hue+' 80% 62%);box-shadow:0 0 12px hsl('+g.hue+' 80% 55% / .6)"></div>'+
-    '<div class="rk">'+g.rankStr+'</div>'+
-    '<div class="thumb"'+onclickAttr(g)+'>'+thumb(g)+(g.video?'<div class="pi">▶</div>':'')+'</div>'+
-    '<div class="mid"><div class="nm"><b>'+esc(g.name)+'</b>'+platBadge(g.extra.plat)+scoreBadge(g.extra)+chartBadge(g.extra)+viewsBadge(g.extra)+periodBadge(g.extra)+'<span class="en2">'+esc(g.en)+'</span></div><div class="oneline">'+esc(g.desc)+'</div></div>'+
-    '<div class="right">'+
-      '<div class="movecol">'+rankMove(g)+'<div class="l">순위 변화</div></div>'+
-    '</div></div>'+
-    '<div class="row-exp"><p>'+esc(g.desc)+'</p>'+revNote(g)+'<div class="foot"><div class="tagrow">'+g.tags.map(function(t){return '<span class="tag t">#'+esc(t)+'</span>';}).join('')+'</div>'+(g.video?'<button class="btn-watch" onclick="openVid(\''+g.video+'\')">▶ 시청</button>':'')+'</div></div>'+
-  '</div>';
+function buildBadges(x){
+  var b=[];
+  if(x.plat){var t={'치지직':'치지직','SOOP':'숲','유튜브':'유튜브'}[x.plat]||x.plat;b.push({text:t,style:badgeStyle('neutral'),title:''});}
+  if(x.score){var vc={'추천':'good','보통':'warn','비추':'bad','미정':'neutral'}[x.verdict]||'neutral';var disp=x.scoreMax===5?('★'+x.score):(x.scoreMax===10?(x.score+'/10'):(''+x.score));b.push({text:disp+(x.verdict?' · '+x.verdict:''),style:badgeStyle(vc),title:x.src||''});}
+  if(x.chartRank){b.push({text:(x.chart||'차트')+' '+x.chartRank+'위',style:badgeStyle('gold'),title:''});}
+  if(x.views){b.push({text:'▶ '+fmtViews(x.views),style:badgeStyle('neutral'),title:''});}
+  if(x.period){b.push({text:x.period,style:badgeStyle('neutral'),title:''});}
+  return b;
 }
-function shift(items){ // 일간/월간 느낌으로 살짝 섞기(데모)
-  if(state.period==='weekly') return items;
-  var a=items.slice(); if(state.period==='daily'){ if(a.length>2){a.splice(1,0,a.splice(2,1)[0]);} } else { if(a.length>3){a.push(a.splice(1,1)[0]);} }
-  return a;
+function badgesHtml(b){return b.map(function(bd){return '<span style="'+bd.style+'" title="'+esc(bd.title)+'">'+esc(bd.text)+'</span>';}).join('');}
+function buildMove(delta,prev,big){
+  var base="display:inline-flex;align-items:baseline;font-family:'Bodoni Moda',serif;font-weight:700;font-size:"+(big?'17px':'15px')+";padding:"+(big?'5px 12px':'3px 9px')+";border-radius:8px;";
+  if(delta===null)return {text:'NEW',sub:'신규 진입',style:base+"font-family:'Space Mono',monospace;font-size:"+(big?'13px':'11px')+";color:"+A+";background:"+hexRgba(A,.12)+";border:1px solid "+hexRgba(A,.4)};
+  if(delta>0)return {text:'▲ '+delta,sub:'지난 '+prev+'위',style:base+'color:#7FC6A2;background:rgba(127,198,162,.1);border:1px solid rgba(127,198,162,.34)'};
+  if(delta<0)return {text:'▼ '+Math.abs(delta),sub:'지난 '+prev+'위',style:base+'color:#E0776B;background:rgba(224,119,107,.1);border:1px solid rgba(224,119,107,.34)'};
+  return {text:'—',sub:'지난 '+prev+'위',style:base+'color:rgba(241,236,225,.5);background:rgba(241,236,225,.05);border:1px solid rgba(241,236,225,.1)'};
 }
-function gotoCat(k){if(!CATS[k])return;if(ORDER.indexOf(k)>=MORESTART)state.moreOpen=true;state.cat=k;state.query='';document.getElementById('searchInput').value='';renderCats();render();var t=document.getElementById('list');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
-function renderBreaking(){
-  var el=document.getElementById('breaking');
-  if(!BREAKING.length){el.style.display='none';el.innerHTML='';return;}
-  el.style.display='block';
-  el.innerHTML='<div class="brk-head"><span class="brk-dot"></span>🔥 지금 터진 이슈<span class="brk-sub">수시 갱신 · 예정 없이 튀는 화제</span></div>'+
-    '<div class="brk-wrap"><button class="brk-nav prev" onclick="brkScroll(-1)" aria-label="이전">‹</button>'+
-    '<div class="brk-row" id="brkRow" onscroll="brkNavUpdate()">'+BREAKING.map(function(b){return '<div class="brk-card"'+(b.key?' onclick="gotoCat(\''+b.key+'\')"':'')+'><div class="brk-meta"><span class="brk-cat">'+esc(b.cat)+'</span><span class="brk-ago">'+esc(b.ago)+'</span></div><div class="brk-title">'+esc(b.title)+'</div><div class="brk-desc">'+esc(b.desc)+'</div>'+(b.key?'<div class="brk-more">▸ 해당 카테고리 보기</div>':'')+'</div>';}).join('')+'</div>'+
-    '<button class="brk-nav next" onclick="brkScroll(1)" aria-label="다음">›</button></div>';
-  brkNavUpdate();
+function enrich(it,i){var d=it[3];return {name:it[0],en:it[1],hue:it[2],delta:d,prev:d===null?null:(i+1)+d,desc:it[4],tags:it[5]||[],video:it[6]||null,extra:it[7]||{},rank:i+1,rankStr:String(i+1).padStart(2,'0')};}
+function decorate(g,hero){var x=g.extra||{};g.badges=buildBadges(x);g.move=buildMove(g.delta,g.prev,hero);g.hasNote=!!x.note;g.verdict=x.verdict||'';g.note=x.note||'';g.noteSrc=x.src||'';return g;}
+
+var state={cat:'game',query:'',moreOpen:false,videoId:null};
+
+/* ---- section builders ---- */
+function headerHtml(){
+  return '<header style="position:sticky;top:0;z-index:30;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:22px 0 18px;margin-bottom:14px;background:linear-gradient(180deg,#0B0B0C 62%,rgba(11,11,12,0));backdrop-filter:blur(2px)">'
+    +'<div><div style="font-family:\'Bodoni Moda\',serif;font-weight:700;font-size:clamp(30px,4.6vw,44px);line-height:.9;letter-spacing:-.5px">ddeu<span style="color:'+A+'">zm</span><span style="font-family:\'Bodoni Moda\',serif;font-style:italic;font-weight:500;color:'+A+';font-size:.5em;vertical-align:super;margin-left:2px">®</span></div>'
+    +'<div style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:2.5px;color:rgba(241,236,225,.42);margin-top:10px;text-transform:uppercase">Weekly Buzz Ranking · KR — 왜 떴는지까지</div></div>'
+    +'<div style="display:flex;align-items:center;gap:10px;font-family:\'Space Mono\',monospace;font-size:11px;letter-spacing:1px;color:rgba(241,236,225,.5)"><span style="width:7px;height:7px;border-radius:50%;background:'+ACCENT_RED+';box-shadow:0 0 10px '+ACCENT_RED+';animation:ddzpulse 1.5s infinite"></span><span>주제별 갱신 · 오늘의 이슈 우선</span></div>'
+  +'</header>';
 }
-function brkScroll(dir){var r=document.getElementById('brkRow');if(!r)return;r.scrollBy({left:dir*Math.max(220,r.clientWidth*0.8),behavior:'smooth'});}
-function brkNavUpdate(){var r=document.getElementById('brkRow');if(!r)return;var w=r.parentElement,sc=r.scrollWidth-r.clientWidth>4,p=w.querySelector('.prev'),n=w.querySelector('.next');[p,n].forEach(function(b){if(b)b.style.display=sc?'':'none';});if(p)p.disabled=r.scrollLeft<=2;if(n)n.disabled=r.scrollLeft>=r.scrollWidth-r.clientWidth-2;}
-window.addEventListener('resize',function(){if(document.getElementById('brkRow'))brkNavUpdate();});
-function renderCats(){
-  var prim=ORDER.slice(0,MORESTART), sec=ORDER.slice(MORESTART);
-  function btn(k){return '<button data-c="'+k+'" class="'+(k===state.cat?'on':'')+'">'+CATS[k].label+'</button>';}
-  var tg=sec.length?'<button class="cattoggle'+(state.moreOpen?' open':'')+'" id="cattoggle" aria-label="카테고리 더 보기" title="더 보기" aria-expanded="'+(state.moreOpen?'true':'false')+'">'+(state.moreOpen?'▴':'▾')+'</button>':'';
-  document.getElementById('cats').innerHTML = tg + prim.map(btn).join('');
-  var more=document.getElementById('catsMore');
-  more.innerHTML = sec.map(function(k){return (k===GLOBALKEY?'<span class="catgroup">🌐 해외</span>':'')+btn(k);}).join('');
-  more.style.display = (sec.length && state.moreOpen) ? 'flex' : 'none';
+function breakingHtml(){
+  if(!BREAKING.length)return '';
+  var cards=BREAKING.map(function(b){
+    return '<article class="brk-card" onclick="'+(b.key?'gotoBrk(\''+jsq(b.key)+'\')':'')+'" style="flex:0 0 clamp(250px,72%,310px);padding:16px 18px;border-radius:15px;border:1px solid rgba(241,236,225,.09);background:linear-gradient(155deg,rgba(219,86,72,.06),rgba(20,19,21,.7));cursor:pointer;transition:border-color .22s,transform .22s">'
+      +'<div style="display:flex;align-items:center;gap:9px;margin-bottom:9px"><span style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:.5px;color:'+A+';background:'+aSoft+';padding:3px 8px;border-radius:6px">'+esc(stripEmoji(b.cat))+'</span><span style="font-family:\'Space Mono\',monospace;font-size:10.5px;color:rgba(241,236,225,.4)">'+esc(b.ago)+'</span></div>'
+      +'<div style="font-size:14.5px;font-weight:700;line-height:1.35;margin-bottom:6px;letter-spacing:-.2px">'+esc(b.title)+'</div>'
+      +'<div style="font-size:12px;color:rgba(241,236,225,.5);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(b.desc)+'</div>'
+      +'<div style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:1px;color:'+A+';margin-top:11px">카테고리 보기 →</div>'
+    +'</article>';
+  }).join('');
+  return '<section style="margin-bottom:34px"><div style="display:flex;align-items:center;gap:11px;margin-bottom:15px"><span style="width:8px;height:8px;border-radius:50%;background:'+ACCENT_RED+';box-shadow:0 0 12px '+ACCENT_RED+';animation:ddzpulse 1.4s infinite"></span><span style="font-family:\'Space Mono\',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:'+ACCENT_RED+';font-weight:700">Breaking</span><span style="font-size:15px;font-weight:700;letter-spacing:-.2px">지금 터진 이슈</span><span style="margin-left:auto;font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:1px;color:rgba(241,236,225,.34)">수시 갱신 · 예정 없이 튀는 화제</span></div>'
+    +'<div style="position:relative"><button onclick="brkScroll(-1)" aria-label="이전" style="position:absolute;left:-14px;top:calc(50% - 1px);transform:translateY(-50%);z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid rgba(241,236,225,.14);background:rgba(20,19,21,.94);color:#F1ECE1;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">‹</button>'
+    +'<div id="ddz-brk" class="ddz-scroll" style="display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;padding:2px 2px 4px">'+cards+'</div>'
+    +'<button onclick="brkScroll(1)" aria-label="다음" style="position:absolute;right:-14px;top:calc(50% - 1px);transform:translateY(-50%);z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid rgba(241,236,225,.14);background:rgba(20,19,21,.94);color:#F1ECE1;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">›</button></div></section>';
 }
-function renderLD(list){var el=document.getElementById("ld");if(!el)return;var items=list.map(function(g,i){return {"@type":"ListItem","position":i+1,"name":g.name,"description":g.desc};});el.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"ddeuzm HOT10 "+CATS[state.cat].label+" 화제성 랭킹","itemListElement":items});}
-function render(){
-  var raw = CATS[state.cat].items.map(enrich);
+function catBtn(k){
+  var on=k===state.cat;
+  var style='background:none;border:none;padding:7px 0;cursor:pointer;font-family:Pretendard,sans-serif;font-size:14px;font-weight:'+(on?'700':'500')+';letter-spacing:-.2px;color:'+(on?'#F1ECE1':'rgba(241,236,225,.44)')+';border-bottom:2px solid '+(on?A:'transparent')+';transition:color .18s,border-color .18s;line-height:1.2';
+  return '<button onclick="setCat(\''+jsq(k)+'\')" style="'+style+'">'+esc(stripEmoji(CATS[k].label))+'</button>';
+}
+function navHtml(){
+  var prim=ORDER.slice(0,MORESTART).map(catBtn).join('');
+  var toggle='';
+  if(ORDER.length>MORESTART){var mt='background:none;border:1px solid '+(state.moreOpen?aBorder:'rgba(241,236,225,.16)')+';color:'+(state.moreOpen?A:'rgba(241,236,225,.5)')+';width:34px;height:30px;border-radius:9px;cursor:pointer;font-size:13px;line-height:1';toggle='<button onclick="toggleMore()" style="'+mt+'">'+(state.moreOpen?'▴':'▾')+'</button>';}
+  var h='<nav style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;margin-bottom:14px">'+prim+toggle+'</nav>';
+  if(state.moreOpen){
+    var sec=ORDER.slice(MORESTART).map(function(k){var g='';if(k===GLOBALKEY)g='<span style="flex-basis:100%;font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(241,236,225,.34);padding:8px 0 2px">해외</span>';return g+catBtn(k);}).join('');
+    h+='<nav style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;margin-bottom:18px;padding:14px 0 4px;border-top:1px solid rgba(241,236,225,.07)">'+sec+'</nav>';
+  }
+  return h;
+}
+function controlsHtml(){
+  var has=state.query.trim().length>0;
+  return '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin:8px 0 22px">'
+    +'<div style="position:relative;flex:1;min-width:220px;max-width:360px"><span style="position:absolute;left:15px;top:50%;transform:translateY(-50%);color:rgba(241,236,225,.4);font-size:15px">⌕</span>'
+    +'<input id="ddz-search" oninput="onSearch(this.value)" placeholder="검색" autocomplete="off" style="width:100%;padding:12px 38px;border-radius:12px;border:1px solid rgba(241,236,225,.12);background:rgba(241,236,225,.03);color:#F1ECE1;font-family:Pretendard,sans-serif;font-size:14px;outline:none">'
+    +'<button id="ddz-clear" onclick="clearSearch()" style="position:absolute;right:9px;top:50%;transform:translateY(-50%);border:none;background:rgba(241,236,225,.1);color:rgba(241,236,225,.7);width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:11px;display:'+(has?'flex':'none')+';align-items:center;justify-content:center">✕</button></div>'
+    +'<div style="font-family:\'Space Mono\',monospace;font-size:11px;letter-spacing:.5px;color:rgba(241,236,225,.5);border:1px solid rgba(241,236,225,.1);padding:8px 14px;border-radius:999px">'+esc((CADENCE[state.cat]||'수시')+' 갱신 · 마지막 '+LASTDATE)+'</div>'
+  +'</div>';
+}
+function heroHtml(h){
+  return '<div style="margin-bottom:44px"><section style="display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,36px);padding:clamp(18px,2.4vw,26px);border-radius:22px;border:1px solid rgba(241,236,225,.1);background:linear-gradient(150deg,'+hexRgba(A,.05)+',rgba(20,19,21,.55) 60%);animation:ddzfade .5s ease both">'
+    +'<div onclick="'+(h.video?'openVid(\''+jsq(h.video)+'\')':'')+'" style="position:relative;flex:0 0 clamp(240px,38%,420px);min-width:240px;aspect-ratio:16/9;border-radius:15px;overflow:hidden;border:1px solid rgba(241,236,225,.12);cursor:'+(h.video?'pointer':'default')+';background:#000">'
+      +(h.video?'<img src="'+ytThumb(h.video)+'" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+jsq(h.video)+'/hqdefault.jpg\'" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">':'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(241,236,225,.5);background:linear-gradient(135deg,hsl('+h.hue+' 40% 24%),hsl('+h.hue+' 45% 12%))">'+esc(catWord())+'</div>')
+      +'<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,7,9,.82))"></div>'
+      +'<div style="position:absolute;top:14px;left:14px;font-family:\'Space Mono\',monospace;font-weight:700;font-size:10px;letter-spacing:2px;padding:5px 10px;border-radius:6px;background:rgba(11,11,12,.6);border:1px solid '+aBorder+';color:'+A+'">RANK 01</div>'
+      +'<div style="position:absolute;bottom:-6px;left:14px;font-family:\'Bodoni Moda\',serif;font-style:italic;font-weight:900;font-size:clamp(58px,8vw,92px);line-height:.8;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.7)">01</div>'
+      +(h.video?'<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(11,11,12,.5);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-size:17px;padding-left:3px">▶</div>':'')
+    +'</div>'
+    +'<div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:13px">'
+      +'<div style="font-family:\'Space Mono\',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:'+A+'">'+esc(h.eyebrow)+'</div>'
+      +'<h2 style="font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:-.8px;line-height:1.05">'+esc(h.name)+'</h2>'
+      +'<div style="font-family:\'Space Mono\',monospace;font-size:11.5px;letter-spacing:1px;color:rgba(241,236,225,.42)">'+esc(h.en)+'</div>'
+      +'<div style="display:flex;gap:7px;flex-wrap:wrap">'+badgesHtml(h.badges)+'</div>'
+      +'<p style="font-size:14px;line-height:1.7;color:rgba(241,236,225,.72);max-width:640px">'+esc(h.desc)+'</p>'
+      +(h.hasNote?'<p style="font-size:12.5px;line-height:1.6;color:rgba(241,236,225,.66);background:rgba(241,236,225,.03);border:1px solid rgba(241,236,225,.09);border-radius:11px;padding:10px 13px"><b style="color:'+A+'">평가 · '+esc(h.verdict)+'</b> '+esc(h.note)+' <span style="opacity:.5;font-family:\'Space Mono\',monospace;font-size:10.5px">— '+esc(h.noteSrc)+'</span></p>':'')
+      +'<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:2px"><div style="display:flex;flex-direction:column;gap:3px"><span style="'+h.move.style+'">'+esc(h.move.text)+'<span style="font-family:Pretendard;font-weight:500;font-size:11px;opacity:.8;margin-left:6px">'+esc(h.move.sub)+'</span></span></div>'
+      +(h.video?'<button onclick="openVid(\''+jsq(h.video)+'\')" style="'+watchBtn+'">▶ 시청</button>':'')+'</div>'
+    +'</div></section></div>';
+}
+function rowHtml(g){
+  return '<div class="rrow" data-screen-label="rank '+g.rankStr+'"><div style="display:flex;align-items:flex-start;gap:clamp(11px,1.7vw,20px)">'
+    +'<div class="huebar" style="background:hsl('+g.hue+' 55% 55%)"></div>'
+    +'<div class="ranknum">'+g.rankStr+'</div>'
+    +'<div class="thumb'+(g.video?'':' novid')+'" onclick="'+(g.video?'openVid(\''+jsq(g.video)+'\')':'')+'">'
+      +(g.video?'<img src="'+ytThumb(g.video)+'" onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+jsq(g.video)+'/hqdefault.jpg\'" loading="lazy" alt="">':'<div class="ph" style="background:linear-gradient(135deg,hsl('+g.hue+' 40% 24%),hsl('+g.hue+' 45% 12%))">'+esc(catWord())+'</div>')
+    +'</div>'
+    +'<div style="flex:1;min-width:0">'
+      +'<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap"><b style="font-size:16px;font-weight:700;letter-spacing:-.3px">'+esc(g.name)+'</b><span style="font-family:\'Space Mono\',monospace;font-size:10px;letter-spacing:.5px;color:rgba(241,236,225,.34)">'+esc(g.en)+'</span></div>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">'+badgesHtml(g.badges)+'</div>'
+      +'<div class="oneline">'+esc(g.desc)+'</div>'
+      +'<div class="exp"><p style="font-size:13px;line-height:1.6;color:rgba(241,236,225,.76);margin:2px 0 11px">'+esc(g.desc)+'</p>'
+        +(g.hasNote?'<p style="font-size:12px;line-height:1.55;color:rgba(241,236,225,.62);background:rgba(241,236,225,.03);border:1px solid rgba(241,236,225,.08);border-radius:9px;padding:8px 10px;margin-bottom:11px"><b style="color:'+A+'">'+esc(g.verdict)+'</b> '+esc(g.note)+'</p>':'')
+        +'<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px"><div style="display:flex;gap:6px;flex-wrap:wrap">'+(g.tags||[]).map(function(t){return '<span style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:.3px;color:rgba(241,236,225,.55);border:1px solid rgba(241,236,225,.12);padding:3px 9px;border-radius:7px">#'+esc(t)+'</span>';}).join('')+'</div>'
+        +(g.video?'<button onclick="openVid(\''+jsq(g.video)+'\')" style="'+watchBtn+'">▶ 시청</button>':'')+'</div></div>'
+    +'</div>'
+    +'<div class="movecol"><span style="'+g.move.style+'">'+esc(g.move.text)+'</span><div style="font-family:\'Space Mono\',monospace;font-size:9px;letter-spacing:1px;color:rgba(241,236,225,.34);margin-top:6px">'+esc(g.move.sub)+'</div></div>'
+  +'</div></div>';
+}
+function resultsHtml(){
+  var cat=CATS[state.cat], raw=cat.items.map(enrich);
   var q=state.query.trim().toLowerCase(), has=q.length>0;
-  var list = has ? raw.filter(function(g){return g.name.toLowerCase().includes(q)||g.en.toLowerCase().includes(q)||g.tags.some(function(t){return t.toLowerCase().includes(q);});}) : raw;
-  var hero = has?null:raw[0];
-  var rows = has?list:raw.slice(1);
-  document.getElementById('hero').innerHTML = hero?renderHero(hero):'';
-  document.getElementById('sampleNote').textContent = CATS[state.cat].real?'':'※ 샘플 데이터';
-  document.getElementById('listTitle').textContent = has?'검색 결과':(CATS[state.cat].label+' · 이번 주 화제 TOP '+raw.length);
-  var _dn=document.getElementById('datanote');if(_dn){if(state.cat==='news'){_dn.style.display='flex';_dn.innerHTML=DATANOTE_BASE+' · <span class="excl">'+EXCL.news+'</span>';}else{_dn.style.display='none';_dn.innerHTML='';}}
-  var _sc=document.getElementById('sched');if(_sc){_sc.textContent='🔄 이 주제 '+(CADENCE[state.cat]||'수시')+' 갱신 · 마지막 '+LASTDATE;}
-  document.getElementById('resultCount').textContent=(has?rows.length:raw.length)+'개';
-  document.getElementById('clearBtn').style.display=has?'block':'none';
-  var el=document.getElementById('list');
-  el.innerHTML=(has&&rows.length===0)?'<div class="empty">검색 결과가 없어요.</div>':rows.map(renderRow).join('');
-  renderLD(raw);
+  var filtered=has?raw.filter(function(g){return g.name.toLowerCase().indexOf(q)>=0||String(g.en).toLowerCase().indexOf(q)>=0||(g.tags||[]).some(function(t){return String(t).toLowerCase().indexOf(q)>=0;});}):raw;
+  var hero=has?null:decorate(Object.assign({},raw[0]),true);
+  if(hero)hero.eyebrow=stripEmoji(cat.label)+' · FEATURED';
+  var rowsRaw=has?filtered:raw.slice(1);
+  var listTitle=has?'검색 결과':(stripEmoji(cat.label)+' · 이번 주 화제 TOP '+raw.length);
+  var showDN=(state.cat==='news');
+  var dn=showDN?(stripEmoji(DATANOTE_BASE)+' · '+stripEmoji(EXCL.news||'')):'';
+  var listHeader='<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:0 0 18px"><div style="display:flex;align-items:baseline;gap:12px"><span style="width:5px;height:22px;border-radius:5px;background:'+A+';display:inline-block"></span><h3 style="font-size:19px;font-weight:700;letter-spacing:-.3px">'+esc(listTitle)+'</h3><span style="font-family:\'Space Mono\',monospace;font-size:11px;color:rgba(241,236,225,.4)">'+(has?filtered.length:raw.length)+'개</span></div><span style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:1px;color:rgba(241,236,225,.38)">지난 순위 대비 ▲▼ 변화</span></div>';
+  var rows=rowsRaw.length?rowsRaw.map(function(g0){return rowHtml(decorate(Object.assign({},g0),false));}).join(''):(has?'<div style="padding:52px;text-align:center;color:rgba(241,236,225,.42);border:1px dashed rgba(241,236,225,.13);border-radius:16px">검색 결과가 없어요.</div>':'');
+  return (showDN?'<div style="font-size:11.5px;color:rgba(241,236,225,.46);margin:-8px 0 20px;line-height:1.6;max-width:760px">'+dn+'</div>':'')
+    +(hero?heroHtml(hero):'')
+    +listHeader
+    +'<div class="rows" style="display:flex;flex-direction:column;gap:10px">'+rows+'</div>';
 }
-function onCatClick(e){
-  if(e.target.closest('#cattoggle')){state.moreOpen=!state.moreOpen;renderCats();return;}
-  var b=e.target.closest('button[data-c]');if(!b)return;
-  state.cat=b.dataset.c;state.query='';document.getElementById('searchInput').value='';renderCats();render();
+function footerHtml(){
+  return '<footer style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(241,236,225,.08);text-align:center;font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:.5px;color:rgba(241,236,225,.32);line-height:1.9">ddeuzm · 이번 주 화제성 기반 랭킹 — 순위 변화는 직전 집계 대비<br>영상·썸네일은 원본 플랫폼 공식 임베드/링크(자체 저장 없음) · 갱신 주기는 주제마다 다름</footer>';
 }
-document.getElementById('cats').addEventListener('click',onCatClick);
-document.getElementById('catsMore').addEventListener('click',onCatClick);
-/* 기간 토글 제거(가짜 일/월간) — 아카이브 기반 과거 날짜 선택은 다음 빌드 */
-var si=document.getElementById('searchInput');
-si.addEventListener('input',function(e){state.query=e.target.value;render();});
-document.getElementById('clearBtn').addEventListener('click',function(){si.value='';state.query='';render();si.focus();});
-function openVid(id){if(!id)return;document.getElementById('lbframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
-function closeVid(){document.getElementById('lb').classList.remove('open');document.getElementById('lbframe').src='about:blank';document.body.style.overflow='';}
-window.addEventListener('keydown',function(e){if(e.key==='Escape')closeVid();});
-renderBreaking();renderCats();render();
+function renderLightbox(){
+  var el=document.getElementById('ddz-lb');
+  if(!state.videoId){el.innerHTML='';return;}
+  el.innerHTML='<div onclick="closeVid()" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:80;padding:24px"><span onclick="closeVid()" style="position:absolute;top:16px;right:24px;color:#fff;font-size:30px;cursor:pointer;opacity:.85">✕</span><div onclick="event.stopPropagation()" style="width:100%;max-width:960px"><div style="position:relative;padding-top:56.25%"><iframe src="https://www.youtube.com/embed/'+state.videoId+'?autoplay=1&rel=0" title="영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px"></iframe></div></div></div>';
+}
+function render(){
+  document.getElementById('app').innerHTML=headerHtml()+breakingHtml()
+    +'<div style="height:1px;background:rgba(241,236,225,.09);margin-bottom:22px"></div>'
+    +navHtml()+controlsHtml()
+    +'<div id="ddz-results">'+resultsHtml()+'</div>'+footerHtml();
+  renderLightbox();
+}
+
+/* ---- handlers (global) ---- */
+function setCat(k){state.cat=k;state.query='';render();}
+function gotoBrk(k){if(!k)return;if(ORDER.indexOf(k)>=MORESTART)state.moreOpen=true;state.cat=k;state.query='';render();}
+function toggleMore(){state.moreOpen=!state.moreOpen;render();}
+function onSearch(v){state.query=v;document.getElementById('ddz-results').innerHTML=resultsHtml();var c=document.getElementById('ddz-clear');if(c)c.style.display=(v&&v.trim())?'flex':'none';}
+function clearSearch(){state.query='';var el=document.getElementById('ddz-search');if(el)el.value='';document.getElementById('ddz-results').innerHTML=resultsHtml();var c=document.getElementById('ddz-clear');if(c)c.style.display='none';}
+function brkScroll(dir){var r=document.getElementById('ddz-brk');if(r)r.scrollBy({left:dir*Math.max(240,r.clientWidth*0.8),behavior:'smooth'});}
+function openVid(id){if(id){state.videoId=id;renderLightbox();}}
+function closeVid(){state.videoId=null;renderLightbox();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&state.videoId)closeVid();});
+
+render();
 </script>
 </body>
 </html>
