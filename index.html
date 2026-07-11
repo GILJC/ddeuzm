@@ -24,7 +24,7 @@
   /* rows (hover expand via CSS) */
   .rrow{position:relative;padding:12px 16px;border-radius:15px;border:1px solid rgba(241,236,225,.09);background:rgba(20,19,21,.5);transition:opacity .25s,filter .25s,border-color .2s,transform .2s,box-shadow .2s}
   .rows:has(.rrow:hover) .rrow:not(:hover){opacity:.4;filter:saturate(.6)}
-  .rrow:hover{border-color:rgba(228,176,97,.34);background:rgba(26,24,27,.9);transform:translateY(-1px);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .rrow:hover,.rrow.expanded{border-color:rgba(228,176,97,.34);background:rgba(26,24,27,.9);transform:translateY(-1px);box-shadow:0 14px 40px rgba(0,0,0,.45)}
   .huebar{width:4px;align-self:stretch;border-radius:4px;flex:none;min-height:46px}
   .ranknum{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:clamp(28px,3vw,38px);color:rgba(241,236,225,.82);min-width:44px;text-align:center;flex:none;line-height:1;font-variant-numeric:tabular-nums}
   .thumb{position:relative;width:104px;height:62px;border-radius:10px;overflow:hidden;flex:none;border:1px solid rgba(241,236,225,.1);cursor:pointer;background:#000;transition:width .3s cubic-bezier(.4,0,.2,1),height .3s cubic-bezier(.4,0,.2,1)}
@@ -33,9 +33,9 @@
   .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:1px;color:rgba(241,236,225,.55)}
   .rrow:hover .thumb{width:clamp(190px,26vw,280px);height:auto;aspect-ratio:16/9}
   .oneline{font-size:12px;color:rgba(241,236,225,.5);margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:460px;display:block}
-  .rrow:hover .oneline{display:none}
+  .rrow:hover .oneline,.rrow.expanded .oneline{display:none}
   .exp{overflow:hidden;max-height:0;opacity:0;margin-top:0;padding-top:0;border-top:0 solid rgba(241,236,225,.08);transition:max-height .32s,opacity .3s,margin .3s,padding .3s}
-  .rrow:hover .exp{max-height:340px;opacity:1;margin-top:12px;padding-top:12px;border-top-width:1px}
+  .rrow:hover .exp,.rrow.expanded .exp{max-height:340px;opacity:1;margin-top:12px;padding-top:12px;border-top-width:1px}
   .movecol{margin-left:auto;text-align:right;min-width:88px;flex:none}
   .brk-card:hover{border-color:rgba(219,86,72,.5)!important;transform:translateY(-2px)}
   /* ── 모바일(세로 좁은 화면): 순위 행을 2줄로 재배치 ── */
@@ -530,6 +530,12 @@ function brkScroll(dir){var r=document.getElementById('ddz-brk');if(r)r.scrollBy
 function openVid(id){if(id){state.videoId=id;renderLightbox();}}
 function closeVid(){state.videoId=null;renderLightbox();}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&state.videoId)closeVid();});
+// 행(칸) 탭 → 펼침/접힘 (썸네일·버튼은 자기 동작=영상재생이라 제외)
+document.addEventListener('click',function(e){
+  if(e.target.closest('.thumb')||e.target.closest('button')||e.target.closest('a'))return;
+  var row=e.target.closest('.rrow');
+  if(row)row.classList.toggle('expanded');
+});
 
 render();
 </script>
